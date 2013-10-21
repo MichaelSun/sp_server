@@ -1,14 +1,9 @@
 <%@ page import="com.sp.domain.Canal" %>
 
+<g:render template="province_city_tpl"/>
 
 
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'city', 'error')} ">
-	<label for="city">
-		<g:message code="canal.city.label" default="City" />
-		
-	</label>
-	<g:textField name="city" value="${canalInstance?.city}"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'enable', 'error')} ">
 	<label for="enable">
@@ -58,13 +53,7 @@
 	<g:textField name="operator" value="${canalInstance?.operator}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'province', 'error')} ">
-	<label for="province">
-		<g:message code="canal.province.label" default="Province" />
-		
-	</label>
-	<g:textField name="province" value="${canalInstance?.province}"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'times', 'error')} required">
 	<label for="times">
