@@ -29,7 +29,6 @@ class SpTagLib {
 	
 	private getEnType(attrs){
 		def t=attrs.type.replaceAll(".*\\.", "")
-		println t+"ffff"
 		t
 	}
 }

@@ -30,7 +30,7 @@
 					
 						<g:sortableColumn property="class" title="${message(code: 'canal.class.label', default: '类型')}" />
 					
-						<g:sortableColumn property="city" title="${message(code: 'canal.city.label', default: 'City')}" />
+						<g:sortableColumn property="area" title="${message(code: 'canal.area.label', default: '地区')}" />
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'canal.dateCreated.label', default: 'Date Created')}" />
 					
@@ -52,7 +52,7 @@
 						<td><sp:canalType type="${fieldValue(bean: canalInstance, field: "class")}"></sp:canalType>
 						</td>
 					
-						<td><g:link action="show" id="${canalInstance.id}">${fieldValue(bean: canalInstance, field: "city")}</g:link></td>
+						<td>${fieldValue(bean: canalInstance, field: "area")}</td>
 					
 						<td><g:formatDate date="${canalInstance.dateCreated}" /></td>
 					

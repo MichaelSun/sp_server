@@ -18,13 +18,7 @@
 	<g:textField name="operator" required="" value="${wapCanalInstance?.operator}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'province', 'error')} required">
-	<label for="province">
-		<g:message code="wapCanal.province.label" default="Province" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="province" required="" value="${wapCanalInstance?.province}"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'chargeKey', 'error')} ">
 	<label for="chargeKey">
@@ -34,13 +28,7 @@
 	<g:textField name="chargeKey" value="${wapCanalInstance?.chargeKey}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'city', 'error')} ">
-	<label for="city">
-		<g:message code="wapCanal.city.label" default="City" />
-		
-	</label>
-	<g:textField name="city" value="${wapCanalInstance?.city}"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'enable', 'error')} ">
 	<label for="enable">
@@ -114,3 +102,4 @@
 	<g:field name="times" type="number" value="${wapCanalInstance.times}" required=""/>
 </div>
 
+<g:render template="province_city_tpl"/>

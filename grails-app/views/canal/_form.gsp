@@ -1,7 +1,22 @@
 <%@ page import="com.sp.domain.Canal" %>
 
-<g:render template="province_city_tpl"/>
 
+
+<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'name', 'error')} ">
+	<label for="name">
+		<g:message code="canal.name.label" default="Name" />
+		
+	</label>
+	<g:textField name="name" value="${canalInstance?.name}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'operator', 'error')} ">
+	<label for="operator">
+		<g:message code="canal.operator.label" default="Operator" />
+		
+	</label>
+	<g:textField name="operator" value="${canalInstance?.operator}"/>
+</div>
 
 
 
@@ -37,21 +52,6 @@
 	<g:field name="interval" type="number" value="${canalInstance.interval}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'name', 'error')} ">
-	<label for="name">
-		<g:message code="canal.name.label" default="Name" />
-		
-	</label>
-	<g:textField name="name" value="${canalInstance?.name}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'operator', 'error')} ">
-	<label for="operator">
-		<g:message code="canal.operator.label" default="Operator" />
-		
-	</label>
-	<g:textField name="operator" value="${canalInstance?.operator}"/>
-</div>
 
 
 
@@ -63,3 +63,4 @@
 	<g:field name="times" type="number" value="${canalInstance.times}" required=""/>
 </div>
 
+<g:render template="province_city_tpl"/>

@@ -12,8 +12,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="list" controller="canal" action="list">通道列表</g:link></li>
+				<li><g:link class="create" action="create">新建</g:link></li>
 			</ul>
 		</div>
 		<div id="show-smsCanal" class="content scaffold-show" role="main">
@@ -22,6 +22,41 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list smsCanal">
+			
+			<g:if test="${smsCanalInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="smsCanal.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${smsCanalInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${smsCanalInstance?.operator}">
+				<li class="fieldcontain">
+					<span id="operator-label" class="property-label"><g:message code="smsCanal.operator.label" default="Operator" /></span>
+					
+						<span class="property-value" aria-labelledby="operator-label"><g:fieldValue bean="${smsCanalInstance}" field="operator"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${smsCanalInstance?.port}">
+				<li class="fieldcontain">
+					<span id="port-label" class="property-label"><g:message code="smsCanal.port.label" default="Port" /></span>
+					
+						<span class="property-value" aria-labelledby="port-label"><g:fieldValue bean="${smsCanalInstance}" field="port"/></span>
+					
+				</li>
+				</g:if>
+				<g:if test="${smsCanalInstance?.area}">
+				<li class="fieldcontain">
+					<span id="port-label" class="property-label"><g:message code="smsCanal.area.label" default="地区" /></span>
+					
+						<span class="property-value" aria-labelledby="port-label"><g:fieldValue bean="${smsCanalInstance}" field="area"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${smsCanalInstance?.blockKeys}">
 				<li class="fieldcontain">
@@ -59,14 +94,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${smsCanalInstance?.city}">
-				<li class="fieldcontain">
-					<span id="city-label" class="property-label"><g:message code="smsCanal.city.label" default="City" /></span>
-					
-						<span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${smsCanalInstance}" field="city"/></span>
-					
-				</li>
-				</g:if>
+				
 			
 				<g:if test="${smsCanalInstance?.dayInterval}">
 				<li class="fieldcontain">
@@ -140,41 +168,8 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${smsCanalInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="smsCanal.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${smsCanalInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${smsCanalInstance?.operator}">
-				<li class="fieldcontain">
-					<span id="operator-label" class="property-label"><g:message code="smsCanal.operator.label" default="Operator" /></span>
-					
-						<span class="property-value" aria-labelledby="operator-label"><g:fieldValue bean="${smsCanalInstance}" field="operator"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${smsCanalInstance?.port}">
-				<li class="fieldcontain">
-					<span id="port-label" class="property-label"><g:message code="smsCanal.port.label" default="Port" /></span>
-					
-						<span class="property-value" aria-labelledby="port-label"><g:fieldValue bean="${smsCanalInstance}" field="port"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${smsCanalInstance?.province}">
-				<li class="fieldcontain">
-					<span id="province-label" class="property-label"><g:message code="smsCanal.province.label" default="Province" /></span>
-					
-						<span class="property-value" aria-labelledby="province-label"><g:fieldValue bean="${smsCanalInstance}" field="province"/></span>
-					
-				</li>
-				</g:if>
+				
+				
 			
 				<g:if test="${smsCanalInstance?.times}">
 				<li class="fieldcontain">

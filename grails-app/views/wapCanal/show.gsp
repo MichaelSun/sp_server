@@ -41,14 +41,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${wapCanalInstance?.province}">
-				<li class="fieldcontain">
-					<span id="province-label" class="property-label"><g:message code="wapCanal.province.label" default="Province" /></span>
-					
-						<span class="property-value" aria-labelledby="province-label"><g:fieldValue bean="${wapCanalInstance}" field="province"/></span>
-					
-				</li>
-				</g:if>
+				
 			
 				<g:if test="${wapCanalInstance?.chargeKey}">
 				<li class="fieldcontain">
@@ -59,20 +52,13 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${wapCanalInstance?.city}">
-				<li class="fieldcontain">
-					<span id="city-label" class="property-label"><g:message code="wapCanal.city.label" default="City" /></span>
-					
-						<span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${wapCanalInstance}" field="city"/></span>
-					
-				</li>
-				</g:if>
+				
 			
-				<g:if test="${wapCanalInstance?.dateCreated}">
+				<g:if test="${wapCanalInstance?.area}">
 				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="wapCanal.dateCreated.label" default="Date Created" /></span>
+					<span id="dateCreated-label" class="property-label"><g:message code="wapCanal.area.label" default="开通地区" /></span>
 					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${wapCanalInstance?.dateCreated}" /></span>
+						<span class="property-value" aria-labelledby="area-label"><g:fieldValue bean="${wapCanalInstance}" field="area"/></span>
 					
 				</li>
 				</g:if>
@@ -131,14 +117,7 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${wapCanalInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="wapCanal.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${wapCanalInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
+				
 			
 				<g:if test="${wapCanalInstance?.start}">
 				<li class="fieldcontain">

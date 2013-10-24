@@ -6,13 +6,9 @@ class Canal {
 	 */
 	String name
 	/**
-	 * 开通省份
+	 * 开通省市
 	 */
-	String province
-	/**
-	 * 开通城市
-	 */
-	String city
+	Map area
 	/**
 	 * 运营商
 	 */
@@ -44,7 +40,6 @@ class Canal {
     static constraints = {
 		name blank:false
 		operator blank:false
-		province blank:false
 		
     }
 }

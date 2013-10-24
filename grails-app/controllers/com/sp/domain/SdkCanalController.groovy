@@ -2,7 +2,7 @@ package com.sp.domain
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class SmsCanalController {
+class SdkCanalController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	private static pList=[:]
@@ -44,28 +44,25 @@ class SmsCanalController {
 			pList['台湾'] = ['台北', '高雄', '台中', '台南', '屏东', '南投', '云林', '新竹', '彰化', '苗栗', '嘉义', '花莲', '桃园', '宜兰', '基隆', '台东', '金门', '马祖', '澎湖'];
 			
 			}
+
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
-//        params.max = Math.min(max ?: 10, 100)
-//        [smsCanalInstanceList: SmsCanal.list(params), smsCanalInstanceTotal: SmsCanal.count()]
-		redirect(controller:"canal",action: "list")
-		
+       		redirect(controller:"canal",action: "list")
+
     }
 
     def create() {
-        [smsCanalInstance: new SmsCanal(params),pList:pList]
+        [sdkCanalInstance: new SdkCanal(params),pList:pList]
     }
 
     def save() {
-		
-		
-        def smsCanalInstance = new SmsCanal(params)
-        if(params.province instanceof String){
+        def sdkCanalInstance = new SdkCanal(params)
+		if(params.province instanceof String){
 			params.province=[params.province]
-		} 
+		}
 		def areaProp=[:]
 		if(params.province instanceof List||params.province instanceof String[]){
 			params.province.each {  p->
@@ -82,58 +79,58 @@ class SmsCanalController {
 				
 		}
 	}
-		smsCanalInstance.area=areaProp
+		sdkCanalInstance.area=areaProp
 		
-        if (!smsCanalInstance.save(flush: true)) {
-            render(view: "create", model: [smsCanalInstance: smsCanalInstance,pList:pList])
+        if (!sdkCanalInstance.save(flush: true)) {
+            render(view: "create", model: [sdkCanalInstance: sdkCanalInstance])
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), smsCanalInstance.id])
-        redirect(action: "show", id: smsCanalInstance.id)
+        flash.message = message(code: 'default.created.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), sdkCanalInstance.id])
+        redirect(action: "show", id: sdkCanalInstance.id,pList:pList)
     }
 
     def show(Long id) {
-        def smsCanalInstance = SmsCanal.get(id)
-        if (!smsCanalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+        def sdkCanalInstance = SdkCanal.get(id)
+        if (!sdkCanalInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), id])
+            redirect(action: "list")
             return
         }
 
-        [smsCanalInstance: smsCanalInstance,pList:pList]
+        [sdkCanalInstance: sdkCanalInstance,pList:pList]
     }
 
     def edit(Long id) {
-        def smsCanalInstance = SmsCanal.get(id)
-        if (!smsCanalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+        def sdkCanalInstance = SdkCanal.get(id)
+        if (!sdkCanalInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), id])
+            redirect(action: "list")
             return
         }
 
-        [smsCanalInstance: smsCanalInstance,pList:pList]
+        [sdkCanalInstance: sdkCanalInstance,pList:pList]
     }
 
     def update(Long id, Long version) {
-        def smsCanalInstance = SmsCanal.get(id)
-        if (!smsCanalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+        def sdkCanalInstance = SdkCanal.get(id)
+        if (!sdkCanalInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), id])
+            redirect(action: "list")
             return
         }
 
         if (version != null) {
-            if (smsCanalInstance.version > version) {
-                smsCanalInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'smsCanal.label', default: 'SmsCanal')] as Object[],
-                          "Another user has updated this SmsCanal while you were editing")
-                render(view: "edit", model: [smsCanalInstance: smsCanalInstance])
+            if (sdkCanalInstance.version > version) {
+                sdkCanalInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                          [message(code: 'sdkCanal.label', default: 'SdkCanal')] as Object[],
+                          "Another user has updated this SdkCanal while you were editing")
+                render(view: "edit", model: [sdkCanalInstance: sdkCanalInstance])
                 return
             }
         }
 
-        smsCanalInstance.properties = params
+        sdkCanalInstance.properties = params
 		
 		if(params.province instanceof String){
 			params.province=[params.province]
@@ -154,32 +151,32 @@ class SmsCanalController {
 				
 		}
 	}
-		smsCanalInstance.area=areaProp
+		sdkCanalInstance.area=areaProp
 
-        if (!smsCanalInstance.save(flush: true)) {
-            render(view: "edit", model: [smsCanalInstance: smsCanalInstance])
+        if (!sdkCanalInstance.save(flush: true)) {
+            render(view: "edit", model: [sdkCanalInstance: sdkCanalInstance])
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), smsCanalInstance.id])
-        redirect(action: "show", id: smsCanalInstance.id)
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), sdkCanalInstance.id])
+        redirect(action: "show", id: sdkCanalInstance.id)
     }
 
     def delete(Long id) {
-        def smsCanalInstance = SmsCanal.get(id)
-        if (!smsCanalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+        def sdkCanalInstance = SdkCanal.get(id)
+        if (!sdkCanalInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), id])
+            redirect(action: "list")
             return
         }
 
         try {
-            smsCanalInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal", action: "list")
+            sdkCanalInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), id])
+            redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'sdkCanal.label', default: 'SdkCanal'), id])
             redirect(action: "show", id: id)
         }
     }
