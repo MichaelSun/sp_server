@@ -50,7 +50,7 @@ class SdkCanalController {
     }
 
     def list(Integer max) {
-       		redirect(controller:"canal",action: "list")
+       		redirect(controller:"adminCanal",action: "list")
 
     }
 

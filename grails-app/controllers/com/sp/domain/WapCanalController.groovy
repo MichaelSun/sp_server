@@ -52,7 +52,7 @@ class WapCanalController {
     def list(Integer max) {
 //        params.max = Math.min(max ?: 10, 100)
 //        [wapCanalInstanceList: WapCanal.list(params), wapCanalInstanceTotal: WapCanal.count()]
-		redirect(controller:"canal",action: "list", params: params)
+		redirect(controller:"adminCanal",action: "list", params: params)
 		
     }
 

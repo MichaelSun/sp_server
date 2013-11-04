@@ -11,7 +11,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" controller="canal" action="list">通道列表</g:link></li>
+				<li><g:link class="list" controller="adminCanal" action="list">通道列表</g:link></li>
 			</ul>
 		</div>
 		<div id="create-smsCanal" class="content scaffold-create" role="main">

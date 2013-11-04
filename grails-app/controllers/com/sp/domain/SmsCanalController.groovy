@@ -51,7 +51,7 @@ class SmsCanalController {
     def list(Integer max) {
 //        params.max = Math.min(max ?: 10, 100)
 //        [smsCanalInstanceList: SmsCanal.list(params), smsCanalInstanceTotal: SmsCanal.count()]
-		redirect(controller:"canal",action: "list")
+		redirect(controller:"adminCanal",action: "list")
 		
     }
 
@@ -97,7 +97,7 @@ class SmsCanalController {
         def smsCanalInstance = SmsCanal.get(id)
         if (!smsCanalInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+            redirect(controller:"adminCanal",action: "list")
             return
         }
 
@@ -108,7 +108,7 @@ class SmsCanalController {
         def smsCanalInstance = SmsCanal.get(id)
         if (!smsCanalInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+            redirect(controller:"adminCanal",action: "list")
             return
         }
 
@@ -119,7 +119,7 @@ class SmsCanalController {
         def smsCanalInstance = SmsCanal.get(id)
         if (!smsCanalInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+            redirect(controller:"adminCanal",action: "list")
             return
         }
 
@@ -169,14 +169,14 @@ class SmsCanalController {
         def smsCanalInstance = SmsCanal.get(id)
         if (!smsCanalInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal",action: "list")
+            redirect(controller:"adminCanal",action: "list")
             return
         }
 
         try {
             smsCanalInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
-            redirect(controller:"canal", action: "list")
+            redirect(controller:"adminCanal", action: "list")
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'smsCanal.label', default: 'SmsCanal'), id])
