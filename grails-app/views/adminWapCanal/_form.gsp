@@ -38,13 +38,7 @@
 	<g:checkBox name="enable" value="${wapCanalInstance?.enable}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'end', 'error')} required">
-	<label for="end">
-		<g:message code="wapCanal.end.label" default="End" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="end" type="number" value="${wapCanalInstance.end}" required=""/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'exeEnd', 'error')} required">
 	<label for="exeEnd">
@@ -78,12 +72,19 @@
 	<g:field name="interval" type="number" value="${wapCanalInstance.interval}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'start', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'blockNum', 'error')} required">
 	<label for="start">
-		<g:message code="wapCanal.start.label" default="Start" />
+		<g:message code="wapCanal.start.label" default="blockNum" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="start" type="number" value="${wapCanalInstance.start}" required=""/>
+	<g:field name="blockNum" type="text" value="${wapCanalInstance.blockNum}" required=""/>
+</div>
+<div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'blockKeys', 'error')} required">
+	<label for="end">
+		<g:message code="wapCanal.end.label" default="blockKeys" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="blockKeys" type="text" value="${wapCanalInstance.blockKeys}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: wapCanalInstance, field: 'targetKey', 'error')} ">

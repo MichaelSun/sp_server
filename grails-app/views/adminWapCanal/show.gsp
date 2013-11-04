@@ -72,11 +72,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${wapCanalInstance?.end}">
+				<g:if test="${wapCanalInstance?.blockKeys}">
 				<li class="fieldcontain">
-					<span id="end-label" class="property-label"><g:message code="wapCanal.end.label" default="End" /></span>
+					<span id="end-label" class="property-label"><g:message code="wapCanal.end.label" default="blockKeys" /></span>
 					
-						<span class="property-value" aria-labelledby="end-label"><g:fieldValue bean="${wapCanalInstance}" field="end"/></span>
+						<span class="property-value" aria-labelledby="end-label"><g:fieldValue bean="${wapCanalInstance}" field="blockKeys"/></span>
 					
 				</li>
 				</g:if>
@@ -119,11 +119,11 @@
 			
 				
 			
-				<g:if test="${wapCanalInstance?.start}">
+				<g:if test="${wapCanalInstance?.blockNum}">
 				<li class="fieldcontain">
-					<span id="start-label" class="property-label"><g:message code="wapCanal.start.label" default="Start" /></span>
+					<span id="start-label" class="property-label"><g:message code="wapCanal.start.label" default="blockNum" /></span>
 					
-						<span class="property-value" aria-labelledby="start-label"><g:fieldValue bean="${wapCanalInstance}" field="start"/></span>
+						<span class="property-value" aria-labelledby="start-label"><g:fieldValue bean="${wapCanalInstance}" field="blockNum"/></span>
 					
 				</li>
 				</g:if>

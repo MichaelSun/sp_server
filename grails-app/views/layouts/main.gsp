@@ -17,7 +17,7 @@
 		<g:layoutHead/>
 		<r:layoutResources />
 	</head>
-	<body>
+	<body style="max-width: 1200px;">
 		<div id="grailsLogo" role="banner"><a href="${createLink(uri: '/')}">SP系统<!--img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/--></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

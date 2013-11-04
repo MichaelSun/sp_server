@@ -31,4 +31,41 @@ class SpTagLib {
 		def t=attrs.type.replaceAll(".*\\.", "")
 		t
 	}
+	
+	def rater={attrs, body ->
+//		if(!attrs.rate){
+//			attrs.rate=100
+//		}
+//		double r=attrs.rate/100
+//		if(!attrs.num){
+//		attrs.num=0	
+//		}
+//		out << body() << (attrs.num*r as Integer)
+		out << body() << caculateRateNum(attrs.num, attrs.rate)
+		
+	}
+	
+	def rateListNum={attrs, body ->
+		
+		def result=0
+		attrs.rows.each {
+			
+			result+=caculateRateNum(it.num,it.rate)
+		}
+		
+		
+		out << body() << (result)
+		
+	}
+	
+	private caculateRateNum(num,rate){
+		num=num?:0
+		rate=rate?:100
+		double r=rate/100
+		//			result=result+(n*r as Integer)
+		Math.round(num*r)
+		
+	}
+	
+	
 }
