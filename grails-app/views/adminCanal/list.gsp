@@ -13,9 +13,9 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<!-- <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li> -->
-				<li><g:link class="create" controller="smsCanal" action="create">新建短信通道</g:link></li>
-				<li><g:link class="create" controller="wapCanal" action="create">新建wap通道</g:link></li>
-				<li><g:link class="create" controller="sdkCanal" action="create">新建sdk通道</g:link></li>
+				<li><g:link class="create" controller="adminSmsCanal" action="create">新建短信通道</g:link></li>
+				<li><g:link class="create" controller="adminWapCanal" action="create">新建wap通道</g:link></li>
+				<li><g:link class="create" controller="adminSdkCanal" action="create">新建sdk通道</g:link></li>
 			</ul>
 		</div>
 		<div id="list-canal" class="content scaffold-list" role="main">
