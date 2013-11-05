@@ -50,6 +50,14 @@
 					
 				</li>
 				</g:if>
+				<g:if test="${channelInstance?.activeDelay}">
+				<li class="fieldcontain">
+					<span id="activeDelay-label" class="property-label"><g:message code="channel.activeDelay.label" default="activeDelay" /></span>
+					
+						<span class="property-value" aria-labelledby="activeDelay-label"><g:fieldValue bean="${channelInstance}" field="activeDelay"/></span>
+					
+				</li>
+				</g:if>
 			
 				
 				<g:if test="${channelInstance?.dateCreated}">

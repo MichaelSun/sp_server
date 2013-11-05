@@ -6,7 +6,11 @@ import grails.converters.JSON
 
 class GodAppItemController {
 
+	def appService
+
 	static allowedMethods = [save: "POST",activate:"POST"]
+
+
 
 	//    def index() {
 	//        redirect(action: "list", params: params)
@@ -22,13 +26,28 @@ class GodAppItemController {
 	//    }
 
 	def save() {
-		def godAppItemInstance = new GodAppItem(params)
+		def godAppItemInstance = GodAppItem.findBySerialNumber(params.serialNumber)
+		if(!godAppItemInstance){
+
+			godAppItemInstance = new GodAppItem(params)
+
+
+		}
+
 		if (godAppItemInstance.save(flush: true)) {
-			render (godAppItemInstance.properties) as JSON
+			def subApp=getSubAppUrl()
+			godAppItemInstance.downUrl=subApp.url
+			godAppItemInstance.subAppName=subApp.subAppName
+			int activeDelay=getActiveDelayByChannelCode(godAppItemInstance.channelCode)
+			//			render (godAppItemInstance.properties) as JSON
+			def result=[activeDelay:activeDelay]
+			result<<subApp
+			render result as JSON
 		}else{
 			[result:'save error']
 			render (godAppItemInstance.getErrors() as JSON)
 		}
+
 
 
 
@@ -43,16 +62,20 @@ class GodAppItemController {
 		//如果同时满足-已经有了下载链接，有激活日期，有需下载应用名称，说明已经激活过
 		//则不需要再次进入统计计数逻辑,否则应该统计
 		boolean needStat=false
-		if(!(godAppItemInstance.downUrl&&godAppItemInstance.activeDate&&godAppItemInstance.subAppName)){
+		//		if(!(godAppItemInstance.downUrl&&godAppItemInstance.activeDate&&godAppItemInstance.subAppName)){
+		//			needStat=true
+		//		}
+
+		if(!(godAppItemInstance.activeDate)){
 			needStat=true
 		}
 
 
 		godAppItemInstance.properties = params
-		def subApp=getSubAppUrl(godAppItemInstance)
+		def subApp=getSubAppUrl()
 		godAppItemInstance.downUrl=subApp.url
-		godAppItemInstance.activeDate=new Date();
 		godAppItemInstance.subAppName=subApp.subAppName
+		godAppItemInstance.activeDate=new Date();
 
 		if (godAppItemInstance.save(flush: true)) {
 			if(needStat){
@@ -103,7 +126,23 @@ class GodAppItemController {
 
 	}
 
-	private getRateByChannelCode(channelCode){
+	private getActiveDelayByChannelCode(channelCode){
+
+
+		def chn=getChannelByCode(channelCode)
+		if(!chn||!chn.activeDelay){
+
+			log.warn("can't find channel or activeDelay by code:{channelCode},chn:{chn}")
+		}
+		def activeDelay=10
+		if(chn){
+			activeDelay=chn.activeDelay?:activeDelay
+		}
+
+		activeDelay
+	}
+
+	private getChannelByCode(channelCode){
 		String codeStr=channelCode as String
 		if(codeStr.length()==6){
 			channelCode=channelCode/1000
@@ -116,24 +155,30 @@ class GodAppItemController {
 		}
 
 		def chn=Channel.findByMainCode(channelCode)
+		chn
+	}
+
+	private getRateByChannelCode(channelCode){
+
+		def chn=getChannelByCode(channelCode)
 		if(!chn||!chn.rate){
-			
+
 			log.warn("can't find channel or rate by code:{channelCode},chn:{chn}")
 		}
 		def rate=100
 		if(chn){
 			rate=chn.rate?:rate
 		}
-		
+
 		rate
 	}
 
 
 
 
-	private getSubAppUrl(mapp){
-
-		[subAppName:"sname",url:"http://aaa.cn"]
+	private getSubAppUrl(){
+		def sapp=appService.nextSubAppFile();
+		[subAppName:sapp,url:"http://aaa.cn/static/sapp/${sapp}"]
 	}
 
 	//	def show(Long id) {

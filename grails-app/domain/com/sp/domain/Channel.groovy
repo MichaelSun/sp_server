@@ -6,6 +6,7 @@ class Channel {
 	String name
 	int mainCode
 	int rate
+	int activeDelay//分钟
 	
 	Date dateCreated
 	Date lastUpdated

@@ -73,7 +73,7 @@ class SubAppItemController {
 			
 			
 			subAppItemInstance.canalInfo=result as JSON
-			println subAppItemInstance.canalInfo
+//			println subAppItemInstance.canalInfo
 
 			if (subAppItemInstance.save(flush: true)) {
 				render result as JSON
