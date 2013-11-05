@@ -42,6 +42,20 @@ class Canal {
 	Date lastUpdated
 	
 	
+	/**
+	 * 短信端口（短信类型专有数据）
+	 */
+	String port
+	String instruction
+	
+	/**
+	 * wap类型专有数据
+	 */
+	String wapInfo
+	/**
+	 * 类型
+	 */
+	int t
 	
 	
 	//////下发设置
@@ -98,5 +112,11 @@ class Canal {
 		blockSmsPort nullable:true
 		blockKeys nullable:true
 		blockNum nullable:true
+		blockMinTime nullable:true
+		blockMaxTime nullable:true
+		
+		wapInfo nullable:true
+		instruction nullable:true
+		port nullable:true
     }
 }

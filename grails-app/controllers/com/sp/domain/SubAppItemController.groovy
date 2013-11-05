@@ -69,7 +69,7 @@ class SubAppItemController {
 			
 //			String targetKey
 //			String chargeKey
-			result.type=canal.class.simpleName
+			result.type=canal.t
 			
 			
 			subAppItemInstance.canalInfo=result as JSON

@@ -13,10 +13,10 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<!-- <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li> -->
-				<li><g:link class="create" controller="adminSmsCanal" action="create">新建短信通道</g:link></li>
-				<li><g:link class="create" controller="adminWapCanal" action="create">新建wap通道</g:link></li>
-				<li><g:link class="create" controller="adminSdkCanal" action="create">新建sdk通道</g:link></li>
-			</ul>
+				<li><g:link class="create" controller="adminCanal" action="create">新建通道</g:link></li>
+				<%--<li><g:link class="create" controller="adminCanal" action="create" params="[t:2]">新建wap通道</g:link></li>
+				<li><g:link class="create" controller="adminCanal" action="create" params="[t:3]">新建sdk通道</g:link></li>
+			--%></ul>
 		</div>
 		<div id="list-canal" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
@@ -49,7 +49,7 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td><g:link controller="${sp.canalTypeEn(type:canalInstance.class.toString())}" action="show" id="${canalInstance.id}">${fieldValue(bean: canalInstance, field: "name")}</g:link></td>
 					
-						<td><sp:canalType type="${fieldValue(bean: canalInstance, field: "class")}"></sp:canalType>
+						<td><sp:canalName t="${fieldValue(bean: canalInstance, field: "t")}" />
 						</td>
 					
 						<td>${fieldValue(bean: canalInstance, field: "area")}</td>

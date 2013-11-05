@@ -67,15 +67,46 @@ class AdminCanalController {
     }
 
     def save() {
-        def canalInstance = new Canal(params)
-        if (!canalInstance.save(flush: true)) {
-            render(view: "create", model: [canalInstance: canalInstance])
-            return
-        }
+		
+		
+		
+		
+		def canalInstance = new Canal(params)
+//		println canalInstance.properties
+//		println params
+//		canalInstance.code=params.code
+//		println canalInstance.properties
+		if(params.province instanceof String){
+			params.province=[params.province]
+		}
+		def areaProp=[:]
+		if(params.province instanceof List||params.province instanceof String[]){
+			params.province.each {  p->
+				def citys=params.area[p]
+				if(citys instanceof String){
+					citys=[citys]
+				}
+				if(citys instanceof List||citys instanceof String[]){
+//				citys.each {
+//					println p+'->'+it
+//				}
+					areaProp[p]=citys.toString();
+			}
+				
+		}
+	}
+		canalInstance.area=areaProp
+		
+		if (!canalInstance.save(flush: true)) {
+			render(view: "create", model: [canalInstance: canalInstance,pList:pList])
+			return
+		}
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'canal.label', default: 'Canal'), canalInstance.id])
-        redirect(action: "show", id: canalInstance.id)
-    }
+		flash.message = message(code: 'default.created.message', args: [message(code: 'canal.label', default: 'Canal'), canalInstance.id])
+		redirect(action: "show", id: canalInstance.id)
+	
+		
+	}
 
     def show(Long id) {
         def canalInstance = Canal.get(id)
@@ -96,14 +127,14 @@ class AdminCanalController {
             return
         }
 
-        [canalInstance: canalInstance]
+        [canalInstance: canalInstance,pList:pList]
     }
 
     def update(Long id, Long version) {
         def canalInstance = Canal.get(id)
         if (!canalInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'canal.label', default: 'Canal'), id])
-            redirect(action: "list")
+            redirect(controller:"adminCanal",action: "list")
             return
         }
 
@@ -118,13 +149,35 @@ class AdminCanalController {
         }
 
         canalInstance.properties = params
+		
+		
+		if(params.province instanceof String){
+			params.province=[params.province]
+		}
+		def areaProp=[:]
+		if(params.province instanceof List||params.province instanceof String[]){
+			params.province.each {  p->
+				def citys=params.area[p]
+				if(citys instanceof String){
+					citys=[citys]
+				}
+				if(citys instanceof List||citys instanceof String[]){
+//				citys.each {
+//					println p+'->'+it
+//				}
+					areaProp[p]=citys.toString();
+			}
+				
+		}
+	}
+		canalInstance.area=areaProp
 
         if (!canalInstance.save(flush: true)) {
             render(view: "edit", model: [canalInstance: canalInstance])
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'canal.label', default: 'Canal'), canalInstance.id])
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'canal.label', default: 'CanalCanal'), canalInstance.id])
         redirect(action: "show", id: canalInstance.id)
     }
 

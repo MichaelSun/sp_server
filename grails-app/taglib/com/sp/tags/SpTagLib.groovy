@@ -68,6 +68,14 @@ class SpTagLib {
 		
 	}
 	
+	def canalName={attrs, body ->
+		
+		def ops=["短信","WAP","SDK"]
+		
+		out << body() << (ops[(attrs.t as Integer)-1])
+		
+	}
+	
 	
 	def opName={attrs, body ->
 		
