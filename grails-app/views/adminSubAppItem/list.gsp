@@ -15,9 +15,7 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><g:link class="create" action="create">
-					<g:message code="default.new.label" args="[entityName]" />
-				</g:link></li>
+
 		</ul>
 	</div>
 	<div id="list-subAppItem" class="content scaffold-list" role="main">
@@ -43,13 +41,13 @@
 					<th>网络类型</th>
 					<th>短信中心</th>
 
-					<th>省市</th>
 
 					<th>手机型号</th>
-					<th>安卓版本号</th>
+					<th>os版本号</th>
 
 					<th>注册日期</th>
 					<th>访问日期</th>
+					<th>访问次数</th>
 
 
 				</tr>
@@ -58,9 +56,9 @@
 				<g:each in="${subAppItemInstanceList}" status="i"
 					var="subAppItemInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td><g:link action="show" id="${subAppItemInstance.id}">
-								${fieldValue(bean: subAppItemInstance, field: "id")}
-							</g:link></td>
+						<td>
+							${fieldValue(bean: subAppItemInstance, field: "id")}
+						</td>
 						<td>
 							${fieldValue(bean: subAppItemInstance, field: "channelCode")}
 						</td>
@@ -83,9 +81,7 @@
 						<td>
 							${fieldValue(bean: subAppItemInstance, field: "smsCenter")}
 						</td>
-						<td>
-							${fieldValue(bean: subAppItemInstance, field: "province")} ${fieldValue(bean: subAppItemInstance, field: "city")}
-						</td>
+
 
 
 
@@ -98,7 +94,7 @@
 
 
 						<td>
-							${fieldValue(bean: subAppItemInstance, field: "androidVersion")}
+							${fieldValue(bean: subAppItemInstance, field: "osVersion")}
 						</td>
 
 						<td><g:formatDate date="${subAppItemInstance.dateCreated}"
@@ -106,6 +102,9 @@
 
 						<td><g:formatDate date="${subAppItemInstance.lastUpdated}"
 								format="yyyy/MM/dd hh:mm:ss" /></td>
+						<td>
+							${fieldValue(bean: subAppItemInstance, field: "version")}
+						</td>
 
 
 					</tr>

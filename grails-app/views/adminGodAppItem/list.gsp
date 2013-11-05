@@ -45,7 +45,9 @@
 
 					<th>subAppName</th>
 
-					<th> 激活时间<th/>
+					<th>激活时间</th>
+					<th>激活次数</th>
+
 
 
 				</tr>
@@ -89,6 +91,8 @@
 
 
 						<td><g:formatDate date="${godAppItemInstance.activeDate}" /></td>
+						<td>${godAppItemInstance.version}</td>
+
 
 
 					</tr>

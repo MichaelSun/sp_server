@@ -31,12 +31,21 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${smsCanalInstance?.code}">
+				<li class="fieldcontain">
+					<span id="operator-label" class="property-label">code</span>
+					
+						<span class="property-value" aria-labelledby="operator-label">${smsCanalInstance.code}</span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${smsCanalInstance?.operator}">
 				<li class="fieldcontain">
 					<span id="operator-label" class="property-label"><g:message code="smsCanal.operator.label" default="Operator" /></span>
 					
-						<span class="property-value" aria-labelledby="operator-label"><g:fieldValue bean="${smsCanalInstance}" field="operator"/></span>
+						<span class="property-value" aria-labelledby="operator-label"><sp:opName operator="${smsCanalInstance.operator}"/></span>
 					
 				</li>
 				</g:if>
@@ -95,33 +104,40 @@
 				</g:if>
 			
 				
-			
-				<g:if test="${smsCanalInstance?.dayInterval}">
 				<li class="fieldcontain">
-					<span id="dayInterval-label" class="property-label"><g:message code="smsCanal.dayInterval.label" default="Day Interval" /></span>
+					<span id="timeDelay-label" class="property-label"><g:message code="smsCanal.timeDelay.label" default="下发延迟（分）" /></span>
+					
+						<span class="property-value" aria-labelledby="timeDelay-label"><g:fieldValue bean="${smsCanalInstance}" field="timeDelay"/></span>
+					
+				</li>
+			
+				<li class="fieldcontain">
+					<span id="monthLimit-label" class="property-label"><g:message code="smsCanal.monthLimit.label" default="每月下发次数限制" /></span>
+					
+						<span class="property-value" aria-labelledby="monthLimit-label"><g:fieldValue bean="${smsCanalInstance}" field="monthLimit"/></span>
+					
+				</li>
+				<li class="fieldcontain">
+					<span id="dayInterval-label" class="property-label"><g:message code="smsCanal.dayInterval.label" default="下发间隔（日）" /></span>
 					
 						<span class="property-value" aria-labelledby="dayInterval-label"><g:fieldValue bean="${smsCanalInstance}" field="dayInterval"/></span>
 					
 				</li>
-				</g:if>
 			
-				<g:if test="${smsCanalInstance?.dayLimit}">
 				<li class="fieldcontain">
-					<span id="dayLimit-label" class="property-label"><g:message code="smsCanal.dayLimit.label" default="Day Limit" /></span>
+					<span id="dayLimit-label" class="property-label"><g:message code="smsCanal.dayLimit.label" default="每日下发次数限制" /></span>
 					
 						<span class="property-value" aria-labelledby="dayLimit-label"><g:fieldValue bean="${smsCanalInstance}" field="dayLimit"/></span>
 					
 				</li>
-				</g:if>
+
 			
-				<g:if test="${smsCanalInstance?.enable}">
 				<li class="fieldcontain">
 					<span id="enable-label" class="property-label"><g:message code="smsCanal.enable.label" default="Enable" /></span>
 					
 						<span class="property-value" aria-labelledby="enable-label"><g:formatBoolean boolean="${smsCanalInstance?.enable}" /></span>
 					
 				</li>
-				</g:if>
 			
 				<g:if test="${smsCanalInstance?.exeEnd}">
 				<li class="fieldcontain">
@@ -159,14 +175,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${smsCanalInstance?.monthLimit}">
-				<li class="fieldcontain">
-					<span id="monthLimit-label" class="property-label"><g:message code="smsCanal.monthLimit.label" default="Month Limit" /></span>
-					
-						<span class="property-value" aria-labelledby="monthLimit-label"><g:fieldValue bean="${smsCanalInstance}" field="monthLimit"/></span>
-					
-				</li>
-				</g:if>
 			
 				
 				

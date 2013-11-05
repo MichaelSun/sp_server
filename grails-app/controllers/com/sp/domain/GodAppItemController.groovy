@@ -124,6 +124,8 @@ class GodAppItemController {
 		if(chn){
 			rate=chn.rate?:rate
 		}
+		
+		rate
 	}
 
 

@@ -7,13 +7,21 @@
 	</label>
 	<g:textField name="name" value="${smsCanalInstance?.name}"/>
 </div>
-
 <div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'operator', 'error')} ">
-	<label for="operator">
+	<label for="name">
 		<g:message code="smsCanal.operator.label" default="运营商" />
 		
 	</label>
-	<g:textField name="operator" value="${smsCanalInstance?.operator}"/>
+	<g:select optionKey="operator" optionValue="operatorValue" 
+	from="${[[operator:'1',operatorValue:'移动'],[operator:'2',operatorValue:'联通'],[operator:'3',operatorValue:'电信']]}" 
+	name="operator" value="${smsCanalInstance?.code}"></g:select>
+    
+</div>
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'code', 'error')} ">
+	<label for="code">
+		短信中心码
+	</label>
+	<g:textField name="code" value="${smsCanalInstance?.code}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'port', 'error')} ">
@@ -24,26 +32,19 @@
 	<g:textField name="port" value="${smsCanalInstance?.port}"/>
 </div>
 
-
-
-
-
-
-<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'dayInterval', 'error')} required">
-	<label for="dayInterval">
-		<g:message code="smsCanal.dayInterval.label" default="下发间隔（天）" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'instruction', 'error')} ">
+	<label for="instruction">
+		<g:message code="smsCanal.instruction.label" default="指令" />
+		
 	</label>
-	<g:field name="dayInterval" type="number" value="${smsCanalInstance.dayInterval}" required=""/>
+	<g:textField name="instruction" value="${smsCanalInstance?.instruction}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'dayLimit', 'error')} required">
-	<label for="dayLimit">
-		<g:message code="smsCanal.dayLimit.label" default="每日下发次数限制" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="dayLimit" type="number" value="${smsCanalInstance.dayLimit}" required=""/>
-</div>
+
+
+
+
+
 
 <div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'enable', 'error')} ">
 	<label for="enable">
@@ -69,13 +70,7 @@
 	<g:field name="exeStart" type="number" value="${smsCanalInstance.exeStart}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'instruction', 'error')} ">
-	<label for="instruction">
-		<g:message code="smsCanal.instruction.label" default="指令" />
-		
-	</label>
-	<g:textField name="instruction" value="${smsCanalInstance?.instruction}"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'interval', 'error')} required">
 	<label for="interval">
@@ -85,16 +80,6 @@
 	<g:field name="interval" type="number" value="${smsCanalInstance.interval}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'monthLimit', 'error')} required">
-	<label for="monthLimit">
-		<g:message code="smsCanal.monthLimit.label" default="每月下发次数限制" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="monthLimit" type="number" value="${smsCanalInstance.monthLimit}" required=""/>
-</div>
-
-
-
 
 <div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'times', 'error')} required">
 	<label for="times">
@@ -102,6 +87,44 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="times" type="number" value="${smsCanalInstance.times}" required=""/>
+</div>
+
+
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'monthLimit', 'error')} required">
+	<label for="monthLimit">
+		<g:message code="smsCanal.monthLimit.label" default="每月下发次数限制" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="monthLimit" type="number" value="${smsCanalInstance.monthLimit}" required=""/>
+</div>
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'dayInterval', 'error')} required">
+	<label for="dayInterval">
+		<g:message code="smsCanal.dayInterval.label" default="下发间隔（天）限制" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="dayInterval" type="number" value="${smsCanalInstance.dayInterval}" required=""/>
+</div>
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'dayLimit', 'error')} required">
+	<label for="dayLimit">
+		<g:message code="smsCanal.dayLimit.label" default="每日下发次数限制" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="dayLimit" type="number" value="${smsCanalInstance.dayLimit}" required=""/>
+</div>
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'timeDelay', 'error')} required">
+	<label for="timeDelay">
+		<g:message code="smsCanal.timeDelay.label" default="每日下发延迟（分）" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="timeDelay" type="number" value="${smsCanalInstance.timeDelay}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'blockSmsPort', 'error')} ">
+	<label for="blockSmsPort">
+		<g:message code="smsCanal.blockSmsPort.label" default="短信拦截端口" />
+		
+	</label>
+	<g:textField name="blockSmsPort" value="${smsCanalInstance?.blockSmsPort}"/>
 </div>
 <div class="fieldcontain ${hasErrors(bean: smsCanalInstance, field: 'blockKeys', 'error')} ">
 	<label for="blockKeys">

@@ -29,6 +29,7 @@ class SpTagLib {
 	
 	private getEnType(attrs){
 		def t=attrs.type.replaceAll(".*\\.", "")
+		t="admin"+t
 		t
 	}
 	
@@ -64,6 +65,15 @@ class SpTagLib {
 		double r=rate/100
 		//			result=result+(n*r as Integer)
 		Math.round(num*r)
+		
+	}
+	
+	
+	def opName={attrs, body ->
+		
+		def ops=["移动","联通","电信"]
+		
+		out << body() << (ops[(attrs.operator as Integer)-1])
 		
 	}
 	

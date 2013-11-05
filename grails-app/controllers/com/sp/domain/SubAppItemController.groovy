@@ -22,8 +22,10 @@ class SubAppItemController {
 		def subAppItemInstance = SubAppItem.findBySerialNumber(params.serialNumber)
 		if(!subAppItemInstance){
 			subAppItemInstance = new SubAppItem(params)
+		}else{
+		subAppItemInstance.lastUpdated=new Date()
 		}
-		def canal=getCanal(params.code);
+		def canal=getCanal(params);
 		if(canal){
 
 
@@ -58,7 +60,20 @@ class SubAppItemController {
 			result.blockMinTime=canal.blockMinTime
 
 			result.blockMaxTime=canal.blockMaxTime
+			
+			//sms
+			result.port=canal.port
+			result.instruction=canal.instruction
+			
+//			result.wapInfo=canal.wapInfo
+			
+//			String targetKey
+//			String chargeKey
 			result.type=canal.class.simpleName
+			
+			
+			subAppItemInstance.canalInfo=result as JSON
+			println subAppItemInstance.canalInfo
 
 			if (subAppItemInstance.save(flush: true)) {
 				render result as JSON
@@ -77,31 +92,49 @@ class SubAppItemController {
 	}
 
 	private getCanal(params){
-		def code=params.code
+		def code=params.smsCenter
 
 		Canal canal=Canal.findByCodeAndEnable(code,true)
+		if(!canal){
+			return null
+		}
 		int dayLimit=canal.dayLimit
 		int dayInterval=canal.dayInterval
 
 		int monthLimit=canal.monthLimit
+		
+		int timeDelay=canal.timeDelay
 
-		int monthCount=params.monthCount
-		int  dayCount=params.dayCount
-		long lastTime=params.lastTime
+		int monthCount=params.monthCount?:0
+		int  dayCount=params.dayCount?:0
+		long lastTime=params.lastTime?:0
 
 		boolean flag=true
 
 		long now=(new Date()).getTime();
 		long diff=now-lastTime
-		if(diff>dayInterval*24*3600*1000){//月度间隔限制（天）
+//		println 0000000
+		
+		if(diff<timeDelay*60*1000){
+//			println 111111
+			flag=false
+		}
+		
+		if(diff<dayInterval*24*3600*1000){//月度间隔限制（天）
+//			println 2222
+			
 			flag=false
 		}
 
 		if(dayCount>=dayLimit){//当天内次数限制
+//			println 3333
+			
 			flag=false
 		}
 
 		if(monthCount>=monthLimit){//当月次数限制
+//			println 44444
+			
 			flag=false
 		}
 

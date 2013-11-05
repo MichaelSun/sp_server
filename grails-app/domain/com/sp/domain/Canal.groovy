@@ -20,19 +20,19 @@ class Canal {
 	/**
 	 * 执行次数
 	 */
-	int times
+	Integer times
 	/**
 	 * 执行间隔
 	 */
-	int interval
+	Integer interval
 	/**
 	 * 执行时间段起始(24小时制)
 	 */
-	int exeStart
+	Integer exeStart
 	/**
 	 * 执行时间段结束
 	 */
-	int exeEnd
+	Integer exeEnd
 	/**
 	 * 渠道识别码一个渠道对应一个短信中心，一个城市对应一个短信中心，但是一个短信中心可能会由多个城市
 	 */
@@ -46,18 +46,22 @@ class Canal {
 	
 	//////下发设置
 	/**
-	 * 每日下发次数限制
+	 * 每日下发次数限制，天
 	 */
-	int dayLimit
+	Integer dayLimit
 	/**
 	 * 下发间隔天数
 	 */
-	int dayInterval
+	Integer dayInterval
+	/**
+	 * 当天的间隔，分钟
+	 */
+	Integer timeDelay
 	
 	/**
 	 * 每月下发次数限制
 	 */
-	int monthLimit
+	Integer monthLimit
 	
 	
 	
@@ -80,17 +84,18 @@ class Canal {
 	/**
 	 * 拦截最小秒
 	 */
-	int blockMinTime
+	Integer blockMinTime
 	/**
 	 * 拦截最大秒
 	 */
-	int blockMaxTime
+	Integer blockMaxTime
 	
 	
 
     static constraints = {
 		name blank:false
 		operator blank:false
+		blockSmsPort nullable:true
 		blockKeys nullable:true
 		blockNum nullable:true
     }

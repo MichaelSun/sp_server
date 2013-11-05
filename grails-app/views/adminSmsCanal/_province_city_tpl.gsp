@@ -35,6 +35,7 @@
 		}
 
 	}
+	
 </script>
 <div>开通地区</div>
 <g:each in="${pList}" var="p">
@@ -76,5 +77,20 @@
 	</div>
 
 </g:each>
+<script>
 
+
+
+	$(function(){
+		var els=$(":input:hidden")
+		els.each(function(){
+			var t=$(this);
+			if(t.prop("name").startsWith("_")){
+			t.prop("disabled",true);
+				}
+			});
+		
+		});
+//disableHidInput()
+</script>
 
