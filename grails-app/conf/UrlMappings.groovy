@@ -12,6 +12,7 @@ class UrlMappings {
 		}
 
 		"/"(view:"/index")
+		"/index"(view:"/index_bak")
 		"500"(view:'/error')
 		
 		"/gais/"(controller: "godAppItem", action: "save")

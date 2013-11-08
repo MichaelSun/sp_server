@@ -28,11 +28,15 @@
 				${flash.message}
 			</div>
 		</g:if>
-
+		<g:if test="${msg}">
+			<div class="message" role="status">
+				${msg}
+			</div>
+		</g:if>
 
 		<div class="nav" role="search">
 			<ul>
-				<g:form action="${code}">
+				<g:form action="${code?:'NULL'}">
 
 					<li>
 						<fieldset class="form">
@@ -76,20 +80,20 @@
 				<g:each in="${dailyChannelActiveInstanceList}" status="i"
 					var="dailyChannelActiveInstance">
 
-						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-							<td>
-								${fieldValue(bean: dailyChannelActiveInstance, field: "day")}
-							</td>
+						<td>
+							${fieldValue(bean: dailyChannelActiveInstance, field: "day")}
+						</td>
 
-							<td>
-								${fieldValue(bean: dailyChannelActiveInstance, field: "channelCode")}
-							</td>
+						<td>
+							${fieldValue(bean: dailyChannelActiveInstance, field: "channelCode")}
+						</td>
 
 
-							<td><sp:rater num="${dailyChannelActiveInstance.num}"
-									rate="${dailyChannelActiveInstance.rate}"></sp:rater></td>
-						</tr>
+						<td><sp:rater num="${dailyChannelActiveInstance.num}"
+								rate="${dailyChannelActiveInstance.rate}"></sp:rater></td>
+					</tr>
 				</g:each>
 			</tbody>
 		</table>

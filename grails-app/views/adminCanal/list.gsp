@@ -18,8 +18,8 @@
 				<li><g:link class="create" controller="adminCanal" action="create" params="[t:3]">新建sdk通道</g:link></li>
 			--%></ul>
 		</div>
-		<div id="list-canal" class="content scaffold-list" role="main">
 			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+		<div id="list-canal" class="content scaffold-list" role="main">
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>

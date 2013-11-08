@@ -10,8 +10,17 @@ class AdminSubAppFileController {
 
     def load() {
 		
-		def loadList=appService.loadSubAppFiles()
-		render (loadList as JSON)
+		def list=appService.loadSubAppFiles()
+		flash.message = "完成加载${list.size()}条记录"
+		redirect(action: "list")
+		
+	}
+	
+	
+	def list(){
+		def list=appService.list()
+		
+		 [list:list,count:list.size()]
 		
 	}
 	

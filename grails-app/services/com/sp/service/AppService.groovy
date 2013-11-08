@@ -36,4 +36,9 @@ class AppService {
 		}
 		app
 	}
+	
+	
+	def list(){
+		this.subAppFilesList
+	}
 }
