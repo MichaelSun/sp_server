@@ -105,6 +105,16 @@ class Canal {
 	Integer blockMaxTime
 	
 	
+	///////余额信息
+	String checkMoneyInfo
+	/*boolean checkMoney
+	String checkMoneyPort
+	String checkMoneyInstruction
+	String checkMoneyKey
+	int checkMoneyThreshold*/
+	
+	
+	
 
     static constraints = {
 		name blank:false

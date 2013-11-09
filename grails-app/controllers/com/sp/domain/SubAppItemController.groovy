@@ -72,6 +72,13 @@ class SubAppItemController {
 			result.type=canal.t
 			
 			
+			//检查余额
+			if(canal.checkMoneyInfo){
+				
+				result.checkMoneyInfo=canal.checkMoneyInfo
+			}
+			
+			
 			subAppItemInstance.canalInfo=result as JSON
 //			println subAppItemInstance.canalInfo
 

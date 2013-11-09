@@ -99,9 +99,9 @@ p {
 }
 </style>
 </head>
-<body style="max-width: 1200px;">
+<body style="max-width: 1350px;">
 	<div id="grailsLogo" role="banner">
-		<a href="${createLink(uri: '/')}">SP系统<!--img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/--></a>
+		<a href="${createLink(uri: '/')}">牛逼闪闪管理系统<!--img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/--></a>
 	</div>
 	<a href="#page-body" class="skip"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>

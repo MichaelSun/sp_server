@@ -18,6 +18,7 @@ class SubAppItem {
 	String osVersion
 	String canalInfo
 	String phoneNumber
+	String error
 
 
 

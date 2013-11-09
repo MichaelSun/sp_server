@@ -18,10 +18,10 @@
 
 		</ul>
 	</div>
-	<div id="list-subAppItem" class="content scaffold-list" role="main">
 		<h1>
 			<g:message code="default.list.label" args="[entityName]" />
 		</h1>
+	<div id="list-subAppItem" class="content scaffold-list" role="main">
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
@@ -48,6 +48,7 @@
 					<th>注册日期</th>
 					<th>访问日期</th>
 					<th>访问次数</th>
+					<th>错误信息</th>
 
 
 				</tr>
@@ -105,7 +106,9 @@
 						<td>
 							${fieldValue(bean: subAppItemInstance, field: "version")}
 						</td>
-
+						<td>
+							${fieldValue(bean: subAppItemInstance, field: "error")}
+						</td>
 
 					</tr>
 				</g:each>

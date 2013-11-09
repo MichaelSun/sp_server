@@ -62,6 +62,14 @@
 					aria-labelledby="port-label"><g:fieldValue
 							bean="${canalInstance}" field="port" /></span></li>
 			</g:if>
+			
+			<g:if test="${canalInstance?.checkMoneyInfo}">
+				<li class="fieldcontain"><span id="checkMoneyInfo-label"
+					class="property-label"><g:message code="canal.checkMoneyInfo.label"
+							default="checkMoneyInfo" /></span> <span class="property-value"
+					aria-labelledby="checkMoneyInfo-label"><g:fieldValue
+							bean="${canalInstance}" field="checkMoneyInfo" /></span></li>
+			</g:if>
 
 			<g:if test="${canalInstance?.blockKeys}">
 				<li class="fieldcontain"><span id="blockKeys-label"
