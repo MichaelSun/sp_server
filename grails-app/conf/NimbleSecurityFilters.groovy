@@ -17,6 +17,9 @@
 import grails.plugin.nimble.core.AdminsService
 import grails.plugin.nimble.security.NimbleFilterBase
 
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.Subject
+
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views
  *
@@ -29,6 +32,22 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 		// Content requiring users to be authenticated
 		secure(controller: "main") {
 			before = { accessControl { true } }
+		}
+
+		statDailyChannelActive(uri:"/statDailyChannelActive/**") {
+			before = {
+
+				accessControl{
+					Subject cuser=SecurityUtils.subject
+					String p="statDailyChannelActive:${params.code}";
+					cuser.isPermitted(p)}
+
+			}
+		}
+
+		admin(uri:"/admin*/**"){
+			before = { accessControl { role(AdminsService.ADMIN_ROLE)  } }
+
 		}
 
 		// Account management requiring authentication

@@ -46,8 +46,8 @@ class NimbleBootStrap {
 			// Create example User account
 			def user = InstanceGenerator.user(grailsApplication)
 			user.username = "user"
-			user.pass = 'useR123!'
-			user.passConfirm = 'useR123!'
+			user.pass = 'user'
+			user.passConfirm = 'user'
 			user.enabled = true
 
 			def userProfile = InstanceGenerator.profile(grailsApplication)
@@ -69,8 +69,8 @@ class NimbleBootStrap {
 			def admins = Role.findByName(AdminsService.ADMIN_ROLE)
 			def admin = InstanceGenerator.user(grailsApplication)
 			admin.username = "admin"
-			admin.pass = "admiN123!"
-			admin.passConfirm = "admiN123!"
+			admin.pass = "admin"
+			admin.passConfirm = "admin"
 			admin.enabled = true
 
 			def adminProfile = InstanceGenerator.profile(grailsApplication)

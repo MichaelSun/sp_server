@@ -1,6 +1,7 @@
 package com.sp.domain.stat
 
-import org.springframework.dao.DataIntegrityViolationException
+import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.Subject
 
 class StatDailyChannelActiveController {
 
@@ -14,10 +15,7 @@ class StatDailyChannelActiveController {
 
 	def codeList(Integer code) {
 
-
 		params.max = Math.min(params.max ?: 10, 100)
-
-
 		Calendar c=Calendar.getInstance();
 		if(!params.sdate){
 			c.set(Calendar.DAY_OF_MONTH,1);

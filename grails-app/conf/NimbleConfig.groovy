@@ -24,6 +24,17 @@ nimble {
 		logosmall = ""
 		url = ""
 	}
+	
+	passwords {
+		mustcontain {
+		  lowercase = false
+		  uppercase = false
+		  numbers = false
+		  symbols = false
+		}
+		minlength = 4
+	  }
+	
 
 	layout {
 		application = 'app'
@@ -31,6 +42,10 @@ nimble {
 	}
 
 	localusers {
+		usernames {
+			minlength = 4
+			validregex = '[a-zA-Z0-9]*' //regex that should be used for validating username
+		 }
 		authentication { enabled = true } 
 		registration { enabled = true }
 		provision { active = false }
