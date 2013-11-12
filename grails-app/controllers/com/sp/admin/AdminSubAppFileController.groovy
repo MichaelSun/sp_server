@@ -18,7 +18,7 @@ class AdminSubAppFileController {
 	
 	
 	def list(){
-		def list=appService.list()
+		def list=appService.subAppFilesList()
 		
 		 [list:list,count:list.size()]
 		

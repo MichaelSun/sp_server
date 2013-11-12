@@ -36,7 +36,7 @@ class Canal {
 	/**
 	 * 渠道识别码一个渠道对应一个短信中心，一个城市对应一个短信中心，但是一个短信中心可能会由多个城市
 	 */
-	String code
+//	String code
 	
 	Date dateCreated
 	Date lastUpdated
@@ -106,7 +106,7 @@ class Canal {
 	
 	
 	///////余额信息
-	String checkMoneyInfo
+//	String checkMoneyInfo
 	/*boolean checkMoney
 	String checkMoneyPort
 	String checkMoneyInstruction
@@ -129,4 +129,9 @@ class Canal {
 		instruction nullable:true
 		port nullable:true
     }
+	
+	
+	public String toString(){
+		"canal->id:${id},this.properties"
+	}
 }

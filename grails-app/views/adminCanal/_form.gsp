@@ -26,17 +26,17 @@
 	</label>
 	<g:select optionKey="operator" optionValue="operatorValue" 
 	from="${[[operator:'1',operatorValue:'移动'],[operator:'2',operatorValue:'联通'],[operator:'3',operatorValue:'电信']]}" 
-	name="operator" value="${canalInstance?.code}"></g:select>
+	name="operator" value="${canalInstance?.operator}"></g:select>
     
 </div>
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'code', 'error')} ">
+<%--<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'code', 'error')} ">
 	<label for="code">
 		短信中心码
 	</label>
 	<g:textField name="code" value="${canalInstance?.code}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'port', 'error')} ">
+--%><div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'port', 'error')} ">
 	<label for="port">
 		<g:message code="canal.port.label" default="短信端口" />
 		

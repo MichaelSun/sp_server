@@ -4,7 +4,7 @@ class BootStrap {
 	AppService appService
 
     def init = { servletContext ->
-		appService.loadSubAppFiles()
+		appService.initAll()
 		
     }
     def destroy = {

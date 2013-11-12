@@ -7,6 +7,7 @@ import grails.converters.JSON
 class SubAppItemController {
 
 	static allowedMethods = [save: "POST"]
+	def appService
 
 
 	//    def list(Integer max) {
@@ -101,8 +102,11 @@ class SubAppItemController {
 	private getCanal(params){
 		def code=params.smsCenter
 
-		Canal canal=Canal.findByCodeAndEnable(code,true)
+//		Canal canal=Canal.findByCodeAndEnable(code,true)
+		Canal canal=appService.getCanalByCode(code);
+		
 		if(!canal){
+			log.warn("can not find canal by code:${code},params:${params}")
 			return null
 		}
 		int dayLimit=canal.dayLimit
@@ -148,84 +152,5 @@ class SubAppItemController {
 		flag?canal:null
 	}
 
-	//    def save() {
-	//        def subAppItemInstance = new SubAppItem(params)
-	//        if (!subAppItemInstance.save(flush: true)) {
-	//            render(view: "create", model: [subAppItemInstance: subAppItemInstance])
-	//            return
-	//        }
-	//
-	//        flash.message = message(code: 'default.created.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), subAppItemInstance.id])
-	//        redirect(action: "show", id: subAppItemInstance.id)
-	//    }
-
-	//    def show(Long id) {
-	//        def subAppItemInstance = SubAppItem.get(id)
-	//        if (!subAppItemInstance) {
-	//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), id])
-	//            redirect(action: "list")
-	//            return
-	//        }
-	//
-	//        [subAppItemInstance: subAppItemInstance]
-	//    }
-	//
-	//    def edit(Long id) {
-	//        def subAppItemInstance = SubAppItem.get(id)
-	//        if (!subAppItemInstance) {
-	//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), id])
-	//            redirect(action: "list")
-	//            return
-	//        }
-	//
-	//        [subAppItemInstance: subAppItemInstance]
-	//    }
-	//
-	//    def update(Long id, Long version) {
-	//        def subAppItemInstance = SubAppItem.get(id)
-	//        if (!subAppItemInstance) {
-	//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), id])
-	//            redirect(action: "list")
-	//            return
-	//        }
-	//
-	//        if (version != null) {
-	//            if (subAppItemInstance.version > version) {
-	//                subAppItemInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-	//                          [message(code: 'subAppItem.label', default: 'SubAppItem')] as Object[],
-	//                          "Another user has updated this SubAppItem while you were editing")
-	//                render(view: "edit", model: [subAppItemInstance: subAppItemInstance])
-	//                return
-	//            }
-	//        }
-	//
-	//        subAppItemInstance.properties = params
-	//
-	//        if (!subAppItemInstance.save(flush: true)) {
-	//            render(view: "edit", model: [subAppItemInstance: subAppItemInstance])
-	//            return
-	//        }
-	//
-	//        flash.message = message(code: 'default.updated.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), subAppItemInstance.id])
-	//        redirect(action: "show", id: subAppItemInstance.id)
-	//    }
-	//
-	//    def delete(Long id) {
-	//        def subAppItemInstance = SubAppItem.get(id)
-	//        if (!subAppItemInstance) {
-	//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), id])
-	//            redirect(action: "list")
-	//            return
-	//        }
-	//
-	//        try {
-	//            subAppItemInstance.delete(flush: true)
-	//            flash.message = message(code: 'default.deleted.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), id])
-	//            redirect(action: "list")
-	//        }
-	//        catch (DataIntegrityViolationException e) {
-	//            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'subAppItem.label', default: 'SubAppItem'), id])
-	//            redirect(action: "show", id: id)
-	//        }
-	//    }
+	
 }

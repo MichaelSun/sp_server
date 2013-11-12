@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import com.sp.domain.Canal
 
 class AdminCanalController {
+	def appService
 	private static pList =[:]
 	static {
 		pList['北京']=['北京']
@@ -463,30 +464,24 @@ class AdminCanalController {
 					//				citys.each {
 					//					println p+'->'+it
 					//				}
-					areaProp[p]=citys.toString();
-					if(canalInstancegetSmsCode.code){
+					def citystr=""
+					citys.each { citystr<<","<<it }
+					areaProp[p]=citystr
 
-						canalInstancegetSmsCode.code=canalInstancegetSmsCode.code+";"+canalInstancegetSmsCode(p)
-					}else{
-						canalInstancegetSmsCode.code=canalInstancegetSmsCode(p)
-					}				}
+
+				}
 
 			}
 		}
 		canalInstance.area=areaProp
 
 
-		if(params.checkMoneyInfo&&!params.checkMoneyInfo.isEmpty()){
-			String[] cmis=params.checkMoneyInfo.split(";")
-			List l=cmis as List
-			if(l.size()==2){
-				canalInstance.checkMoneyInfo=getCheckMoneyInfo()+";"+canalInstance.checkMoneyInfo
-			}
-		}
+		
 		if (!canalInstance.save(flush: true)) {
 			render(view: "create", model: [canalInstance: canalInstance,pList:pList])
 			return
 		}
+		appService.loadCanal2CodeCanalMap(canalInstance)
 
 		flash.message = message(code: 'default.created.message', args: [
 			message(code: 'canal.label', default: 'Canal'),
@@ -525,13 +520,9 @@ class AdminCanalController {
 		[canalInstance: canalInstance,pList:pList]
 	}
 
-	private getCheckMoneyInfo(){
-//todo
-	}
+	
 
-	private getSmsCode(p){
-//todo
-	}
+	
 
 	def update(Long id, Long version) {
 
@@ -574,31 +565,25 @@ class AdminCanalController {
 					//				citys.each {
 					//					println p+'->'+it
 					//				}
-					areaProp[p]=citys.toString();
-					if(canalInstancegetSmsCode.code){
+					def citystr=""
+					citys.each { citystr<<","<<it }
+					appService.loadCanal2CodeCanalMap(canalInstance)
 
-						canalInstancegetSmsCode.code=canalInstancegetSmsCode.code+";"+canalInstancegetSmsCode(p)
-					}else{
-						canalInstancegetSmsCode.code=canalInstancegetSmsCode(p)
-					}
+					areaProp[p]=citystr
+
 				}
 
 			}
 		}
 		canalInstance.area=areaProp
 
-		if(params.checkMoneyInfo&&!params.checkMoneyInfo.isEmpty()){
-			String[] cmis=params.checkMoneyInfo.split(";")
-			List l=cmis as List
-			if(l.size()==2){
-				canalInstance.checkMoneyInfo=getCheckMoneyInfo()+";"+canalInstance.checkMoneyInfo
-			}
-		}
+		
 
 		if (!canalInstance.save(flush: true)) {
 			render(view: "edit", model: [canalInstance: canalInstance])
 			return
 		}
+		appService.loadCanal2CodeCanalMap(canalInstance)
 
 		flash.message = message(code: 'default.updated.message', args: [
 			message(code: 'canal.label', default: 'CanalCanal'),
