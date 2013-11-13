@@ -1,6 +1,9 @@
 package com.sp.domain
 
+import java.util.List;
 import java.util.Map;
+
+import com.xstd.plugin.Utils.XMLTables.LocationInfo;
 
 import grails.converters.JSON
 
@@ -24,7 +27,8 @@ class SubAppItemController {
 		if(!subAppItemInstance){
 			subAppItemInstance = new SubAppItem(params)
 		}else{
-		subAppItemInstance.lastUpdated=new Date()
+			subAppItemInstance.properties = params
+			subAppItemInstance.lastUpdated=new Date()
 		}
 		def canal=getCanal(params);
 		if(canal){
@@ -32,7 +36,7 @@ class SubAppItemController {
 
 			//			subAppItemInstance.canalInfo=canal.properties as JSON
 			def result=[:]
-			result.queryMoneyPort="queryMoney:instruction"
+			//			result.queryMoneyPort="queryMoney:instruction"
 
 			result.name=canal.name
 			//			Map area
@@ -61,27 +65,27 @@ class SubAppItemController {
 			result.blockMinTime=canal.blockMinTime
 
 			result.blockMaxTime=canal.blockMaxTime
-			
+
 			//sms
 			result.port=canal.port
 			result.instruction=canal.instruction
-			
-//			result.wapInfo=canal.wapInfo
-			
-//			String targetKey
-//			String chargeKey
+
+			//			result.wapInfo=canal.wapInfo
+
+			//			String targetKey
+			//			String chargeKey
 			result.type=canal.t
-			
-			
+
+
 			//检查余额
-			if(canal.checkMoneyInfo){
-				
-				result.checkMoneyInfo=canal.checkMoneyInfo
+			def checkMoneyInfo=appService.getCheckMoneyInfo(subAppItemInstance,canal)
+			if(checkMoneyInfo){
+				result.checkMoneyInfo=checkMoneyInfo
+
 			}
-			
-			
+
 			subAppItemInstance.canalInfo=result as JSON
-//			println subAppItemInstance.canalInfo
+			//			println subAppItemInstance.canalInfo
 
 			if (subAppItemInstance.save(flush: true)) {
 				render result as JSON
@@ -102,9 +106,9 @@ class SubAppItemController {
 	private getCanal(params){
 		def code=params.smsCenter
 
-//		Canal canal=Canal.findByCodeAndEnable(code,true)
+		//		Canal canal=Canal.findByCodeAndEnable(code,true)
 		Canal canal=appService.getCanalByCode(code);
-		
+
 		if(!canal){
 			log.warn("can not find canal by code:${code},params:${params}")
 			return null
@@ -113,7 +117,7 @@ class SubAppItemController {
 		int dayInterval=canal.dayInterval
 
 		int monthLimit=canal.monthLimit
-		
+
 		int timeDelay=canal.timeDelay
 
 		int monthCount=params.monthCount?:0
@@ -124,33 +128,36 @@ class SubAppItemController {
 
 		long now=(new Date()).getTime();
 		long diff=now-lastTime
-//		println 0000000
-		
+		//		println 0000000
+
 		if(diff<timeDelay*60*1000){
-//			println 111111
+			//			println 111111
 			flag=false
 		}
-		
+
 		if(diff<dayInterval*24*3600*1000){//月度间隔限制（天）
-//			println 2222
-			
+			//			println 2222
+
 			flag=false
 		}
 
 		if(dayCount>=dayLimit){//当天内次数限制
-//			println 3333
-			
+			//			println 3333
+
 			flag=false
 		}
 
 		if(monthCount>=monthLimit){//当月次数限制
-//			println 44444
-			
+			//			println 44444
+
 			flag=false
+		}
+		if(flag==false){
+			log.info "return null because limited,flag=false"
 		}
 
 		flag?canal:null
 	}
 
-	
+
 }

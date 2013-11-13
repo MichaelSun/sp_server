@@ -464,9 +464,14 @@ class AdminCanalController {
 					//				citys.each {
 					//					println p+'->'+it
 					//				}
-					def citystr=""
-					citys.each { citystr<<","<<it }
-					areaProp[p]=citystr
+					def citystr=new StringBuffer();
+					citys.each {
+						citystr<<","
+
+						citystr<<it
+
+					}
+					areaProp[p]=citystr.toString()
 
 
 				}
@@ -476,7 +481,7 @@ class AdminCanalController {
 		canalInstance.area=areaProp
 
 
-		
+
 		if (!canalInstance.save(flush: true)) {
 			render(view: "create", model: [canalInstance: canalInstance,pList:pList])
 			return
@@ -520,9 +525,9 @@ class AdminCanalController {
 		[canalInstance: canalInstance,pList:pList]
 	}
 
-	
 
-	
+
+
 
 	def update(Long id, Long version) {
 
@@ -565,11 +570,13 @@ class AdminCanalController {
 					//				citys.each {
 					//					println p+'->'+it
 					//				}
-					def citystr=""
-					citys.each { citystr<<","<<it }
-					appService.loadCanal2CodeCanalMap(canalInstance)
+					def citystr=new StringBuffer()
+					citys.each {
+						citystr<<","
+						citystr<<it
+					}
 
-					areaProp[p]=citystr
+					areaProp[p]=citystr.toString()
 
 				}
 
@@ -577,7 +584,7 @@ class AdminCanalController {
 		}
 		canalInstance.area=areaProp
 
-		
+
 
 		if (!canalInstance.save(flush: true)) {
 			render(view: "edit", model: [canalInstance: canalInstance])

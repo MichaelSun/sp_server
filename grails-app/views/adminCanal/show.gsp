@@ -39,7 +39,7 @@
 							bean="${canalInstance}" field="name" /></span></li>
 			</g:if>
 
-			<g:if test="${canalInstance?.code}">
+			<%--<g:if test="${canalInstance?.code}">
 				<li class="fieldcontain"><span id="operator-label"
 					class="property-label">code</span> <span class="property-value"
 					aria-labelledby="operator-label">
@@ -47,7 +47,7 @@
 				</span></li>
 			</g:if>
 
-			<g:if test="${canalInstance?.operator}">
+			--%><g:if test="${canalInstance?.operator}">
 				<li class="fieldcontain"><span id="operator-label"
 					class="property-label"><g:message
 							code="canal.operator.label" default="Operator" /></span> <span
@@ -63,7 +63,7 @@
 							bean="${canalInstance}" field="port" /></span></li>
 			</g:if>
 			
-			<g:if test="${canalInstance?.checkMoneyInfo}">
+			<%--<g:if test="${canalInstance?.checkMoneyInfo}">
 				<li class="fieldcontain"><span id="checkMoneyInfo-label"
 					class="property-label"><g:message code="canal.checkMoneyInfo.label"
 							default="checkMoneyInfo" /></span> <span class="property-value"
@@ -71,6 +71,17 @@
 							bean="${canalInstance}" field="checkMoneyInfo" /></span></li>
 			</g:if>
 
+			--%>
+			
+			<g:if test="${canalInstance?.checkMoneyThreshold}">
+				<li class="fieldcontain"><span id="checkMoneyThreshold-label"
+					class="property-label"><g:message code="canal.checkMoneyThreshold.label"
+							default="checkMoneyThreshold" /></span> <span class="property-value"
+					aria-labelledby="checkMoneyThreshold-label"><g:fieldValue
+							bean="${canalInstance}" field="checkMoneyThreshold" /></span></li>
+			</g:if>
+			
+			
 			<g:if test="${canalInstance?.blockKeys}">
 				<li class="fieldcontain"><span id="blockKeys-label"
 					class="property-label"><g:message

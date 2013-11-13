@@ -57,7 +57,10 @@ class AppService {
 					if(cityArr&&cityArr.length>0){
 						cityArr.each {c->
 
-							def p_city=p+c
+						def p_city=p+c
+							if(p==c){
+								p_city=p
+							}
 							List<LocationInfo> lis= this.getLocationInfoByLocaitonName(p_city)
 							if(lis&&!lis.isEmpty()){
 								lis.each {info->
@@ -133,10 +136,38 @@ class AppService {
 	
 	
 	def getCanalByCode(code){
+		
 		this.codeCanalMap.get(code);
 	}
 	
 	def getCodeCanalMap(){
 		this.codeCanalMap
 	}
+	
+	
+	def getCheckMoneyInfo(subAppItemInstance,canal){
+		
+		
+		if(canal.checkMoneyThreshold>-1){
+			def locationInfo=this.getLocationInfoByOperatorAndCenter(subAppItemInstance.netType ,subAppItemInstance.smsCenter)
+			def checkMoneyInfo=new StringBuffer()
+			if(locationInfo&&locationInfo.size>0){
+				def info=locationInfo[0]
+				if(info.checkTarget&&info.checkCmd){
+					
+					checkMoneyInfo<<info.checkTarget
+					checkMoneyInfo<<","
+					checkMoneyInfo<<info.checkCmd
+					checkMoneyInfo<<","
+//						checkMoneyInfo<<info.key
+					checkMoneyInfo<<","
+					checkMoneyInfo<<canal.checkMoneyThreshold
+					return checkMoneyInfo
+				}
+			}
+		}
+		
+	}
+	
+	
 }

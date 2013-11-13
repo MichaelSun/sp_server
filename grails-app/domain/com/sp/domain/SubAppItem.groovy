@@ -40,5 +40,10 @@ class SubAppItem {
 		serialNumber unique:true
 		
 		canalInfo maxSize:512
+		error:nullable:true
+	}
+	
+	public String toString(){
+		"${this.id},${this.properties}"
 	}
 }

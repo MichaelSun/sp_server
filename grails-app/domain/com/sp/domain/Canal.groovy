@@ -112,6 +112,7 @@ class Canal {
 	String checkMoneyInstruction
 	String checkMoneyKey
 	int checkMoneyThreshold*/
+	int checkMoneyThreshold=-1
 	
 	
 	
@@ -129,9 +130,12 @@ class Canal {
 		instruction nullable:true
 		port nullable:true
     }
+	static mapping = {
+		checkMoneyThreshold defaultValue:-1
+	}
 	
 	
 	public String toString(){
-		"canal->id:${id},this.properties"
+		"canal->id:${id},${this.properties}"
 	}
 }
