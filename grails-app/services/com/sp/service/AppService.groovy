@@ -17,7 +17,7 @@ class AppService {
 
 
 	private static final cityXmlFilePath="/data/city_xml_file_path/city_map.xml"
-	private XMLTables tables=new XMLTables(cityXmlFilePath);//要求启动加载或者直接就初始化，此处直接初始化
+	private XMLTables tables//要求启动加载或者直接就初始化，此处直接初始化
 	
 	def initAll(){
 		loadSubAppFiles()
@@ -77,6 +77,11 @@ class AppService {
 
 
 	def loadCityMap(){
+		if(tables){
+			
+			tables.clear()
+			tables=null
+		}
 		tables=new XMLTables(cityXmlFilePath);
 		log.info("load city map:"+tables.toString())
 	}
@@ -167,6 +172,13 @@ class AppService {
 			}
 		}
 		
+	}
+	
+	
+	
+	def getCityMap(){
+		
+		tables.toString()
 	}
 	
 	

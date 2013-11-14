@@ -146,6 +146,9 @@ p {
 				<li><g:link controller="adminSubAppFile" action="list">
 					子程序文件载入
 				</g:link></li>
+				<li><g:link controller="adminCityMap" action="index">
+					城市配置XML载入
+				</g:link></li>
 				<li><g:link url="${createLink(uri:'/administration/adminstrators') }">
 					权限管理
 				</g:link></li>

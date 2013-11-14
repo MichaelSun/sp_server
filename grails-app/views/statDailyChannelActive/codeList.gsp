@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="main">
+<meta name="layout" content="channel_user">
 <g:set var="entityName"
 	value="${message(code: 'dailyChannelActive.label', default: 'DailyChannelActive')}" />
 <title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -13,7 +13,7 @@
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
 		<ul>
-			<li><a class="home" href="${createLink(uri: '/')}"><g:message
+			<li><a class="home" href="#"><g:message
 						code="default.home.label" /></a></li>
 		</ul>
 	</div>

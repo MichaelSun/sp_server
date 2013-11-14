@@ -46,7 +46,7 @@
 					<th>subAppName</th>
 
 					<th>激活时间</th>
-					<th>激活次数</th>
+					<th>次数</th>
 
 
 
