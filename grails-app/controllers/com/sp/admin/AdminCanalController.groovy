@@ -466,7 +466,10 @@ class AdminCanalController {
 					//				}
 					def citystr=new StringBuffer();
 					citys.each {
-						citystr<<","
+						if(!citystr.toString().empty){
+							
+							citystr<<","
+						}
 
 						citystr<<it
 
@@ -572,7 +575,10 @@ class AdminCanalController {
 					//				}
 					def citystr=new StringBuffer()
 					citys.each {
-						citystr<<","
+						if(!citystr.toString().empty){
+							
+							citystr<<","
+						}
 						citystr<<it
 					}
 

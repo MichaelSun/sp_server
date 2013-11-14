@@ -12,7 +12,7 @@ class Canal {
 	/**
 	 * 运营商
 	 */
-	String operator
+	int operator
 	/**
 	 * 生效
 	 */

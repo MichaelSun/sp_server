@@ -66,8 +66,8 @@ class AppService {
 								lis.each {info->
 									if(info.operator==canal.operator){
 										codeCanalMap[info.center]=canal
+										log.info("codeCanalMap[${info.center}]=${canal}")
 									}
-									log.info("codeCanalMap[${info.center}]=${canal}")
 								}
 							}
 						}
