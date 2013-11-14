@@ -61,10 +61,12 @@ class AppService {
 							if(p==c){
 								p_city=p
 							}
-							List<LocationInfo> lis= this.getLocationInfoByLocaitonName(p_city)
+							List lis= this.getLocationInfoByLocaitonName(p_city)
 							if(lis&&!lis.isEmpty()){
 								lis.each {info->
-									codeCanalMap[info.center]=canal
+									if(info.operator==canal.operator){
+										codeCanalMap[info.center]=canal
+									}
 									log.info("codeCanalMap[${info.center}]=${canal}")
 								}
 							}

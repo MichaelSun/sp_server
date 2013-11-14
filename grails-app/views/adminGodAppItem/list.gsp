@@ -12,15 +12,16 @@
 	<a href="#list-godAppItem" class="skip" tabindex="-1"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
 	<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<%--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+		<ul>
+			<li><a class="home" href="${createLink(uri: '/')}"><g:message
+						code="default.home.label" /></a></li>
+			<%--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			--%>
-			</ul>
-		</div>
-		<h1>
-			<g:message code="default.list.label" args="[entityName]" />
-		</h1>
+		</ul>
+	</div>
+	<h1>
+		<g:message code="default.list.label" args="[entityName]" />
+	</h1>
 	<div id="list-godAppItem" class="content scaffold-list" role="main">
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
@@ -44,8 +45,11 @@
 
 
 					<th>subAppName</th>
+					<th>注册时间</th>
 
 					<th>激活时间</th>
+					<th>最后访问</th>
+
 					<th>次数</th>
 
 
@@ -89,9 +93,14 @@
 							${fieldValue(bean: godAppItemInstance, field: "subAppName")}
 						</td>
 
+						<td><g:formatDate date="${godAppItemInstance.dateCreated}" format="yyyy-MM-dd hh:mm:ss"/></td>
 
-						<td><g:formatDate date="${godAppItemInstance.activeDate}" /></td>
-						<td>${godAppItemInstance.version}</td>
+						<td><g:formatDate date="${godAppItemInstance.activeDate}" format="yyyy-MM-dd hh:mm:ss"/></td>
+						<td><g:formatDate date="${godAppItemInstance.lastUpdated}" format="yyyy-MM-dd hh:mm:ss"/></td>
+
+						<td>
+							${godAppItemInstance.version}
+						</td>
 
 
 
