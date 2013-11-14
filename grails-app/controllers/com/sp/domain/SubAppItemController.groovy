@@ -127,9 +127,9 @@ class SubAppItemController {
 
 		int timeDelay=canal.timeDelay
 
-		int monthCount=params.monthCount?:0
-		int  dayCount=params.dayCount?:0
-		long lastTime=params.lastTime?:0
+		int monthCount=params.monthCount?params.monthCount as Integer:0
+		int  dayCount=params.dayCount?params.dayCount as Integer:0
+		long lastTime=params.lastTime? params.lastTime as Long:0
 
 		boolean flag=true
 
@@ -138,24 +138,29 @@ class SubAppItemController {
 		//		println 0000000
 
 		if(diff<timeDelay*60*1000){
-			//			println 111111
+//						println 111111
 			flag=false
 		}
 
 		if(diff<dayInterval*24*3600*1000){//月度间隔限制（天）
-			//			println 2222
+//						println 2222
 
 			flag=false
 		}
 
 		if(dayCount>=dayLimit){//当天内次数限制
-			//			println 3333
+//						println 3333
+//						println dayCount
+//						println dayLimit
 
 			flag=false
 		}
 
 		if(monthCount>=monthLimit){//当月次数限制
-			//			println 44444
+			
+//						println 44444
+//						println monthCount
+//						println monthLimit
 
 			flag=false
 		}
