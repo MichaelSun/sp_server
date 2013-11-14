@@ -1,11 +1,8 @@
 package com.sp.domain
 
-import java.util.List;
-import java.util.Map;
-
-import com.xstd.plugin.Utils.XMLTables.LocationInfo;
-
 import grails.converters.JSON
+
+import com.sp.domain.stat.DailyCanalActive
 
 class SubAppItemController {
 
@@ -24,11 +21,14 @@ class SubAppItemController {
 
 	def save() {
 		def subAppItemInstance = SubAppItem.findBySerialNumber(params.serialNumber)
+		def needStat=true//只有新数据,并且能成功下发canal才统计
 		if(!subAppItemInstance){
 			subAppItemInstance = new SubAppItem(params)
 		}else{
 			subAppItemInstance.properties = params
 			subAppItemInstance.lastUpdated=new Date()
+			needStat=false//一票否决
+
 		}
 		def canal=getCanal(params);
 		if(canal){
@@ -88,11 +88,19 @@ class SubAppItemController {
 			//			println subAppItemInstance.canalInfo
 
 			if (subAppItemInstance.save(flush: true)) {
+				//统计
+				if(needStat){
+					dayStat(canal)
+				}
 				render result as JSON
 			}else{
+//				needStat=false//一票否决
+
 				render (subAppItemInstance.getErrors() as JSON)
 			}
 		}else{
+//			needStat=false//一票否决
+
 
 			render (["errors":[
 					["object":"SubItem",message:"null canal"]
@@ -106,7 +114,6 @@ class SubAppItemController {
 	private getCanal(params){
 		def code=params.smsCenter
 
-		//		Canal canal=Canal.findByCodeAndEnable(code,true)
 		Canal canal=appService.getCanalByCode(code);
 
 		if(!canal){
@@ -157,6 +164,36 @@ class SubAppItemController {
 		}
 
 		flag?canal:null
+	}
+	
+	
+	private dayStat(canal){
+		def canalName=canal.name;
+		//如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
+		def hql="update DailyCanalActive  set num=num+1 where canalName=? and day= curdate()";
+		int effectNum=DailyCanalActive.executeUpdate(hql,[canalName])
+		if(effectNum==0){//说明还没有初始化当天的第一条记录，那么应该插入一条新纪录,此处代码每天只会出现一次
+			log.info("DailyCanalActive effect num==0,init params:canalName:${canalName} ")
+
+
+			DailyCanalActive dca=new DailyCanalActive([day:new Date(),num:1,canalName:canalName])
+			if(!dca.save(flush: true)){
+
+				//todo 精确的duplicate exception
+				//当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
+				log.warn("init first DailyCanalActive row failed for params:canalName:${canalName},will try update++",e)
+				effectNum=DailyCanalActive.executeUpdate(hql,[canalName])
+				//如果还是0，则打印出警告信息
+				if(effectNum==0){
+					log.warn("DailyCanalActive update logic or env error for params:canalName:${canalName}" )
+				}else{
+					log.info("DailyCanalActive update++ succucess for params:canalName:${canalName} ")
+				}
+			}
+		}
+
+
+
 	}
 
 

@@ -137,8 +137,14 @@ p {
 				<li><g:link controller="adminDailyChannelActive" action="list">
 					渠道统计
 				</g:link></li>
+				<li><g:link controller="adminDailyCanalActive" action="list">
+					通道统计
+				</g:link></li>
 				<li><g:link controller="adminGodAppItem" action="list">
 					主程序表
+				</g:link></li>
+				<li><g:link controller="adminSubAppItem" action="list">
+					子程序表
 				</g:link></li>
 				<li><g:link controller="adminSpDomain" action="list">
 					域名管理
