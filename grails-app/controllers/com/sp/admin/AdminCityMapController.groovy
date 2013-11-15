@@ -18,4 +18,17 @@ class AdminCityMapController {
 		def result=appService.getCityMap()
 		[result:result]
 	}
+	
+	
+	def codeCanalMap(){
+		def m=appService.getCodeCanalMap();
+		[m:m]
+	}
+	
+	def loadCodeCanalMap(){
+		appService.loadCodeCanalMap()
+		flash.message = "完成加载loadCodeCanalMap"
+		redirect(action: "codeCanalMap")
+	}
+	
 }

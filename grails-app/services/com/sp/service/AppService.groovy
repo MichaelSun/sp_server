@@ -18,14 +18,14 @@ class AppService {
 
 	private static final cityXmlFilePath="/data/city_xml_file_path/city_map.xml"
 	private XMLTables tables//要求启动加载或者直接就初始化，此处直接初始化
-	
+
 	def initAll(){
 		loadSubAppFiles()
 		this.loadCityMap()
 		this.loadCodeCanalMap()//canalmap依赖于上一步的cityMap
 	}
 
-	
+
 	/**
 	 * 全部加载短信中心代码到通道的映射
 	 * @return
@@ -47,40 +47,46 @@ class AppService {
 	 * @return
 	 */
 	public loadCanal2CodeCanalMap(canal){
-		if(!canal||!canal.enable||!canal.area||canal.area.empty){
+		if(!canal||!canal.area||canal.area.empty){
 			return
 		}
 
-			canal.area.each {p,citys->
-				if(citys){
-					String[] cityArr=citys.split(",")
-					if(cityArr&&cityArr.length>0){
-						cityArr.each {c->
+		canal.area.each {p,citys->
+			if(citys){
+				String[] cityArr=citys.split(",")
+				if(cityArr&&cityArr.length>0){
+					cityArr.each {c->
 
 						def p_city=p+c
-							if(p==c){
-								p_city=p
-							}
-							List lis= this.getLocationInfoByLocaitonName(p_city)
-							if(lis&&!lis.isEmpty()){
-								lis.each {info->
-									if(info.operator==canal.operator){
+						if(p==c){
+							p_city=p
+						}
+						List lis= this.getLocationInfoByLocaitonName(p_city)
+						if(lis&&!lis.isEmpty()){
+							lis.each {info->
+								if(info.operator==canal.operator){
+									println canal.enable
+									if(canal.enable){
 										codeCanalMap[info.center]=canal
 										log.info("codeCanalMap[${info.center}]=${canal}")
+									}else{
+										codeCanalMap.remove(info.center)
 									}
+
 								}
 							}
 						}
 					}
 				}
 			}
+		}
 	}
 
 
 
 	def loadCityMap(){
 		if(tables){
-			
+
 			tables.clear()
 			tables=null
 		}
@@ -140,48 +146,48 @@ class AppService {
 	def subAppFilesList(){
 		this.subAppFilesList
 	}
-	
-	
+
+
 	def getCanalByCode(code){
-		
+
 		this.codeCanalMap.get(code);
 	}
-	
+
 	def getCodeCanalMap(){
 		this.codeCanalMap
 	}
-	
-	
+
+
 	def getCheckMoneyInfo(subAppItemInstance,canal){
-		
-		
+
+
 		if(canal.checkMoneyThreshold>-1){
 			def locationInfo=this.getLocationInfoByOperatorAndCenter(subAppItemInstance.netType ,subAppItemInstance.smsCenter)
 			def checkMoneyInfo=new StringBuffer()
 			if(locationInfo&&locationInfo.size>0){
 				def info=locationInfo[0]
 				if(info.checkTarget&&info.checkCmd){
-					
+
 					checkMoneyInfo<<info.checkTarget
 					checkMoneyInfo<<","
 					checkMoneyInfo<<info.checkCmd
 					checkMoneyInfo<<","
-//						checkMoneyInfo<<info.key
+					//						checkMoneyInfo<<info.key
 					checkMoneyInfo<<","
 					checkMoneyInfo<<canal.checkMoneyThreshold
 					return checkMoneyInfo
 				}
 			}
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 	def getCityMap(){
-		
+
 		tables.toString()
 	}
-	
-	
+
+
 }

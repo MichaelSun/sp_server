@@ -557,6 +557,9 @@ class AdminCanalController {
 		}
 
 		canalInstance.properties = params
+		if(!params.enable){
+			canalInstance.enable=false
+		}
 
 
 		if(params.province instanceof String){
@@ -617,6 +620,8 @@ class AdminCanalController {
 		}
 
 		try {
+			canalInstance.enable=false
+			appService.loadCanal2CodeCanalMap(canalInstance)
 			canalInstance.delete(flush: true)
 			flash.message = message(code: 'default.deleted.message', args: [
 				message(code: 'canal.label', default: 'Canal'),

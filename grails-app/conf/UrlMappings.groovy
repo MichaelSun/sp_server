@@ -25,6 +25,8 @@ class UrlMappings {
 		"/statDailyChannelActive/$code"(controller: "statDailyChannelActive", action: "codeList")
 	
 		"/adminSubAppFile/load/" (controller: "adminSubAppFile", action: "load")
+		//"/adminCityMap/loadCodeCanalMap/" (controller: "adminCityMap", action: "loadCodeCanalMap")
+		
 		
 		
 		
