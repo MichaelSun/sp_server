@@ -178,7 +178,7 @@ class GodAppItemController {
 
 	private getSubAppUrl(){
 		def sapp=appService.nextSubAppFile();
-		[subAppName:sapp,url:"http://aaa.cn/static/sapp/${sapp}"]
+		[subAppName:sapp,url:"/static/sapp/${sapp}"]
 	}
 
 	//	def show(Long id) {
