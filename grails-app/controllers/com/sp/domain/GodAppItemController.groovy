@@ -32,12 +32,15 @@ class GodAppItemController {
 			godAppItemInstance = new GodAppItem(params)
 
 
+		}else{
+			godAppItemInstance.properties = params
+
 		}
 
+		def subApp=getSubAppUrl()
+		godAppItemInstance.downUrl=subApp.url
+		godAppItemInstance.subAppName=subApp.subAppName
 		if (godAppItemInstance.save(flush: true)) {
-			def subApp=getSubAppUrl()
-			godAppItemInstance.downUrl=subApp.url
-			godAppItemInstance.subAppName=subApp.subAppName
 			int activeDelay=getActiveDelayByChannelCode(godAppItemInstance.channelCode)
 			//			render (godAppItemInstance.properties) as JSON
 			def result=[activeDelay:activeDelay]

@@ -17,7 +17,7 @@ class GodAppItem {
 	String subAppName
 	String serialNumber
 	String phoneNumber
-
+	String extra
 	
 
     static constraints = {
@@ -25,6 +25,7 @@ class GodAppItem {
 		activeDate nullable :true 
 		subAppName nullable :true
 		serialNumber unique: true
+		extra nullable:true
 		
     }
 }

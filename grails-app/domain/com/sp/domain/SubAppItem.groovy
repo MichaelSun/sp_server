@@ -19,6 +19,7 @@ class SubAppItem {
 	String canalInfo
 	String phoneNumber
 	String error
+	String extra
 
 
 
@@ -40,7 +41,14 @@ class SubAppItem {
 		serialNumber unique:true
 		
 		canalInfo maxSize:512
-		error:nullable:true
+		
+	}
+	static mapping = {
+		
+		extra nullable:true
+		error nullable:true
+		
+		
 	}
 	
 	public String toString(){

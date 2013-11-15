@@ -99,7 +99,7 @@
 						<td><g:formatDate date="${godAppItemInstance.lastUpdated}" format="yyyy-MM-dd hh:mm:ss"/></td>
 
 						<td>
-							${godAppItemInstance.version}
+							${godAppItemInstance.version}+${godAppItemInstance.extra}
 						</td>
 
 
