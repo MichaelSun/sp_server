@@ -22,7 +22,7 @@
 	</h1>
 	<div class="nav" role="search">
 		<form
-			action="${createLink(uri:'/adminDailyChannelActive')}/${params.canalName }"
+			action="${createLink(uri:'/adminDailyChannelActive')}/${params.code }"
 			method="post">
 			<ul>
 
