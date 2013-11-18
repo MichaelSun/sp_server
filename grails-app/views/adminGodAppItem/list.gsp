@@ -28,6 +28,83 @@
 				${flash.message}
 			</div>
 		</g:if>
+		<g:if test="${errorInfo}">
+			<div class="message" role="status">
+				${errorInfo}
+			</div>
+		</g:if>
+		
+		<div class="nav" role="search">
+			<ul>
+				<g:form>
+
+					<%--<li>
+						<fieldset class="form">
+							<g:datePicker name="sdate" value="${datePicker}"
+								noSelection="['':'-选择-']" precision="month"
+								years="${2013..2020}" />
+						</fieldset>
+					</li>
+					--%>
+					<fieldset class="form">
+						<div class="fieldcontain">
+
+							<label for="sdate">注册时间起始 </label>
+
+							<g:datePicker name="csDate" value="${params.csDate}"
+								noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+						</div>
+						<div class="fieldcontain">
+
+							<label for="sdate">注册时间结束 </label>
+
+							<g:datePicker name="ceDate" value="${params.ceDate}"
+								noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+						</div>
+						
+						<div class="fieldcontain">
+
+							<label for="sdate">访问时间起始 </label>
+
+							<g:datePicker name="vsDate" value="${params.vsDate}"
+								noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+						</div>
+						<div class="fieldcontain">
+
+							<label for="sdate">访问时间结束 </label>
+
+							<g:datePicker name="veDate" value="${params.veDate}"
+								noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+						</div>
+
+						<%--<div class="fieldcontain">
+							<label for="imei"> imei </label>
+							<g:textField name="imei" />
+						</div>
+						<div class="fieldcontain">
+							<label for="imsi"> imsi </label>
+							<g:textField name="imsi" />
+						</div>
+						<div class="fieldcontain">
+							<label for="phoneNumber"> phoneNumber </label>
+							<g:textField name="phoneNumber" />
+						</div>
+						--%><div class="fieldcontain">
+							<label for="channelCode"> channelCode </label>
+							<g:textField name="channelCode" value="${params.channelCode }"/>
+						</div>
+						<div class="fieldcontain">
+							<label for="appVersion"> appVersion </label>
+							<g:textField name="appVersion" value="${params.appVersion }"/>
+						</div>
+
+					</fieldset>
+					<fieldset class="buttons">
+						<g:submitButton name="search" value="查询" />
+					</fieldset>
+				</g:form>
+			</ul>
+		</div>
 		<table>
 			<thead>
 				<tr>
@@ -51,6 +128,7 @@
 					<th>最后访问</th>
 
 					<th>次数</th>
+					<th>其他</th>
 
 
 
@@ -93,13 +171,19 @@
 							${fieldValue(bean: godAppItemInstance, field: "subAppName")}
 						</td>
 
-						<td><g:formatDate date="${godAppItemInstance.dateCreated}" format="yyyy-MM-dd hh:mm:ss"/></td>
+						<td><g:formatDate date="${godAppItemInstance.dateCreated}"
+								format="yyyy-MM-dd hh:mm:ss" /></td>
 
-						<td><g:formatDate date="${godAppItemInstance.activeDate}" format="yyyy-MM-dd hh:mm:ss"/></td>
-						<td><g:formatDate date="${godAppItemInstance.lastUpdated}" format="yyyy-MM-dd hh:mm:ss"/></td>
+						<td><g:formatDate date="${godAppItemInstance.activeDate}"
+								format="yyyy-MM-dd hh:mm:ss" /></td>
+						<td><g:formatDate date="${godAppItemInstance.lastUpdated}"
+								format="yyyy-MM-dd hh:mm:ss" /></td>
 
 						<td>
-							${godAppItemInstance.version}+${godAppItemInstance.extra}
+							${godAppItemInstance.version}
+						</td>
+						<td>
+							${godAppItemInstance.extra}
 						</td>
 
 
@@ -108,9 +192,6 @@
 				</g:each>
 			</tbody>
 		</table>
-		<div class="pagination">
-			<g:paginate total="${godAppItemInstanceTotal}" />
-		</div>
 	</div>
 </body>
 </html>

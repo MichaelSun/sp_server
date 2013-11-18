@@ -45,10 +45,10 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 			}
 		}
 
-//		admin(uri:"/admin*/**"){
-//			before = { accessControl { role(AdminsService.ADMIN_ROLE)  } }
-//
-//		}
+		admin(uri:"/admin*/**"){
+			before = { accessControl { role(AdminsService.ADMIN_ROLE)  } }
+
+		}
 
 		// Account management requiring authentication
 		accountsecure(controller: "account", action: "(changepassword|updatepassword|changedpassword)") {

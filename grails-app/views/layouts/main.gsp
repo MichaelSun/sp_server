@@ -99,7 +99,7 @@ p {
 }
 </style>
 </head>
-<body style="max-width: 1350px;">
+<body style="max-width: 1400px;">
 	<div id="grailsLogo" role="banner">
 		<a href="${createLink(uri: '/')}">牛逼闪闪管理系统<!--img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/--></a>
 	</div>

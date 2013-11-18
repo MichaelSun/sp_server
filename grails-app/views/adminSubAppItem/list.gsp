@@ -18,15 +18,83 @@
 
 		</ul>
 	</div>
-		<h1>
-			<g:message code="default.list.label" args="[entityName]" />
-		</h1>
+	<h1>
+		<g:message code="default.list.label" args="[entityName]" />
+	</h1>
 	<div id="list-subAppItem" class="content scaffold-list" role="main">
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
 			</div>
 		</g:if>
+
+		<g:if test="${errorInfo}">
+			<div class="message" role="status">
+				${errorInfo}
+			</div>
+		</g:if>
+		<div class="nav" role="search">
+			<ul>
+				<g:form>
+
+					<%--<li>
+						<fieldset class="form">
+							<g:datePicker name="sdate" value="${datePicker}"
+								noSelection="['':'-选择-']" precision="month"
+								years="${2013..2020}" />
+						</fieldset>
+					</li>
+					--%>
+					<div class="fieldcontain">
+
+						<label for="sdate">注册时间起始 </label>
+
+						<g:datePicker name="csDate" value="${params.csDate}"
+							noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+					</div>
+					<div class="fieldcontain">
+
+						<label for="sdate">注册时间结束 </label>
+
+						<g:datePicker name="ceDate" value="${params.ceDate}"
+							noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+					</div>
+
+
+					<div class="fieldcontain">
+						<label for="netType"> netType </label>
+						<g:select optionKey="netType" optionValue="operatorValue"
+							from="${[[netType:'0',operatorValue:'-选择-'],[netType:'1',operatorValue:'移动'],[netType:'2',operatorValue:'联通'],[netType:'3',operatorValue:'电信']]}"
+							name="netType" value="${params.netType}"></g:select>
+					</div>
+
+					<%--<div class="fieldcontain">
+							<label for="imei"> imei </label>
+							<g:textField name="imei" />
+						</div>
+						<div class="fieldcontain">
+							<label for="imsi"> imsi </label>
+							<g:textField name="imsi" />
+						</div>
+						<div class="fieldcontain">
+							<label for="phoneNumber"> phoneNumber </label>
+							<g:textField name="phoneNumber" />
+						</div>
+						--%>
+					<div class="fieldcontain">
+						<label for="channelCode"> channelCode </label>
+						<g:textField name="channelCode" value="${params.channelCode }" />
+					</div>
+					<div class="fieldcontain">
+						<label for="appVersion"> appVersion </label>
+						<g:textField name="appVersion" value="${params.appVersion }" />
+					</div>
+					<fieldset class="buttons">
+						<g:submitButton name="search" value="查询" />
+					</fieldset>
+				</g:form>
+			</ul>
+		</div>
 		<table>
 			<thead>
 				<tr>
@@ -82,11 +150,6 @@
 						<td>
 							${fieldValue(bean: subAppItemInstance, field: "smsCenter")}
 						</td>
-
-
-
-
-
 						<td>
 							${fieldValue(bean: subAppItemInstance, field: "phoneType")}
 						</td>
@@ -114,9 +177,10 @@
 				</g:each>
 			</tbody>
 		</table>
-		<div class="pagination">
+		<%--<div class="pagination">
 			<g:paginate total="${subAppItemInstanceTotal}" />
 		</div>
+	--%>
 	</div>
 </body>
 </html>
