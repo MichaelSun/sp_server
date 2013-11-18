@@ -19,14 +19,37 @@
 	</div>
 	<h1>
 		<g:message code="default.list.label" args="[entityName]" />
+		${params.canalName }
 	</h1>
+	<g:if test="${flash.message}">
+		<div class="message" role="status">
+			${flash.message}
+		</div>
+	</g:if>
+	<div class="nav" role="search">
+		<form
+			action="${createLink(uri:'/adminDailyCanalActive')}/${params.canalName }"
+			method="post">
+			<ul>
+
+				<li>
+					<fieldset class="form">
+						<g:datePicker name="sdate" value="${datePicker}"
+							noSelection="['':'-选择-']" precision="month" years="${2013..2020}" />
+					</fieldset>
+				</li>
+				<li>
+					<fieldset class="buttons">
+						<g:submitButton name="search" value="查询" />
+					</fieldset>
+				</li>
+
+
+			</ul>
+		</form>
+	</div>
 	<div id="list-DailyCanalActive" class="content scaffold-list"
 		role="main">
-		<g:if test="${flash.message}">
-			<div class="message" role="status">
-				${flash.message}
-			</div>
-		</g:if>
 		<table>
 			<thead>
 				<tr>
@@ -52,9 +75,10 @@
 						</td>
 
 
-						<td>
-							${fieldValue(bean: dailyCanalActiveInstance, field: "canalName")}
-						</td>
+						<td><g:link controller="adminDailyCanalActive"
+								action="${dailyCanalActiveInstance.canalName }">
+								${fieldValue(bean: dailyCanalActiveInstance, field: "canalName")}
+							</g:link></td>
 
 						<td>
 							${fieldValue(bean: dailyCanalActiveInstance, field: "num")}
@@ -68,9 +92,6 @@
 				</g:each>
 			</tbody>
 		</table>
-		<div class="pagination">
-			<g:paginate total="${dailyCanalActiveInstanceTotal}" />
-		</div>
 	</div>
 </body>
 </html>

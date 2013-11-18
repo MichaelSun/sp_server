@@ -134,10 +134,10 @@ p {
 			<li><g:link controller="adminCanal" action="list">
 					通道管理
 				</g:link></li>
-				<li><g:link controller="adminDailyChannelActive" action="list">
+				<li><g:link url="${createLink(uri:'/adminDailyChannelActive')}" >
 					渠道统计
 				</g:link></li>
-				<li><g:link controller="adminDailyCanalActive" action="list">
+				<li><g:link url="${createLink(uri:'/adminDailyCanalActive') }">
 					通道统计
 				</g:link></li>
 				<li><g:link controller="adminGodAppItem" action="list">

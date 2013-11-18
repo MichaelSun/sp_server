@@ -20,9 +20,9 @@
 				</g:link></li>
 		</ul>
 	</div>
-		<h1>
-			<g:message code="default.list.label" args="[entityName]" />
-		</h1>
+	<h1>
+		<g:message code="default.list.label" args="[entityName]" />
+	</h1>
 	<div id="list-channel" class="content scaffold-list" role="main">
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
@@ -59,9 +59,9 @@
 						<td><g:link action="show" id="${channelInstance.id}">
 								${fieldValue(bean: channelInstance, field: "name")}
 							</g:link></td>
-						<td>
-							${fieldValue(bean: channelInstance, field: "mainCode")}
-						</td>
+						<td><g:link controller="adminDailyChannelActive" action="${channelInstance.mainCode }">
+								${fieldValue(bean: channelInstance, field: "mainCode")}
+							</g:link></td>
 
 						<%--<td>${fieldValue(bean: channelInstance, field: "subCode")}</td>
 						
@@ -69,8 +69,10 @@
 						<td>
 							${fieldValue(bean: channelInstance, field: "rate")}
 						</td>
-												<td>${channelInstance.activeDelay}</td>
-						
+						<td>
+							${channelInstance.activeDelay}
+						</td>
+
 						<td>
 							${fieldValue(bean: channelInstance, field: "dateCreated")}
 						</td>

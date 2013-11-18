@@ -41,13 +41,8 @@ class SubAppItem {
 		serialNumber unique:true
 		
 		canalInfo maxSize:512
-		
-	}
-	static mapping = {
-		
 		extra nullable:true
 		error nullable:true
-		
 		
 	}
 	

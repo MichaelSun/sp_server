@@ -23,6 +23,9 @@ class UrlMappings {
 		"/sais/"(controller: "subAppItem", action: "save")
 		
 		"/statDailyChannelActive/$code"(controller: "statDailyChannelActive", action: "codeList")
+		"/adminDailyChannelActive/$code"(controller: "adminDailyChannelActive", action: "list")
+		
+		"/adminDailyCanalActive/$canalName"(controller: "adminDailyCanalActive", action: "list")
 	
 		"/adminSubAppFile/load/" (controller: "adminSubAppFile", action: "load")
 		//"/adminCityMap/loadCodeCanalMap/" (controller: "adminCityMap", action: "loadCodeCanalMap")
