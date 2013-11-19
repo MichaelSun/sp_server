@@ -13,7 +13,7 @@ class SubAppItem {
 	String name
 	String serialNumber
 	String smsCenter
-//	int area//省市前三位省，后三位市
+	//	int area//省市前三位省，后三位市
 	String phoneType
 	String osVersion
 	String canalInfo
@@ -37,15 +37,22 @@ class SubAppItem {
 	long lastChargeTime
 
 
-	static constraints = { 
+	static constraints = {
 		serialNumber unique:true
-		
+
 		canalInfo maxSize:512
 		extra nullable:true
 		error nullable:true
-		
+
 	}
-	
+
+	static mapping = {
+		netType index: 'netType'
+		channelCode index: 'channelCode'
+		appVersion index: 'appVersion'
+		dateCreated index: 'dateCreated'
+	}
+
 	public String toString(){
 		"${this.id},${this.properties}"
 	}

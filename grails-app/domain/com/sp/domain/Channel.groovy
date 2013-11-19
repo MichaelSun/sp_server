@@ -7,14 +7,16 @@ class Channel {
 	int mainCode
 	int rate
 	int activeDelay//分钟
-	
+
 	Date dateCreated
 	Date lastUpdated
 
-    static constraints = {
-    }
-	
+	static constraints = {
+	}
+
 	public String toString(){
 		this.properties.toString()+" id:"+id
 	}
+
+	static mapping ={ mainCode index:'mainCode' }
 }
