@@ -16,7 +16,7 @@ class SpDomainController {
 				}
 			}
 		}
-		render resultList as JSON
+		render ([spDomainList:resultList] as JSON)
 	}
 
 	def list() {

@@ -132,17 +132,23 @@ class SubAppItemController {
 		long lastTime=params.lastTime? params.lastTime as Long:0
 
 		boolean flag=true
+		
+		Date nowDate=new Date()
 
-		long now=(new Date()).getTime();
+		long now=nowDate.getTime();
 		long diff=now-lastTime
-		//		println 0000000
+//				println 0000000
 
+		
+		Date lastDate=new Date(lastTime)
+		int diffDays=nowDate-lastDate
 		if(diff<timeDelay*60*1000){
 //						println 111111
+			
 			flag=false
 		}
 
-		if(diff<dayInterval*24*3600*1000){//月度间隔限制（天）
+		if(diffDays<dayInterval){//月度间隔限制（天）
 //						println 2222
 
 			flag=false

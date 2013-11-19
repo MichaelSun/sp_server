@@ -101,7 +101,11 @@ p {
 </head>
 <body style="max-width: 1400px;">
 	<div id="grailsLogo" role="banner">
-		<a href="${createLink(uri: '/')}">牛逼闪闪管理系统<!--img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/--></a>
+		<a href="${createLink(uri: '/')}">闪闪管理系统<!--img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/--></a>
+		<n:isLoggedIn>
+			<a href="${createLink(uri: '/logout')}">退出</a>
+		</n:isLoggedIn>
+
 	</div>
 	<a href="#page-body" class="skip"><g:message
 			code="default.link.skip.label" default="Skip to content&hellip;" /></a>
@@ -134,34 +138,35 @@ p {
 			<li><g:link controller="adminCanal" action="list">
 					通道管理
 				</g:link></li>
-				<li><g:link url="${createLink(uri:'/adminDailyChannelActive')}" >
+			<li><g:link url="${createLink(uri:'/adminDailyChannelActive')}">
 					渠道统计
 				</g:link></li>
-				<li><g:link url="${createLink(uri:'/adminDailyCanalActive') }">
+			<li><g:link url="${createLink(uri:'/adminDailyCanalActive') }">
 					通道统计
 				</g:link></li>
-				<li><g:link controller="adminGodAppItem" action="list">
+			<li><g:link controller="adminGodAppItem" action="list">
 					主程序表
 				</g:link></li>
-				<li><g:link controller="adminSubAppItem" action="list">
+			<li><g:link controller="adminSubAppItem" action="list">
 					子程序表
 				</g:link></li>
-				<li><g:link controller="adminSpDomain" action="list">
+			<li><g:link controller="adminSpDomain" action="list">
 					域名管理
 				</g:link></li>
-				<li><g:link controller="adminSubAppFile" action="list">
+			<li><g:link controller="adminSubAppFile" action="list">
 					子程序文件载入
 				</g:link></li>
-				<li><g:link controller="adminCityMap" action="index">
+			<li><g:link controller="adminCityMap" action="index">
 					城市配置XML载入
 				</g:link></li>
-				<li><g:link controller="adminCityMap" action="codeCanalMap">
+			<li><g:link controller="adminCityMap" action="codeCanalMap">
 					通道映射图
 				</g:link></li>
-				<li><g:link url="${createLink(uri:'/administration/adminstrators') }">
+			<li><g:link
+					url="${createLink(uri:'/administration/adminstrators') }">
 					权限管理
 				</g:link></li>
-				
+
 		</ul>
 	</div>
 	<div id="page-body" role="main">

@@ -11,8 +11,14 @@ class UrlMappings {
 			}
 		}
 
-		"/"(view:"/index")
-		"/index"(view:"/index_bak")
+//		"/"(view:"/index")
+		
+//		"/index"(view:"/index_bak")
+		
+		"/"(controller: "admin", action: "index")
+		"/admin"(controller: "admin", action: "index")
+		
+		
 		"500"(view:'/error')
 		
 		"/gais/"(controller: "godAppItem", action: "save")
