@@ -46,6 +46,8 @@ class AdminSubAppItemController {
 			q=q.where{netType==params.netType}
 
 		}
+//		params.sort='id'
+//		params.order='desc'
 		def result=q.list(params)
 		params.max = Math.min(max ?: 10, 100)
 		[subAppItemInstanceList: result]

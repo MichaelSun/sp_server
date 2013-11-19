@@ -47,10 +47,10 @@ class SubAppItem {
 	}
 
 	static mapping = {
-		netType index: 'netType'
-		channelCode index: 'channelCode'
-		appVersion index: 'appVersion'
-		dateCreated index: 'dateCreated'
+		netType index: 'netType_sub'
+		channelCode index: 'channelCode_sub'
+		appVersion index: 'appVersion_sub'
+		dateCreated index: 'dateCreated_sub'
 	}
 
 	public String toString(){

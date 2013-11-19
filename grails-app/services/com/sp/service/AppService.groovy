@@ -38,7 +38,7 @@ class AppService {
 		canalList.each {Canal canal->
 			loadCanal2CodeCanalMap(canal);
 		}
-		log.info("loadCodeCanalMap:${codeCanalMap}")
+		log.info("loadCodeCanalMap:${codeCanalMap.size()}")
 	}
 
 	/**
@@ -91,7 +91,7 @@ class AppService {
 			tables=null
 		}
 		tables=new XMLTables(cityXmlFilePath);
-		log.info("load city map:"+tables.toString())
+		log.info("load city map")
 	}
 
 

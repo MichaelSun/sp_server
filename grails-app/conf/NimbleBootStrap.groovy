@@ -70,7 +70,7 @@ class NimbleBootStrap {
 			def admin = InstanceGenerator.user(grailsApplication)
 			admin.username = "admin"
 			admin.pass = "admin456"
-			admin.passConfirm = "admin"
+			admin.passConfirm = "admin456"
 			admin.enabled = true
 
 			def adminProfile = InstanceGenerator.profile(grailsApplication)
