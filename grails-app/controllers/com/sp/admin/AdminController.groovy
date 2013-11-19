@@ -11,6 +11,7 @@ class AdminController {
 		
 		Subject currentUser = SecurityUtils.subject;
 		if(!currentUser||!currentUser.hasRole(AdminsService.ADMIN_ROLE)){
+			flash.message="您不具备访问资格"
 			redirect uri:'/login'
 			return
 		}
