@@ -18,7 +18,13 @@
 		<r:layoutResources />
 	</head>
 	<body style="max-width: 1200px;">
-		<div id="grailsLogo" role="banner"><a href="#">渠道统计</a></div>
+		<div id="grailsLogo" role="banner"><a href="#">渠道统计</a>
+		<n:isLoggedIn>
+			<a href="${createLink(uri: '/logout')}">退出</a>
+		</n:isLoggedIn>
+		
+		</div>
+		
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
