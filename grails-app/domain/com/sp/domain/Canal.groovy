@@ -132,6 +132,7 @@ class Canal {
     }
 	static mapping = {
 		checkMoneyThreshold defaultValue:-1
+		interval column:'exe_interval'
 	}
 	
 	
