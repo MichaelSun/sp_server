@@ -148,7 +148,7 @@ class SubAppItemController {
 			flag=false
 		}
 
-		if(diffDays<dayInterval){//月度间隔限制（天）
+		if(diffDays<=dayInterval){//月度间隔限制（天）
 //						println 2222
 
 			flag=false

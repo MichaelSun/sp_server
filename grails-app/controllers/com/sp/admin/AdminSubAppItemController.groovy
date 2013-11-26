@@ -22,7 +22,7 @@ class AdminSubAppItemController {
 
 		if(params.csDate&&params.ceDate&&!params.csDate.equals(params.ceDate)){
 			q=q.where{
-				dateCreated>=params.csDate&&dateCreated<=params.ceDate
+				dateCreated>=params.csDate&&dateCreated<params.ceDate
 			}
 		}
 

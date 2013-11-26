@@ -33,7 +33,7 @@
 				${errorInfo}
 			</div>
 		</g:if>
-		
+
 		<div class="nav" role="search">
 			<ul>
 				<g:form>
@@ -61,7 +61,7 @@
 							<g:datePicker name="ceDate" value="${params.ceDate}"
 								noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
 						</div>
-						
+
 						<div class="fieldcontain">
 
 							<label for="sdate">访问时间起始 </label>
@@ -89,13 +89,14 @@
 							<label for="phoneNumber"> phoneNumber </label>
 							<g:textField name="phoneNumber" />
 						</div>
-						--%><div class="fieldcontain">
+						--%>
+						<div class="fieldcontain">
 							<label for="channelCode"> channelCode </label>
-							<g:textField name="channelCode" value="${params.channelCode }"/>
+							<g:textField name="channelCode" value="${params.channelCode }" />
 						</div>
 						<div class="fieldcontain">
 							<label for="appVersion"> appVersion </label>
-							<g:textField name="appVersion" value="${params.appVersion }"/>
+							<g:textField name="appVersion" value="${params.appVersion }" />
 						</div>
 
 					</fieldset>
@@ -105,93 +106,96 @@
 				</g:form>
 			</ul>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>序号</th>
-					<th>渠道号</th>
-					<th>serialNumber</th>
+		<div style="overflow-x: scroll;">
 
-					<th>版本号</th>
-					<th>imei</th>
-					<th>imsi</th>
-					<th>网络类型</th>
+			<table>
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th>渠道号</th>
+						<th>serialNumber</th>
 
-					<th>downUrl</th>
+						<th>版本号</th>
+						<th>imei</th>
+						<th>imsi</th>
+						<th>网络类型</th>
 
-
-
-					<th>subAppName</th>
-					<th>注册时间</th>
-
-					<th>激活时间</th>
-					<th>最后访问</th>
-
-					<th>次数</th>
-					<th>其他</th>
+						<th>downUrl</th>
 
 
 
-				</tr>
-			</thead>
-			<tbody>
-				<g:each in="${godAppItemInstanceList}" status="i"
-					var="godAppItemInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "id")}
-						</td>
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "channelCode")}
-						</td>
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "serialNumber")}
-						</td>
+						<th>subAppName</th>
+						<th>注册时间</th>
 
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "appVersion")}
-						</td>
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "imei")}
-						</td>
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "imsi")}
-						</td>
+						<th>激活时间</th>
+						<th>最后访问</th>
 
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "netType")}
-						</td>
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "downUrl")}
-						</td>
-
-
-
-						<td>
-							${fieldValue(bean: godAppItemInstance, field: "subAppName")}
-						</td>
-
-						<td><g:formatDate date="${godAppItemInstance.dateCreated}"
-								format="yyyy-MM-dd hh:mm:ss" /></td>
-
-						<td><g:formatDate date="${godAppItemInstance.activeDate}"
-								format="yyyy-MM-dd hh:mm:ss" /></td>
-						<td><g:formatDate date="${godAppItemInstance.lastUpdated}"
-								format="yyyy-MM-dd hh:mm:ss" /></td>
-
-						<td>
-							${godAppItemInstance.version}
-						</td>
-						<td>
-							${godAppItemInstance.extra}
-						</td>
+						<th>次数</th>
+						<th>其他</th>
 
 
 
 					</tr>
-				</g:each>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<g:each in="${godAppItemInstanceList}" status="i"
+						var="godAppItemInstance">
+						<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "id")}
+							</td>
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "channelCode")}
+							</td>
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "serialNumber")}
+							</td>
+
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "appVersion")}
+							</td>
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "imei")}
+							</td>
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "imsi")}
+							</td>
+
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "netType")}
+							</td>
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "downUrl")}
+							</td>
+
+
+
+							<td>
+								${fieldValue(bean: godAppItemInstance, field: "subAppName")}
+							</td>
+
+							<td><g:formatDate date="${godAppItemInstance.dateCreated}"
+									format="yyyy-MM-dd hh:mm:ss" /></td>
+
+							<td><g:formatDate date="${godAppItemInstance.activeDate}"
+									format="yyyy-MM-dd hh:mm:ss" /></td>
+							<td><g:formatDate date="${godAppItemInstance.lastUpdated}"
+									format="yyyy-MM-dd hh:mm:ss" /></td>
+
+							<td>
+								${godAppItemInstance.version}
+							</td>
+							<td>
+								${godAppItemInstance.extra}
+							</td>
+
+
+
+						</tr>
+					</g:each>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

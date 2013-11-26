@@ -23,13 +23,13 @@ class AdminGodAppItemController {
 
 		if(params.csDate&&params.ceDate&&!params.csDate.equals(params.ceDate)){
 			q=q.where{
-				dateCreated>=params.csDate&&dateCreated<=params.ceDate
+				dateCreated>=params.csDate&&dateCreated<params.ceDate
 			}
 		}
 
 		if(params.vsDate&&params.veDate&&!params.vsDate.equals(params.veDate)){
 			q=q.where{
-				lastUpdated>=params.vsDate&&lastUpdated<=params.veDate
+				lastUpdated>=params.vsDate&&lastUpdated<params.veDate
 			}
 		}
 		//				if(params.imei){
