@@ -94,13 +94,13 @@ class SubAppItemController {
 				}
 				render result as JSON
 			}else{
-//				needStat=false//一票否决
+				//				needStat=false//一票否决
 
 				render (subAppItemInstance.getErrors() as JSON)
 			}
 		}else{
-//			needStat=false//一票否决
-
+			//			needStat=false//一票否决
+			//		log.warn("Found Null Canal by params:${params}")
 
 			render (["errors":[
 					["object":"SubItem",message:"null canal"]
@@ -116,68 +116,74 @@ class SubAppItemController {
 
 		Canal canal=appService.getCanalByCode(code);
 
-		if(!canal){
-			log.warn("can not find canal by code:${code},params:${params}")
+		if(canal){
+
+
+			int dayLimit=canal.dayLimit
+			int dayInterval=canal.dayInterval
+
+			int monthLimit=canal.monthLimit
+
+			int timeDelay=canal.timeDelay
+
+			int monthCount=params.monthCount?params.monthCount as Integer:0
+			int  dayCount=params.dayCount?params.dayCount as Integer:0
+			long lastTime=params.lastTime? params.lastTime as Long:0
+
+			boolean flag=true
+
+			Date nowDate=new Date()
+
+			long now=nowDate.getTime();
+			long diff=now-lastTime
+			//				println 0000000
+
+
+			Date lastDate=new Date(lastTime)
+			int diffDays=nowDate-lastDate
+			if(diff<timeDelay*60*1000){
+				//						println 111111
+
+				flag=false
+			}
+
+			if(diffDays<=dayInterval){//月度间隔限制（天）
+				//						println 2222
+
+				flag=false
+			}
+
+			if(dayCount>=dayLimit){//当天内次数限制
+				//						println 3333
+				//						println dayCount
+				//						println dayLimit
+
+				flag=false
+			}
+
+			if(monthCount>=monthLimit){//当月次数限制
+
+				//						println 44444
+				//						println monthCount
+				//						println monthLimit
+
+				flag=false
+			}
+			if(flag==false){
+//				log.info "return null because limited,flag=false"
+				log.error("MissCanal:find canal by code:${code},but rejected by limits. canal:${canal}--params:${params}")
+			}
+			flag?canal:null
+
+		}else{
+			log.warn("MissCanal:find null canal by code:${code},params:${params}")
 			return null
 		}
-		int dayLimit=canal.dayLimit
-		int dayInterval=canal.dayInterval
 
-		int monthLimit=canal.monthLimit
 
-		int timeDelay=canal.timeDelay
-
-		int monthCount=params.monthCount?params.monthCount as Integer:0
-		int  dayCount=params.dayCount?params.dayCount as Integer:0
-		long lastTime=params.lastTime? params.lastTime as Long:0
-
-		boolean flag=true
-		
-		Date nowDate=new Date()
-
-		long now=nowDate.getTime();
-		long diff=now-lastTime
-//				println 0000000
-
-		
-		Date lastDate=new Date(lastTime)
-		int diffDays=nowDate-lastDate
-		if(diff<timeDelay*60*1000){
-//						println 111111
-			
-			flag=false
-		}
-
-		if(diffDays<=dayInterval){//月度间隔限制（天）
-//						println 2222
-
-			flag=false
-		}
-
-		if(dayCount>=dayLimit){//当天内次数限制
-//						println 3333
-//						println dayCount
-//						println dayLimit
-
-			flag=false
-		}
-
-		if(monthCount>=monthLimit){//当月次数限制
-			
-//						println 44444
-//						println monthCount
-//						println monthLimit
-
-			flag=false
-		}
-		if(flag==false){
-			log.info "return null because limited,flag=false"
-		}
-
-		flag?canal:null
 	}
-	
-	
+
+
 	private dayStat(canal){
 		def canalName=canal.name;
 		//如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
