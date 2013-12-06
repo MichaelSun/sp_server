@@ -156,10 +156,10 @@ p {
 			<li><g:link controller="adminSubAppFile" action="list">
 					子程序文件载入
 				</g:link></li>
-			<li><g:link controller="adminCityMap" action="index">
-					城市配置XML载入
+			<li><g:link controller="adminPhoneAreaMap" action="index">
+					号段表载入
 				</g:link></li>
-			<li><g:link controller="adminCityMap" action="codeCanalMap">
+			<li><g:link controller="adminPhoneAreaMap" action="areaCanalMap">
 					通道映射图
 				</g:link></li>
 			<li><g:link

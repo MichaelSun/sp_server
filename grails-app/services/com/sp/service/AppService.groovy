@@ -8,21 +8,46 @@ import com.xstd.plugin.Utils.XMLTables.LocationInfo
 
 class AppService {
 
-	Map codeCanalMap=[:]//要求启动加载
+	Map areaCanalMap=[:]//要求启动加载
+
+
+	Map pnAreaMap=[:]//启动加载
 
 
 
 	LinkedList subAppFilesList=[]//要求启动加载
+	private static final pnAreaFilePath="/data/pn_area_file_path/"
+
+
 	private static final appFilePath="/data/sub_app_file_path"
 
 
-	private static final cityXmlFilePath="/data/city_xml_file_path/city_map.xml"
-	private XMLTables tables//要求启动加载或者直接就初始化，此处直接初始化
 
 	def initAll(){
 		loadSubAppFiles()
-		this.loadCityMap()
-		this.loadCodeCanalMap()//canalmap依赖于上一步的cityMap
+		loadPnAreaMap()
+		loadAreaCanalMap()
+	}
+
+
+	def loadPnAreaMap(){
+		this.pnAreaMap.clear()
+		File f=new File(pnAreaFilePath)
+		if(!f.exists()){
+			f.mkdirs();
+		}
+		f.eachFile {
+			Properties props=new Properties();
+			FileReader fr=new FileReader(it)
+			props.load(fr)
+			fr.close()
+			pnAreaMap<<props
+			log.info("loadPnAreaMap:file:${it.name}-size:${props.size()}-total size:${pnAreaMap.size()}")
+
+		}
+
+
+
 	}
 
 
@@ -30,23 +55,25 @@ class AppService {
 	 * 全部加载短信中心代码到通道的映射
 	 * @return
 	 */
-	def loadCodeCanalMap(){
+	def loadAreaCanalMap(){
 		if(!this.subAppFilesList||subAppFilesList.size()==0){
 			this.loadSubAppFiles();
 		}
+		this.areaCanalMap.clear()
 		def canalList=Canal.list()
 		canalList.each {Canal canal->
-			loadCanal2CodeCanalMap(canal);
+			loadCanal2AreaMap(canal);
 		}
-		log.info("loadCodeCanalMap:${codeCanalMap.size()}")
+		log.info("loadAreaCanalMap size:${areaCanalMap.size()}")
 	}
 
 	/**
-	 * 当canal变化,新增的时候，刷新短信中心代码到通道的映射
+	 * 当canal变化,新增的时候，刷新到通道的映射
 	 * @param canal
 	 * @return
 	 */
-	public loadCanal2CodeCanalMap(canal){
+	def loadCanal2AreaMap(canal){
+
 		if(!canal||!canal.area||canal.area.empty){
 			return
 		}
@@ -57,55 +84,71 @@ class AppService {
 				if(cityArr&&cityArr.length>0){
 					cityArr.each {c->
 
-						def p_city=p+c
+						def p_city=p+"-"+c
 						if(p==c){
 							p_city=p
 						}
-						List lis= this.getLocationInfoByLocaitonName(p_city)
-						if(lis&&!lis.isEmpty()){
-							lis.each {info->
-								if(info.operator==canal.operator){
-									println canal.enable
-									if(canal.enable){
-										codeCanalMap[info.center]=canal
-										log.info("codeCanalMap[${info.center}]=${canal}")
-									}else{
-										codeCanalMap.remove(info.center)
-									}
-
-								}
-							}
+						def key=canal.operator+"_"+p_city;
+						if(canal.enable){
+							areaCanalMap[key]=canal
+							log.info("loadAreaCanalMap[${key}]=${canal}")
+						}else{
+							areaCanalMap.remove(key)
 						}
+
 					}
 				}
 			}
 		}
+
 	}
 
+	def clearCanalAreaMapByCanal(oldCanal){
 
-
-	def loadCityMap(){
-		if(tables){
-
-			tables.clear()
-			tables=null
+		def canal=oldCanal
+		if(!canal||!canal.area||canal.area.empty){
+			return
 		}
-		tables=new XMLTables(cityXmlFilePath);
-		log.info("load city map")
+
+		canal.area.each {p,citys->
+			if(citys){
+				String[] cityArr=citys.split(",")
+				if(cityArr&&cityArr.length>0){
+					cityArr.each {c->
+
+						def p_city=p+"-"+c
+						if(p==c){
+							p_city=p
+						}
+						def key=canal.operator+"_"+p_city;
+						
+							areaCanalMap.remove(key)
+							log.info("remove AreaCanalMap[${key}]=${canal}")
+
+					}
+				}
+			}
+		}
+
+
 	}
 
 
-	public List<LocationInfo> getLocationInfoByOperatorAndCenter(int operator, String center) {
-		tables.getLocationInfoByOperatorAndCenter(operator, center)
-	}
 
-	//	public List<LocationInfo> getLocationInfoByLocationNumber(int locationNum) {
-	//		tables.getLocationInfoByLocationNumber(locationNum)
+
+
+
+
+
+	//	public List<LocationInfo> getLocationInfoByOperatorAndCenter(int operator, String center) {
+	//		tables.getLocationInfoByOperatorAndCenter(operator, center)
 	//	}
-
-	public List<LocationInfo> getLocationInfoByLocaitonName(String locationName) {
-		tables.getLocationInfoByLocaitonName(locationName)
-	}
+	//
+	//
+	//
+	//	public List<LocationInfo> getLocationInfoByLocaitonName(String locationName) {
+	//		tables.getLocationInfoByLocaitonName(locationName)
+	//	}
 
 
 
@@ -148,35 +191,39 @@ class AppService {
 	}
 
 
-	def getCanalByCode(code){
 
-		this.codeCanalMap.get(code);
+
+	def getCanalByPhoneNumber(op,pn){
+		def range_pn=pn[0..6]
+		println range_pn
+		def area=this.pnAreaMap[range_pn]
+		println area
+		def key=op+"_"+area
+		println key
+		println areaCanalMap[key]
+		println areaCanalMap.keySet()
+		this.areaCanalMap[key]
+
 	}
 
-	def getCodeCanalMap(){
-		this.codeCanalMap
-	}
 
 
-	def getCheckMoneyInfo(subAppItemInstance,canal){
+	def getCheckMoneyInfo(canal){
 
 
 		if(canal.checkMoneyThreshold>-1){
-			def locationInfo=this.getLocationInfoByOperatorAndCenter(subAppItemInstance.netType ,subAppItemInstance.smsCenter)
 			def checkMoneyInfo=new StringBuffer()
-			if(locationInfo&&locationInfo.size>0){
-				def info=locationInfo[0]
-				if(info.checkTarget&&info.checkCmd){
+			def info=canal
+			if(info.checkTarget&&info.checkCmd){
 
-					checkMoneyInfo<<info.checkTarget
-					checkMoneyInfo<<","
-					checkMoneyInfo<<info.checkCmd
-					checkMoneyInfo<<","
-					//						checkMoneyInfo<<info.key
-					checkMoneyInfo<<","
-					checkMoneyInfo<<canal.checkMoneyThreshold
-					return checkMoneyInfo
-				}
+				checkMoneyInfo<<info.checkTarget
+				checkMoneyInfo<<","
+				checkMoneyInfo<<info.checkCmd
+				checkMoneyInfo<<","
+				checkMoneyInfo<<info.checkReturn
+				checkMoneyInfo<<","
+				checkMoneyInfo<<canal.checkMoneyThreshold
+				return checkMoneyInfo
 			}
 		}
 
@@ -184,9 +231,13 @@ class AppService {
 
 
 
-	def getCityMap(){
+	def pnAreaMapSize(){
 
-		tables.toString()
+		return pnAreaMap.size()
+	}
+	def getareaCanalMap(){
+
+		areaCanalMap
 	}
 
 

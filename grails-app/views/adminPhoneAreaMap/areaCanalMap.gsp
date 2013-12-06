@@ -14,23 +14,44 @@
 		<ul>
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message
 						code="default.home.label" /></a></li>
-			<li><g:link class="create" action="load"
-					onclick="return confirm('将重新扫描文件，是否执行？');">执行加载</g:link></li>
+			<li><g:link class="create" action="loadAreaCanalMap"
+					onclick="return confirm('将重新加载所有已配置通道，是否执行？');">重新加载所有已配置通道</g:link></li>
 
 		</ul>
 	</div>
 	<h1>
-		CITY MAP From XML
+		代码通道映射图
 	</h1>
-		
-	<div id="list-cityMap" class="content scaffold-list" role="main">
-
 		<g:if test="${flash.message}">
 			<div class="message" role="status">
 				${flash.message}
 			</div>
 		</g:if>
-		${result }
+		
+	<div id="list-cityMap" class="content scaffold-list" role="main">
+
+		
+		
+		<table>
+				<thead>
+					<tr>
+					<th>地区</th>
+					<th>渠道</th>
+					</tr>
+				</thead>
+				<tbody>
+				<g:each in="${m}" status="i" var="item">
+					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<td>${item.key}</td>
+					
+						<td>${item.value}</td>
+					
+						
+					
+					</tr>
+				</g:each>
+				</tbody>
+			</table>
 
 	</div>
 </body>

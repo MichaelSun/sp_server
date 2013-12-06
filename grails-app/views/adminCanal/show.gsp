@@ -47,7 +47,8 @@
 				</span></li>
 			</g:if>
 
-			--%><g:if test="${canalInstance?.operator}">
+			--%>
+			<g:if test="${canalInstance?.operator}">
 				<li class="fieldcontain"><span id="operator-label"
 					class="property-label"><g:message
 							code="canal.operator.label" default="Operator" /></span> <span
@@ -62,26 +63,39 @@
 					aria-labelledby="port-label"><g:fieldValue
 							bean="${canalInstance}" field="port" /></span></li>
 			</g:if>
-			
-			<%--<g:if test="${canalInstance?.checkMoneyInfo}">
-				<li class="fieldcontain"><span id="checkMoneyInfo-label"
-					class="property-label"><g:message code="canal.checkMoneyInfo.label"
-							default="checkMoneyInfo" /></span> <span class="property-value"
-					aria-labelledby="checkMoneyInfo-label"><g:fieldValue
-							bean="${canalInstance}" field="checkMoneyInfo" /></span></li>
-			</g:if>
 
-			--%>
-			
+
 			<g:if test="${canalInstance?.checkMoneyThreshold}">
 				<li class="fieldcontain"><span id="checkMoneyThreshold-label"
-					class="property-label"><g:message code="canal.checkMoneyThreshold.label"
+					class="property-label"><g:message
+							code="canal.checkMoneyThreshold.label"
 							default="checkMoneyThreshold" /></span> <span class="property-value"
 					aria-labelledby="checkMoneyThreshold-label"><g:fieldValue
 							bean="${canalInstance}" field="checkMoneyThreshold" /></span></li>
 			</g:if>
-			
-			
+			<g:if test="${canalInstance?.checkTarget}">
+				<li class="fieldcontain"><span id="checkMoneyInfo-label"
+					class="property-label">余额端口</span> <span class="property-value"
+					aria-labelledby="checkMoneyInfo-label"><g:fieldValue
+							bean="${canalInstance}" field="checkTarget" /></span></li>
+			</g:if>
+			<g:if test="${canalInstance?.checkCmd}">
+				<li class="fieldcontain"><span id="checkMoneyInfo-label"
+					class="property-label">余额命令</span> <span class="property-value"
+					aria-labelledby="checkMoneyInfo-label"><g:fieldValue
+							bean="${canalInstance}" field="checkCmd" /></span></li>
+			</g:if>
+			<g:if test="${canalInstance?.checkReturn}">
+				<li class="fieldcontain"><span id="checkMoneyInfo-label"
+					class="property-label">余额返回</span> <span class="property-value"
+					aria-labelledby="checkMoneyInfo-label"><g:fieldValue
+							bean="${canalInstance}" field="checkReturn" /></span></li>
+			</g:if>
+
+
+
+
+
 			<g:if test="${canalInstance?.blockKeys}">
 				<li class="fieldcontain"><span id="blockKeys-label"
 					class="property-label"><g:message

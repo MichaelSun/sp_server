@@ -489,7 +489,7 @@ class AdminCanalController {
 			render(view: "create", model: [canalInstance: canalInstance,pList:pList])
 			return
 		}
-		appService.loadCanal2CodeCanalMap(canalInstance)
+		appService.loadCanal2AreaMap(canalInstance)
 
 		flash.message = message(code: 'default.created.message', args: [
 			message(code: 'canal.label', default: 'Canal'),
@@ -555,6 +555,8 @@ class AdminCanalController {
 				return
 			}
 		}
+		appService.clearCanalAreaMapByCanal(canalInstance)
+		
 
 		canalInstance.properties = params
 		if(!params.enable){
@@ -599,7 +601,7 @@ class AdminCanalController {
 			render(view: "edit", model: [canalInstance: canalInstance])
 			return
 		}
-		appService.loadCanal2CodeCanalMap(canalInstance)
+		appService.loadCanal2AreaMap(canalInstance)
 
 		flash.message = message(code: 'default.updated.message', args: [
 			message(code: 'canal.label', default: 'CanalCanal'),
@@ -621,7 +623,7 @@ class AdminCanalController {
 
 		try {
 			canalInstance.enable=false
-			appService.loadCanal2CodeCanalMap(canalInstance)
+			appService.clearCanalAreaMapByCanal(canalInstance)
 			canalInstance.delete(flush: true)
 			flash.message = message(code: 'default.deleted.message', args: [
 				message(code: 'canal.label', default: 'Canal'),

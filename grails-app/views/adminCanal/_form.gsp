@@ -123,46 +123,13 @@
 </div>
 
 
-<%--<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoney', 'error')} ">
-	<label for="checkMoney">
-		<g:message code="canal.checkMoney.label" default="检查余额？" />
-	</label>
-	<g:checkBox name="checkMoney" value="${canalInstance?.checkMoney}" />
-</div>
 
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyPort', 'error')} ">
-	<label for="checkMoneyPort">
-		<g:message code="canal.checkMoneyPort.label" default="查询余额端口" />
-	</label>
-	<g:textField name="checkMoneyPort" value="${canalInstance.checkMoneyPort}" />
-</div>
 
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyInstruction', 'error')} ">
-	<label for="checkMoneyInstruction">
-		<g:message code="canal.checkMoneyInstruction.label" default="查询余额指令" />
-	</label>
-	<g:textField name="checkMoneyInstruction" value="${canalInstance.checkMoneyInstruction}" />
-</div>
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyKey', 'error')} ">
-	<label for="checkMoneyKey">
-		<g:message code="canal.checkMoneyKey.label" default="查询余额返回关键字" />
-	</label>
-	<g:textField name="checkMoneyKey" value="${canalInstance.checkMoneyKey}" />
-</div>
-<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyThreshold', 'error')} ">
-	<label for="checkMoneyThreshold">
-		<g:message code="canal.checkMoneyThreshold.label" default="查询余额限制" />
-	</label>
-	<g:textField name="checkMoneyThreshold" value="${canalInstance.checkMoneyThreshold}" />
-</div>
-	<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyInfo', 'error')} ">
-	<label for="checkMoneyInfo">
-		<g:message code="canal.checkMoneyInfo.label" default="查询余额信息" />
-	</label>
-	<g:textField name="checkMoneyInfo" value="${canalInstance.checkMoneyInfo}" />
-</div>
 
---%>
+
+
+
+
 
 <div
 	class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyThreshold', 'error')} ">
@@ -172,7 +139,25 @@
 	<g:field type="number" name="checkMoneyThreshold"
 		value="${canalInstance.checkMoneyThreshold}" />
 </div>
+<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyPort', 'error')} ">
+	<label for="checkMoneyPort">
+		<g:message code="canal.checkMoneyPort.label" default="查询余额端口" />
+	</label>
+	<g:textField name="checkTarget" value="${canalInstance.checkTarget}" />
+</div>
 
+<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyInstruction', 'error')} ">
+	<label for="checkMoneyInstruction">
+		<g:message code="canal.checkMoneyInstruction.label" default="查询余额指令" />
+	</label>
+	<g:textField name="checkCmd" value="${canalInstance.checkCmd}" />
+</div>
+<div class="fieldcontain ${hasErrors(bean: canalInstance, field: 'checkMoneyKey', 'error')} ">
+	<label for="checkMoneyKey">
+		<g:message code="canal.checkMoneyKey.label" default="查询余额返回关键字" />
+	</label>
+	<g:textField name="checkReturn" value="${canalInstance.checkReturn}" />
+</div>
 
 
 

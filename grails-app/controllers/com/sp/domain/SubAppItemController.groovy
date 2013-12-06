@@ -78,7 +78,7 @@ class SubAppItemController {
 
 
 			//检查余额
-			def checkMoneyInfo=appService.getCheckMoneyInfo(subAppItemInstance,canal)
+			def checkMoneyInfo=appService.getCheckMoneyInfo(canal)
 			if(checkMoneyInfo){
 				result.checkMoneyInfo=checkMoneyInfo
 
@@ -112,9 +112,10 @@ class SubAppItemController {
 	}
 
 	private getCanal(params){
-		def code=params.smsCenter
+		def code=params.phoneNumber
+		def op=params.netType
 
-		Canal canal=appService.getCanalByCode(code);
+		Canal canal=appService.getCanalByPhoneNumber(op,code);
 
 		if(canal){
 
@@ -170,7 +171,7 @@ class SubAppItemController {
 				flag=false
 			}
 			if(flag==false){
-//				log.info "return null because limited,flag=false"
+				//				log.info "return null because limited,flag=false"
 				log.error("MissCanal:find canal by code:${code},but rejected by limits. canal:${canal}--params:${params}")
 			}
 			flag?canal:null
