@@ -59,7 +59,20 @@
 						<g:datePicker name="ceDate" value="${params.ceDate}"
 							noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
 					</div>
+					<div class="fieldcontain">
 
+						<label for="sdate">访问时间起始 </label>
+
+						<g:datePicker name="vsDate" value="${params.vsDate}"
+							noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+					</div>
+					<div class="fieldcontain">
+
+						<label for="sdate">访问时间结束 </label>
+
+						<g:datePicker name="veDate" value="${params.veDate}"
+							noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
+					</div>
 
 					<div class="fieldcontain">
 						<label for="netType"> netType </label>
@@ -168,7 +181,7 @@
 							<td><g:formatDate date="${subAppItemInstance.lastUpdated}"
 									format="yyyy/MM/dd hh:mm:ss" /></td>
 							<td>
-								${fieldValue(bean: subAppItemInstance, field: "version")}
+								${subAppItemInstance.version+1}
 							</td>
 							<td>
 								${fieldValue(bean: subAppItemInstance, field: "error")}

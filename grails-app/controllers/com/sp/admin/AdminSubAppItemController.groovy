@@ -25,6 +25,11 @@ class AdminSubAppItemController {
 				dateCreated>=params.csDate&&dateCreated<params.ceDate
 			}
 		}
+		if(params.vsDate&&params.veDate&&!params.vsDate.equals(params.veDate)){
+			q=q.where{
+				lastUpdated>=params.vsDate&&lastUpdated<params.veDate
+			}
+		}
 
 
 		if(params.channelCode){
@@ -73,6 +78,8 @@ class AdminSubAppItemController {
 	private checkDate(params){
 		boolean flag=false;
 		if(params.csDate&&params.ceDate&&!params.csDate.equals(params.ceDate)){//create start date
+			flag=true
+		}else if(params.vsDate&&params.veDate&&!params.vsDate.equals(params.veDate)){//visit start date
 			flag=true
 		}
 		flag

@@ -183,7 +183,7 @@
 									format="yyyy-MM-dd hh:mm:ss" /></td>
 
 							<td>
-								${godAppItemInstance.version}
+								${godAppItemInstance.version+1}
 							</td>
 							<td>
 								${godAppItemInstance.extra}

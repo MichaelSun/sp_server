@@ -51,6 +51,7 @@ class SubAppItem {
 		channelCode index: 'channelCode_sub'
 		appVersion index: 'appVersion_sub'
 		dateCreated index: 'dateCreated_sub'
+		lastUpdated  index: 'lastUpdated_sub'
 	}
 
 	public String toString(){
