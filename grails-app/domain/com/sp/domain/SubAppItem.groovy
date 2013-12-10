@@ -12,7 +12,7 @@ class SubAppItem {
 	String appVersion
 	String name
 	String serialNumber
-	String smsCenter
+//	String smsCenter
 	//	int area//省市前三位省，后三位市
 	String phoneType
 	String osVersion

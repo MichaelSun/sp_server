@@ -195,13 +195,11 @@ class AppService {
 
 	def getCanalByPhoneNumber(op,pn){
 		def range_pn=pn[0..6]
-		println range_pn
 		def area=this.pnAreaMap[range_pn]
-		println area
 		def key=op+"_"+area
-		println key
-		println areaCanalMap[key]
-		println areaCanalMap.keySet()
+//		key=key.trim()
+		
+		
 		this.areaCanalMap[key]
 
 	}
