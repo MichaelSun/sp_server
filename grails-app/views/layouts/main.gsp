@@ -159,6 +159,9 @@ p {
 			<li><g:link controller="adminPhoneAreaMap" action="index">
 					号段表载入
 				</g:link></li>
+			<li><g:link controller="adminTools" action="i2n">
+					imei-号码表载入
+				</g:link></li>
 			<li><g:link controller="adminPhoneAreaMap" action="areaCanalMap">
 					通道映射图
 				</g:link></li>

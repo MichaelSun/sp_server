@@ -16,7 +16,6 @@ class AdminPhoneAreaMapController {
 
 	def index(){
 		def result=appService.pnAreaMapSize()
-		println result
 		[result:result]
 	}
 	

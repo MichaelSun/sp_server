@@ -27,6 +27,10 @@ class UrlMappings {
 		
 		
 		"/sais/"(controller: "subAppItem", action: "save")
+		//imei到pn
+		"/tools/i2n/$imei"(controller: "tools", action: "i2n")
+		
+		
 		
 		"/statDailyChannelActive/$code"(controller: "statDailyChannelActive", action: "codeList")
 		"/adminDailyChannelActive/$code"(controller: "adminDailyChannelActive", action: "list")

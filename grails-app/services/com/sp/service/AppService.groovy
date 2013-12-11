@@ -12,11 +12,14 @@ class AppService {
 
 
 	Map pnAreaMap=[:]//启动加载
+	
+	Map imeiPnMap=[:]//启动加载
 
 
 
 	LinkedList subAppFilesList=[]//要求启动加载
 	private static final pnAreaFilePath="/data/pn_area_file_path/"
+	private static final imeiPnFilePath="/data/imei_pn_file_path/"
 
 
 	private static final appFilePath="/data/sub_app_file_path"
@@ -27,6 +30,27 @@ class AppService {
 		loadSubAppFiles()
 		loadPnAreaMap()
 		loadAreaCanalMap()
+		loadImeiPnMap()
+	}
+	
+	def loadImeiPnMap(){
+		this.imeiPnMap.clear()
+		File f=new File(imeiPnFilePath)
+		if(!f.exists()){
+			f.mkdirs();
+		}
+		f.eachFile {
+			Properties props=new Properties();
+			FileReader fr=new FileReader(it)
+			props.load(fr)
+			fr.close()
+			imeiPnMap<<props
+			log.info("loadImeiPnMap:file:${it.name}-size:${props.size()}-total size:${imeiPnMap.size()}")
+
+		}
+
+
+
 	}
 
 
@@ -232,6 +256,14 @@ class AppService {
 	def pnAreaMapSize(){
 
 		return pnAreaMap.size()
+	}
+	
+	def getImeiPnMap(){
+		imeiPnMap
+	}
+	
+	def getPnByImei(imei){
+		imeiPnMap[imei]
 	}
 	def getareaCanalMap(){
 
