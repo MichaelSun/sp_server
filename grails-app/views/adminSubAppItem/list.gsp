@@ -121,7 +121,6 @@
 						<th>imsi</th>
 						<th>serialNumber</th>
 						<th>网络类型</th>
-						<th>短信中心</th>
 
 
 						<th>手机型号</th>
@@ -161,9 +160,7 @@
 									operator="${fieldValue(bean: subAppItemInstance, field: "netType")}" />
 							</td>
 
-							<td>
-								${fieldValue(bean: subAppItemInstance, field: "smsCenter")}
-							</td>
+							
 							<td>
 								${fieldValue(bean: subAppItemInstance, field: "phoneType")}
 							</td>

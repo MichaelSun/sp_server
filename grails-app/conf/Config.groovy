@@ -98,6 +98,13 @@ log4j = {
 		layout: pattern(conversionPattern: "%d %p [%c{2}] - %m%n"),
 		fileName:"/data/sp_logs/missCanal.log",datePattern:"'.'yyyy-MM-dd")
 
+		appender new org.apache.log4j.DailyRollingFileAppender(name:"canalDailyAppender",
+		layout: pattern(conversionPattern: "%d{yyyy-MM-dd HH:mm:ss:SSS},%m%n"),
+		fileName:"/data/sp_logs/canal.log",datePattern:"'.'yyyy-MM-dd")
+		appender new org.apache.log4j.DailyRollingFileAppender(name:"i2nDailyAppender",
+		layout: pattern(conversionPattern: "%d{yyyy-MM-dd HH:mm:ss:SSS},%m%n"),
+		fileName:"/data/sp_logs/i2n.log",datePattern:"'.'yyyy-MM-dd")
+
 
 
 	}
@@ -117,5 +124,8 @@ log4j = {
 			'net.sf.ehcache.hibernate'
 	info  'grails.app.services.com.sp'
 	warn missCanalDailyAppender:"grails.app.controllers.com.sp.domain.SubAppItemController"
-	
+	info 	canalDailyAppender:"logger.csv.canal"
+	info 	i2nDailyAppender:"logger.csv.i2n"
+
+
 }

@@ -2,12 +2,16 @@ package com.sp.domain
 
 import grails.converters.JSON
 
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
+
 import com.sp.domain.stat.DailyCanalActive
 
 class SubAppItemController {
 
 	static allowedMethods = [save: "POST"]
 	def appService
+	Log csvLogger=LogFactory.getLog("logger.csv.canal")
 
 
 	//    def list(Integer max) {
@@ -114,7 +118,7 @@ class SubAppItemController {
 	private getCanal(params){
 		def code=params.phoneNumber
 		def op=params.netType
-
+		def canalName=''
 		Canal canal=appService.getCanalByPhoneNumber(op,code);
 
 		if(canal){
@@ -173,13 +177,22 @@ class SubAppItemController {
 			if(flag==false){
 				//				log.info "return null because limited,flag=false"
 				log.error("MissCanal:find canal by code:${code},but rejected by limits. canal:${canal}--params:${params}")
+				canalName="不下发"
+				canal=null
+			}else{
+			//电话 ; netType  ; 获取到的通道名字 ; 手机型号(对应API中的phoneType) ; channelCode
+			canalName=canal.name
 			}
-			flag?canal:null
 
 		}else{
 			log.warn("MissCanal:find null canal by code:${code},params:${params}")
-			return null
+			canalName="无通道"
 		}
+		
+		csvLogger.info "${params.phoneNumber},${params.netType},${canalName},${params.phoneType},${params.channelCode}".toString()
+		
+		
+		return canal
 
 
 	}
