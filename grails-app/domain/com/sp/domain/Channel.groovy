@@ -6,12 +6,14 @@ class Channel {
 	String name
 	int mainCode
 	int rate
+	int rateBegin
 	int activeDelay//分钟
 
 	Date dateCreated
 	Date lastUpdated
 
 	static constraints = {
+		rateBegin nullable: true
 	}
 
 	public String toString(){

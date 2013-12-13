@@ -6,6 +6,9 @@ import grails.converters.JSON
 
 class GodAppItemController {
 
+	//warn:
+	//getChannelByCode这里有三处都会用到，择机可以优化为之查询一次db,或者打开grails  ormapping 二级缓存。
+
 	def appService
 
 	static allowedMethods = [save: "POST",activate:"POST"]
@@ -41,10 +44,17 @@ class GodAppItemController {
 		godAppItemInstance.downUrl=subApp.url
 		godAppItemInstance.subAppName=subApp.subAppName
 		if (godAppItemInstance.save(flush: true)) {
-			int activeDelay=getActiveDelayByChannelCode(godAppItemInstance.channelCode)
+			int activeDelay=checkRateBegin(godAppItemInstance);
+			if(activeDelay==1){//超过了设置量，可以激活，否则下发-1
+
+				activeDelay=getActiveDelayByChannelCode(godAppItemInstance.channelCode)
+			}
 			//			render (godAppItemInstance.properties) as JSON
 			def result=[activeDelay:activeDelay]
-			result<<subApp
+			if(activeDelay>0){
+
+				result<<subApp
+			}
 			render result as JSON
 		}else{
 			[result:'save error']
@@ -53,6 +63,19 @@ class GodAppItemController {
 
 
 
+
+	}
+
+	private checkRateBegin(godAppItemInstance){
+		def chn=getChannelByCode(godAppItemInstance.channelCode)
+		if(chn.rateBegin>0){
+			def l=GodAppItem.findAllByChannelCodeAndIdLessThanEquals(godAppItemInstance.channelCode,godAppItemInstance.id,[max: chn.rateBegin])
+			if(l&&l.size<chn.rateBegin){//不激活
+				return -1
+			}
+		}
+
+		return 1
 
 	}
 

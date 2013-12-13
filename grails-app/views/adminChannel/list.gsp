@@ -42,6 +42,7 @@
 					<g:sortableColumn property="rate"
 						title="${message(code: 'channel.rate.label', default: 'Rate')}" />
 					<th>激活延迟（分钟）</th>
+					<th>rate生效点</th>
 
 					<g:sortableColumn property="dateCreated"
 						title="${message(code: 'channel.dateCreated.label', default: 'Date Created')}" />
@@ -71,6 +72,9 @@
 						</td>
 						<td>
 							${channelInstance.activeDelay}
+						</td>
+						<td>
+							${channelInstance.rateBegin}
 						</td>
 
 						<td>

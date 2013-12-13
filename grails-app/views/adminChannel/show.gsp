@@ -58,6 +58,15 @@
 					
 				</li>
 				</g:if>
+				
+				<g:if test="${channelInstance?.rateBegin}">
+				<li class="fieldcontain">
+					<span id="activeDelay-label" class="property-label"><g:message code="channel.rateBegin.label" default="rateBegin" /></span>
+					
+						<span class="property-value" aria-labelledby="rateBegin-label"><g:fieldValue bean="${channelInstance}" field="rateBegin"/></span>
+					
+				</li>
+				</g:if>
 			
 				
 				<g:if test="${channelInstance?.dateCreated}">

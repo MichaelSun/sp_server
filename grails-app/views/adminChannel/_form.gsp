@@ -34,6 +34,13 @@
 	</label>
 	<g:field name="activeDelay" type="number" value="${channelInstance.activeDelay}" required=""/>
 </div>
+<div class="fieldcontain ${hasErrors(bean: channelInstance, field: 'rateBegin', 'error')} required">
+	<label for="rateBegin">
+		rateBegin
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="rateBegin" type="number" value="${channelInstance.rateBegin}" required=""/>
+</div>
 
 
 
