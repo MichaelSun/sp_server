@@ -70,7 +70,7 @@ class AdminGodAppItemController {
 
 		params.sort='id'
 		params.order='desc'
-		params.max = Math.min(max ?: 10, 100)
+		params.max = Math.min(max ?: 10, 1000)
 		def result=q.list(params)
 		[godAppItemInstanceList: result]
 	}
