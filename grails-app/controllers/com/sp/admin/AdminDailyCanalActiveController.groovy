@@ -10,7 +10,7 @@ class AdminDailyCanalActiveController {
 
 
 	def list(String canalName,Integer max) {
-		params.max = Math.min(max ?: 10, 1000)
+		params.max = Math.min(max ?: 5000, 5000)
 		Calendar c=Calendar.getInstance();
 		if(!params.sdate){
 			c.set(Calendar.DAY_OF_MONTH,1);

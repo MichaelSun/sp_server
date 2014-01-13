@@ -15,7 +15,7 @@ class StatDailyChannelActiveController {
 
 	def codeList(Integer code,Integer max) {
 
-		params.max = Math.min(max ?: 10, 1000)
+		params.max = Math.min(max ?: 35, 1000)
 		Calendar c=Calendar.getInstance();
 		if(!params.sdate){
 			c.set(Calendar.DAY_OF_MONTH,1);
