@@ -30,7 +30,7 @@
 				${flash.message}
 			</div>
 		</g:if>
-		${result }
+		${result}
 
 	</div>
 </body>
