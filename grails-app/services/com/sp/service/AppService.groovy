@@ -67,7 +67,6 @@ class AppService {
 			fr.close()
 			pnAreaMap<<props
 			log.info("loadPnAreaMap:file:${it.name}-size:${props.size()}-total size:${pnAreaMap.size()}")
-
 		}
 
 
@@ -79,12 +78,12 @@ class AppService {
 	 * 全部加载短信中心代码到通道的映射
 	 * @return
 	 */
-	def loadAreaCanalMap(){
-		if(!this.subAppFilesList||subAppFilesList.size()==0){
+	def loadAreaCanalMap() {
+		if(!this.subAppFilesList || subAppFilesList.size()==0){
 			this.loadSubAppFiles();
 		}
 		this.areaCanalMap.clear()
-		def canalList=Canal.list()
+		def canalList = Canal.list()
 		canalList.each {Canal canal->
 			loadCanal2AreaMap(canal);
 		}
@@ -97,7 +96,6 @@ class AppService {
 	 * @return
 	 */
 	def loadCanal2AreaMap(canal){
-
 		if(!canal||!canal.area||canal.area.empty){
 			return
 		}
@@ -217,15 +215,16 @@ class AppService {
 
 
 
-	def getCanalByPhoneNumber(op,pn){
+	def getCanalByPhoneNumber(op,pn) {
 		def range_pn=pn[0..6]
-		def area=this.pnAreaMap[range_pn]
+		def area = this.pnAreaMap[range_pn]
 		def key=op+"_"+area
 //		key=key.trim()
+		def ret = areaCanalMap[key]
+//		log.info("areaCanalMap : ${areaCanalMap}")
+		log.info("getCanalByPhoneNumber, key : ${key} and find result : ${ret}, pnAreaMap find : ${area} for phone ${pn}")
 		
-		
-		this.areaCanalMap[key]
-
+		return ret
 	}
 
 
