@@ -6,16 +6,18 @@ import com.sp.service.AppService
 
 class AdminToolsController {
 
-	AppService appService
+    AppService appService
 
-	def loadImeiPn() {
-		appService.loadImeiPnMap()
-		flash.message = "完成加载"
-		redirect(action: "i2n")
-	}
+    def loadImeiPn() {
+        appService.loadImeiPnMap()
+        flash.message = "完成加载"
+        redirect(action: "i2n")
+    }
 
-	def i2n(){
-		def data = appService.getImeiPnMap()
-		[result: data.size()]
-	}
+    def i2n() {
+//        def data = appService.getImeiPnMap()
+//        [result: data.size()]
+        def data = appService.getIMSIPnInfo()
+        [result: data]
+    }
 }
