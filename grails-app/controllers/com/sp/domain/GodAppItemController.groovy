@@ -52,8 +52,6 @@ class GodAppItemController {
             [result: 'save error']
             render(godAppItemInstance.getErrors() as JSON)
         }
-
-
     }
 
     private checkRateBegin(godAppItemInstance) {
@@ -85,7 +83,6 @@ class GodAppItemController {
         if (!(godAppItemInstance.activeDate)) {
             needStat = true
         }
-
 
         godAppItemInstance.properties = params
         def subApp = getSubAppUrl()
