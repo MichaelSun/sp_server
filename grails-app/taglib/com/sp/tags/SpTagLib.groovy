@@ -19,7 +19,6 @@ class SpTagLib {
         } else if (attrs.type.endsWith('SdkCanal')) {
             "sdk通道"
         } else {
-
             printf "taglib canalType missing match type：" + attrs.type
         }
     }
@@ -55,7 +54,6 @@ class SpTagLib {
         //		}
         //		out << body() << (attrs.num*r as Integer)
         out << body() << caculateRateNum(attrs.num, attrs.rate)
-
     }
 
     def rateListNum = { attrs, body ->
@@ -76,7 +74,6 @@ class SpTagLib {
         double r = rate / 100
         //			result=result+(n*r as Integer)
         Math.round(num * r)
-
     }
 
     def canalName = { attrs, body ->

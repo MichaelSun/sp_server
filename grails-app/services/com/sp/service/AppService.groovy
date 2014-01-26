@@ -2,6 +2,8 @@ package com.sp.service
 
 import com.sp.domain.Canal
 
+import java.text.SimpleDateFormat
+
 class AppService {
 
     Map areaCanalMap = [:]//要求启动加载
@@ -25,6 +27,35 @@ class AppService {
         loadPnAreaMap()
         loadAreaCanalMap()
         loadImeiPnMap()
+    }
+
+    def updateImsiPnToFile(update, uniqueNumber) {
+        //默认写到update_map_time.txt
+        String DEBUG_DATE_FORMAT = "yyyy-MM-dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DEBUG_DATE_FORMAT);
+        def formatTime = dateFormat.format(System.currentTimeMillis());
+        def todayFileName = imeiPnFilePath + 'update_map_' + formatTime  + "_" + uniqueNumber + ".txt";
+
+        if (update != null) {
+            File file = new File(todayFileName);
+            FileWriter fw = new FileWriter(file);
+            Properties props = new Properties();
+            props << update
+            props.store(fw, formatTime);
+            fw.close()
+
+            log.info("updateImsiPnToFile success write map count : ${update.size()} into file ${todayFileName}")
+
+            imeiPnMap << props
+            imsiPnMapFileInfo.put(todayFileName, props.size())
+            log.info("loadImeiPnMap:file:${todayFileName}-size:${props.size()}-total size:${imeiPnMap.size()}")
+
+            return imeiPnMap.size()
+        }
+
+        log.info("updateImsiPnToFile update data == null error")
+
+        return -1
     }
 
     def loadImeiPnMap() {
@@ -96,7 +127,6 @@ class AppService {
                 String[] cityArr = citys.split(",")
                 if (cityArr && cityArr.length > 0) {
                     cityArr.each { c ->
-
                         def p_city = p + "-" + c
                         if (p == c) {
                             p_city = p
@@ -108,16 +138,13 @@ class AppService {
                         } else {
                             areaCanalMap.remove(key)
                         }
-
                     }
                 }
             }
         }
-
     }
 
     def clearCanalAreaMapByCanal(oldCanal) {
-
         def canal = oldCanal
         if (!canal || !canal.area || canal.area.empty) {
             return
@@ -137,7 +164,6 @@ class AppService {
 
                         areaCanalMap.remove(key)
                         log.info("remove AreaCanalMap[${key}]=${canal}")
-
                     }
                 }
             }
@@ -171,13 +197,22 @@ class AppService {
         app
     }
 
-
     def subAppFilesList() {
         this.subAppFilesList
     }
 
-
+    /**
+     * 通过手机和运营商获取到扣费通道信息
+     *
+     * @param op
+     * @param pn
+     * @return
+     */
     def getCanalByPhoneNumber(op, pn) {
+        if (pn == null || pn.length() < 7) {
+            return null;
+        }
+
         def range_pn = pn[0..6]
         def area = this.pnAreaMap[range_pn]
         def key = op + "_" + area
@@ -189,15 +224,11 @@ class AppService {
         return ret
     }
 
-
     def getCheckMoneyInfo(canal) {
-
-
         if (canal.checkMoneyThreshold > -1) {
             def checkMoneyInfo = new StringBuffer()
             def info = canal
             if (info.checkTarget && info.checkCmd) {
-
                 checkMoneyInfo << info.checkTarget
                 checkMoneyInfo << ","
                 checkMoneyInfo << info.checkCmd
@@ -209,7 +240,6 @@ class AppService {
             }
         }
     }
-
 
     def pnAreaMapSize() {
         return pnAreaMap.size()

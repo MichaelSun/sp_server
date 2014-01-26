@@ -98,11 +98,7 @@ class GodAppItemController {
             return
         } else {
             render(godAppItemInstance.getErrors() as JSON)
-
-
         }
-
-
     }
 
 

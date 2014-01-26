@@ -1,11 +1,11 @@
 import com.sp.service.AppService;
 
 class BootStrap {
-	AppService appService
+    AppService appService
 
     def init = { servletContext ->
-		appService.initAll()
-		
+        appService.initAll()
+
     }
     def destroy = {
     }

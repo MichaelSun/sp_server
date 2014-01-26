@@ -57,10 +57,10 @@ class Canal {
 	 */
 	int t
 
-
-	//////下发设置
 	/**
 	 * 每日下发次数限制，天
+     *
+     * 对于一个设备来说的
 	 */
 	Integer dayLimit
 	/**
@@ -69,6 +69,7 @@ class Canal {
 	Integer dayInterval
 	/**
 	 * 当天的间隔，分钟
+     * 这是对于一个设备来说的
 	 */
 	Integer timeDelay
 

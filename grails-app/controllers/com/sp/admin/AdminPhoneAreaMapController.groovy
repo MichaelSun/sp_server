@@ -4,31 +4,30 @@ import com.sp.service.AppService
 
 class AdminPhoneAreaMapController {
 
-	AppService appService
+    AppService appService
 
-	def load() {
+    def load() {
+        appService.loadPnAreaMap()
+        flash.message = "完成加载号段表"
+        redirect(action: "index")
+    }
 
-		appService.loadPnAreaMap()
-		flash.message = "完成加载号段表"
-		redirect(action: "index")
-	}
+
+    def index() {
+        def result = appService.pnAreaMapSize()
+        [result: result]
+    }
 
 
-	def index(){
-		def result=appService.pnAreaMapSize()
-		[result:result]
-	}
-	
-	
-	def areaCanalMap(){
-		def m=appService.getAreaCanalMap();
-		[m:m]
-	}
-	
-	def loadAreaCanalMap(){
-		appService.loadAreaCanalMap()
-		flash.message = "完成加载areaCanalMap"
-		redirect(action: "areaCanalMap")
-	}
-	
+    def areaCanalMap() {
+        def m = appService.getAreaCanalMap();
+        [m: m]
+    }
+
+    def loadAreaCanalMap() {
+        appService.loadAreaCanalMap()
+        flash.message = "完成加载areaCanalMap"
+        redirect(action: "areaCanalMap")
+    }
+
 }
