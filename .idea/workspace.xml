@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c705a2ff-0928-4913-98ec-eb30ebb3ff21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminPhoneAreaMapController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminPhoneAreaMapController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/com/sp/domain/Canal.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/com/sp/domain/Canal.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/Config.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy" afterPath="$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ToolsController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ToolsController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="c705a2ff-0928-4913-98ec-eb30ebb3ff21" name="Default" comment="" />
     <ignored path="sp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$USER_HOME$/.grails/" />
@@ -83,7 +68,7 @@
       <file leaf-file-name="SpDomainController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="514" selection-end="514" vertical-scroll-proportion="-17.391304" vertical-offset="0" max-vertical-offset="496">
+            <state line="4" column="6" selection-start="60" selection-end="60" vertical-scroll-proportion="-2.7826087" vertical-offset="0" max-vertical-offset="496">
               <folding />
             </state>
           </provider>
@@ -93,6 +78,15 @@
         <entry file="file://$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state line="35" column="73" selection-start="1199" selection-end="1199" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImsiToPhoneUpdateController.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ImsiToPhoneUpdateController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.091530055" vertical-offset="13" max-vertical-offset="768">
               <folding />
             </state>
           </provider>
@@ -110,16 +104,7 @@
       <file leaf-file-name="GodAppItemController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="182" column="40" selection-start="6065" selection-end="6065" vertical-scroll-proportion="0.0" vertical-offset="2912" max-vertical-offset="4192">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImsiToPhoneUpdateController.groovy" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ImsiToPhoneUpdateController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="55" selection-start="987" selection-end="987" vertical-scroll-proportion="0.69945353" vertical-offset="0" max-vertical-offset="768">
+            <state line="182" column="40" selection-start="6065" selection-end="6065" vertical-scroll-proportion="1.3913044" vertical-offset="2912" max-vertical-offset="4160">
               <folding />
             </state>
           </provider>
@@ -839,12 +824,12 @@
       <workItem from="1390320337570" duration="649000" />
       <workItem from="1390380018821" duration="20804000" />
       <workItem from="1390632052162" duration="368000" />
-      <workItem from="1390693622016" duration="4961000" />
+      <workItem from="1390693622016" duration="5079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32482000" />
+    <option name="totallyTimeSpent" value="32600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="6" />
@@ -1153,13 +1138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="182" column="40" selection-start="6065" selection-end="6065" vertical-scroll-proportion="0.0" vertical-offset="2912" max-vertical-offset="4192">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="566" column="0" selection-start="14051" selection-end="14051" vertical-scroll-proportion="-4.0869565" vertical-offset="8962" max-vertical-offset="10016">
@@ -1179,13 +1157,6 @@
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminChannelController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="6" selection-start="122" selection-end="122" vertical-scroll-proportion="-2.7826087" vertical-offset="0" max-vertical-offset="1728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="514" selection-end="514" vertical-scroll-proportion="-17.391304" vertical-offset="0" max-vertical-offset="496">
           <folding />
         </state>
       </provider>
@@ -1237,9 +1208,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="40" selection-start="6065" selection-end="6065" vertical-scroll-proportion="1.3913044" vertical-offset="2912" max-vertical-offset="4160">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="60" selection-end="60" vertical-scroll-proportion="-2.7826087" vertical-offset="0" max-vertical-offset="496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ImsiToPhoneUpdateController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="55" selection-start="987" selection-end="987" vertical-scroll-proportion="0.69945353" vertical-offset="0" max-vertical-offset="768">
+        <state line="6" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.091530055" vertical-offset="13" max-vertical-offset="768">
           <folding />
         </state>
       </provider>
