@@ -29,7 +29,7 @@
 				<li>
 					<fieldset class="form">
 						<g:datePicker name="sdate" value="${datePicker}"
-							noSelection="['':'-选择-']" precision="month" years="${2013..2020}" />
+							noSelection="['':'-选择-']" precision="day" years="${2013..2020}" />
 					</fieldset>
 				</li>
 				<li>

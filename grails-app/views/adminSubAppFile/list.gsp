@@ -34,7 +34,6 @@
 			<thead>
 				<tr>
 					<th>名称</th>
-
 				</tr>
 			</thead>
 			<tbody>

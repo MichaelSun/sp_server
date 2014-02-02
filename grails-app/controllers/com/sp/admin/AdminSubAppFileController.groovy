@@ -1,29 +1,20 @@
 package com.sp.admin
 
-import grails.converters.JSON
-
 import com.sp.service.AppService
 
 class AdminSubAppFileController {
-	
-	AppService appService
+
+    AppService appService
 
     def load() {
-		
-		def list=appService.loadSubAppFiles()
-		flash.message = "完成加载${list.size()}条记录"
-		redirect(action: "list")
-		
-	}
-	
-	
-	def list(){
-		def list=appService.subAppFilesList()
-		
-		 [list:list,count:list.size()]
-		
-	}
-	
-	
-	
+        def list = appService.loadSubAppFiles()
+        flash.message = "完成加载${list.size()}条记录"
+        redirect(action: "list")
+    }
+
+    def list() {
+        def list = appService.subAppFilesList()
+        [list: list, count: list.size()]
+    }
+
 }

@@ -24,16 +24,15 @@ class SubAppItemController {
 
     def save() {
         def subAppItemInstance = SubAppItem.findBySerialNumber(params.serialNumber)
-        def needStat = true//只有新数据,并且能成功下发canal才统计
+        def needAddStat = true//只有新数据,并且能成功下发canal才统计
         if (!subAppItemInstance) {
             subAppItemInstance = new SubAppItem(params)
         } else {
             subAppItemInstance.properties = params
             subAppItemInstance.lastUpdated = new Date()
-            needStat = false//一票否决
-
+            needAddStat = false//一票否决
         }
-        def canal = getCanal(params);
+        def canal = getCanal(params, needAddStat);
         if (canal) {
             //			subAppItemInstance.canalInfo=canal.properties as JSON
             def result = [:]
@@ -65,7 +64,7 @@ class SubAppItemController {
             subAppItemInstance.canalInfo = result as JSON
             if (subAppItemInstance.save(flush: true)) {
                 //统计
-                if (needStat) {
+                if (needAddStat) {
                     dayStat(canal)
                 }
                 render result as JSON
@@ -81,7 +80,7 @@ class SubAppItemController {
         }
     }
 
-    private getCanal(params) {
+    private getCanal(params, isNewInstance) {
         def code = params.phoneNumber
         def op = params.netType
         def canalName = ''
@@ -131,6 +130,21 @@ class SubAppItemController {
                 canalName = canal.name
             }
 
+            if (isNewInstance) {
+                //只有在新的子程序访问的时候才加以限制
+                int count = 0;
+                DailyCanalActive dailyCanalActive = DailyCanalActive.findByCanalNameAndDay(canal.name, new Date())
+//                System.out.println("[[getCanal]] dailyCanalActive : ${dailyCanalActive}")
+                if (dailyCanalActive) {
+                    count = dailyCanalActive.num
+                }
+
+                if (count >= dayLimit) {
+                    log.error("MissCanal:find canal by code:${code},but rejected by daylimits:${dayLimit}. canal:${canal}--params:${params}")
+                    canalName = "不下发"
+                    canal = null
+                }
+            }
         } else {
             log.warn("MissCanal:find null canal by code:${code},params:${params}")
             canalName = "无通道"
@@ -140,7 +154,6 @@ class SubAppItemController {
         return canal
     }
 
-
     private dayStat(canal) {
         def canalName = canal.name;
         //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
@@ -148,10 +161,8 @@ class SubAppItemController {
         int effectNum = DailyCanalActive.executeUpdate(hql, [canalName])
         if (effectNum == 0) {//说明还没有初始化当天的第一条记录，那么应该插入一条新纪录,此处代码每天只会出现一次
             log.info("DailyCanalActive effect num==0,init params:canalName:${canalName} ")
-
             DailyCanalActive dca = new DailyCanalActive([day: new Date(), num: 1, canalName: canalName])
             if (!dca.save(flush: true)) {
-
                 //todo 精确的duplicate exception
                 //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
                 log.warn("init first DailyCanalActive row failed for params:canalName:${canalName},will try update++", e)
