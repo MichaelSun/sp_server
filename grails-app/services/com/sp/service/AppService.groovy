@@ -29,25 +29,23 @@ class AppService {
         loadImeiPnMap()
     }
 
-    def updateImsiPnToFile(update, uniqueNumber) {
+    def updateImsiPnToFile(update, uniqueNumber, phoneType, time, append) {
         //默认写到update_map_time.txt
-        String DEBUG_DATE_FORMAT = "yyyy-MM-dd";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(DEBUG_DATE_FORMAT);
-        def formatTime = dateFormat.format(System.currentTimeMillis());
-        def todayFileName = imeiPnFilePath + 'update_map_' + formatTime  + "_" + uniqueNumber + ".txt";
+        def filename = 'update_map_' + time + "_" + uniqueNumber + "_" + phoneType + ".txt";
+        def todayFileName = imeiPnFilePath + filename;
 
         if (update != null) {
             File file = new File(todayFileName);
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file, append);
             Properties props = new Properties();
             props << update
-            props.store(fw, formatTime);
+            props.store(fw, time);
             fw.close()
 
             log.info("updateImsiPnToFile success write map count : ${update.size()} into file ${todayFileName}")
 
             imeiPnMap << props
-            imsiPnMapFileInfo.put(todayFileName, props.size())
+            imsiPnMapFileInfo.put(filename, props.size())
             log.info("loadImeiPnMap:file:${todayFileName}-size:${props.size()}-total size:${imeiPnMap.size()}")
 
             return imeiPnMap.size()

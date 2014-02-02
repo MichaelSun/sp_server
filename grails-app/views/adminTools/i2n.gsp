@@ -31,7 +31,24 @@
             ${flash.message}
         </div>
     </g:if>
-    ${result}
+%{--${result}--}%
+
+    <table>
+        <thead>
+        <tr>
+            <th>文件名</th>
+            <th>数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <g:each in="${result}" status="i" var="item">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>${item.key}</td>
+                <td>${item.value}</td>
+            </tr>
+        </g:each>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

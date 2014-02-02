@@ -74,7 +74,6 @@
 						<td><g:link controller="adminDailyCanalActive"
 								action="${canalInstance.name }">
 								${fieldValue(bean: canalInstance, field: "name")}
-
 							</g:link></td>
 						<td><sp:canalName
 								t="${fieldValue(bean: canalInstance, field: "t")}" /></td>

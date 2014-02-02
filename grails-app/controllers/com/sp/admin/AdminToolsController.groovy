@@ -1,7 +1,5 @@
 package com.sp.admin
 
-import grails.converters.JSON
-
 import com.sp.service.AppService
 
 class AdminToolsController {
