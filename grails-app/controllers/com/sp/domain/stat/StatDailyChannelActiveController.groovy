@@ -1,8 +1,5 @@
 package com.sp.domain.stat
 
-import org.apache.shiro.SecurityUtils
-import org.apache.shiro.subject.Subject
-
 class StatDailyChannelActiveController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

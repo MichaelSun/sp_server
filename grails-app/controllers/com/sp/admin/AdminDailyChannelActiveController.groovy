@@ -7,7 +7,6 @@ class AdminDailyChannelActiveController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def list(Integer code, Integer max) {
-
         params.max = Math.min(max ?: 5000, 5000)
         Calendar c = Calendar.getInstance();
         if (!params.sdate) {
@@ -25,6 +24,9 @@ class AdminDailyChannelActiveController {
         int endMonth = c.get(Calendar.MONTH) + 1;
         c.set(Calendar.MONTH, endMonth)
         Date enddate = c.getTime() - 1;
+
+//        def dataShow = DailyChannelActive.findAll();
+//        System.out.println("Date : " + params.sdate + " list : " + dataShow);
 
         String codeStr = code as String
         if (!code) {

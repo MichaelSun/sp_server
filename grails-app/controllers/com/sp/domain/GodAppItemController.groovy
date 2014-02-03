@@ -28,10 +28,13 @@ class GodAppItemController {
 
     def save() {
         def godAppItemInstance = GodAppItem.findBySerialNumber(params.serialNumber)
+        boolean shouldUpdate = false;
         if (!godAppItemInstance) {
             godAppItemInstance = new GodAppItem(params)
+            shouldUpdate = true;
         } else {
             godAppItemInstance.properties = params
+            shouldUpdate = false;
         }
 
         def subApp = getSubAppUrl()
@@ -42,11 +45,15 @@ class GodAppItemController {
             if (activeDelay == 1) {//超过了设置量，可以激活，否则下发-1
                 activeDelay = getActiveDelayByChannelCode(godAppItemInstance.channelCode)
             }
-            //			render (godAppItemInstance.properties) as JSON
             def result = [activeDelay: activeDelay]
             if (activeDelay > 0) {
                 result << subApp
             }
+
+            if (shouldUpdate) {
+                updateGodItemNum(godAppItemInstance)
+            }
+
             render result as JSON
         } else {
             [result: 'save error']
@@ -102,6 +109,31 @@ class GodAppItemController {
     }
 
 
+    private updateGodItemNum(godAppItemInstance) {
+        def code = godAppItemInstance.channelCode;
+        //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
+        int rate = getRateByChannelCode(code);
+        def hql = "update DailyChannelActive  set godItemNum=godItemNum+1 where channelCode=? and day= curdate()";
+        int effectNum = DailyChannelActive.executeUpdate(hql, [code])
+        if (effectNum == 0) {//说明还没有初始化当天的第一条记录，那么应该插入一条新纪录,此处代码每天只会出现一次
+            //def insertHql="insert into DailyChannelActive a (day,num,channelCode,rate)  values(curdate(),1,?,?)"
+            log.info("DailyChannelActive effect num==0,init params:code:${code} rate:${rate}")
+            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 0, channelCode: code, rate: rate, godItemNum: 1])
+            if (!dca.save(flush: true)) {
+                //todo 精确的duplicate exception
+                //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
+                log.warn("init first DailyChannelActive row failed for params:code:${code} rate:${rate},will try update++")
+                effectNum = DailyChannelActive.executeUpdate(hql, [rate, code])
+                //如果还是0，则打印出警告信息
+                if (effectNum == 0) {
+                    log.warn("DailyChannelActive update logic or env error for params:code:${code} rate:${rate}")
+                } else {
+                    log.info("DailyChannelActive update++ succucess for params:code:${code} rate:${rate}")
+                }
+            }
+        }
+    }
+
     private dayStat(godAppItemInstance) {
         def code = godAppItemInstance.channelCode;
         //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
@@ -112,13 +144,11 @@ class GodAppItemController {
             //def insertHql="insert into DailyChannelActive a (day,num,channelCode,rate)  values(curdate(),1,?,?)"
             log.info("DailyChannelActive effect num==0,init params:code:${code} rate:${rate}")
 
-
-            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 1, channelCode: code, rate: rate])
+            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 1, channelCode: code, rate: rate, godItemNum: 1])
             if (!dca.save(flush: true)) {
-
                 //todo 精确的duplicate exception
                 //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
-                log.warn("init first DailyChannelActive row failed for params:code:${code} rate:${rate},will try update++", e)
+                log.warn("init first DailyChannelActive row failed for params:code:${code} rate:${rate},will try update++")
                 effectNum = DailyChannelActive.executeUpdate(hql, [rate, code])
                 //如果还是0，则打印出警告信息
                 if (effectNum == 0) {
@@ -128,13 +158,9 @@ class GodAppItemController {
                 }
             }
         }
-
-
     }
 
     private getActiveDelayByChannelCode(channelCode) {
-
-
         def chn = getChannelByCode(channelCode)
         if (!chn || !chn.activeDelay) {
 
@@ -152,7 +178,6 @@ class GodAppItemController {
         String codeStr = channelCode as String
         if (codeStr.length() == 6) {
             channelCode = channelCode / 1000
-
         } else if (codeStr.length() == 3) {
 
         } else {
@@ -164,10 +189,8 @@ class GodAppItemController {
     }
 
     private getRateByChannelCode(channelCode) {
-
         def chn = getChannelByCode(channelCode)
         if (!chn || !chn.rate) {
-
             log.warn("can't find channel or rate by code:{channelCode},chn:{chn}")
         }
         def rate = 100

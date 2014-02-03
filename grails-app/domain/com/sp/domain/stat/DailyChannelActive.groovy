@@ -7,6 +7,8 @@ class DailyChannelActive {
 	Integer num
 	Integer rate
 
+    Integer godItemNum;
+
     static constraints = {
 		day unique:['channelCode']
     }

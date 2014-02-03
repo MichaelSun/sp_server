@@ -54,15 +54,13 @@
 			<thead>
 				<tr>
 					<th>序号</th>
-
-
 					<g:sortableColumn property="canalName"
-						title="${message(code: 'DailyCanalActive.canalName.label', default: 'canalName')}" />
+						title="${message(code: 'DailyCanalActive.canalName.label', default: '通道名称')}" />
 
 					<g:sortableColumn property="num"
-						title="${message(code: 'DailyCanalActive.num.label', default: 'Num')}" />
+						title="${message(code: 'DailyCanalActive.num.label', default: '数量')}" />
 					<g:sortableColumn property="day"
-						title="${message(code: 'DailyCanalActive.day.label', default: 'Day')}" />
+						title="${message(code: 'DailyCanalActive.day.label', default: '时间')}" />
 
 				</tr>
 			</thead>

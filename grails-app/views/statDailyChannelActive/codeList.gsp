@@ -65,13 +65,13 @@
 				<tr>
 
 					<g:sortableColumn property="day"
-						title="${message(code: 'dailyChannelActive.day.label', default: 'Day')}" />
+						title="${message(code: 'dailyChannelActive.day.label', default: '时间')}" />
 
 					<g:sortableColumn property="channelCode"
-						title="${message(code: 'dailyChannelActive.channelCode.label', default: 'Channel Code')}" />
+						title="${message(code: 'dailyChannelActive.channelCode.label', default: '渠道号')}" />
 
 					<g:sortableColumn property="num"
-						title="${message(code: 'dailyChannelActive.num.label', default: 'Num')}" />
+						title="${message(code: 'dailyChannelActive.num.label', default: '数量')}" />
 
 
 				</tr>

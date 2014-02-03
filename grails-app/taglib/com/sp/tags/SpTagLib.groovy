@@ -1,5 +1,7 @@
 package com.sp.tags
 
+import java.text.DecimalFormat
+
 class SpTagLib {
     static namespace = "sp"
 
@@ -54,6 +56,20 @@ class SpTagLib {
         //		}
         //		out << body() << (attrs.num*r as Integer)
         out << body() << caculateRateNum(attrs.num, attrs.rate)
+    }
+
+    def gToSRater = { attrs, body ->
+        def activeNum = attrs.num ?: 0
+        def godNum = attrs.godItemNum ?: 0
+
+        if (activeNum == 0 || godNum == 0) {
+            out << body() << "0.0%"
+        } else {
+            double rate = (activeNum * 1.0 / godNum) * 100;
+            DecimalFormat df = new DecimalFormat(".##");
+            String st = df.format(rate);
+            out << body() << st + "%"
+        }
     }
 
     def rateListNum = { attrs, body ->
