@@ -149,6 +149,10 @@ class GodAppItemController {
             channelActive.num += 1
             channelActive.rate = rate
             double r = rate / 100
+//            double numDoube = channelActive.num as Double
+//            if (numDoube > channelActive.rateNumber) {
+//                channelActive.rateNumber = channelActive.num
+//            }
             channelActive.rateNumber += r
         } else {
             channelActive = new DailyChannelActive()

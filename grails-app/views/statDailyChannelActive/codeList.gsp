@@ -94,7 +94,9 @@
                 <td>
                     %{--<sp:rater num="${dailyChannelActiveInstance.num}"--}%
                               %{--rate="${dailyChannelActiveInstance.rate}"></sp:rater>--}%
-                    <sp:roundRater rateNum="${dailyChannelActiveInstance.rateNumber}"></sp:roundRater>
+                    <sp:roundRater rateNum="${dailyChannelActiveInstance.rateNumber}"
+                                   num="${dailyChannelActiveInstance.num}"
+                                   rate="${dailyChannelActiveInstance.rate}"></sp:roundRater>
                 </td>
             </tr>
         </g:each>

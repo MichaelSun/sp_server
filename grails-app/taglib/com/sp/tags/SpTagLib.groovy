@@ -60,9 +60,10 @@ class SpTagLib {
 
     def roundRater = { attrs, body ->
         double rateNum = attrs.rateNum
+        long number = caculateRateNum(attrs.num, attrs.rate)
         int ret = Math.round(rateNum)
         if (ret == 0) {
-            ret = 1
+            ret = number
         }
 
         out << body() << ret
