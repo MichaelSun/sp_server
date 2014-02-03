@@ -65,8 +65,8 @@ class AdminChannelController {
         if (version != null) {
             if (channelInstance.version > version) {
                 channelInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'channel.label', default: 'Channel')] as Object[],
-                          "Another user has updated this Channel while you were editing")
+                        [message(code: 'channel.label', default: 'Channel')] as Object[],
+                        "Another user has updated this Channel while you were editing")
                 render(view: "edit", model: [channelInstance: channelInstance])
                 return
             }

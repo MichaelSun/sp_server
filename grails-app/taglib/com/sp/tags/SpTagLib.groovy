@@ -58,6 +58,22 @@ class SpTagLib {
         out << body() << caculateRateNum(attrs.num, attrs.rate)
     }
 
+    def roundRater = { attrs, body ->
+        double rateNum = attrs.rateNum
+        int ret = Math.round(rateNum)
+        if (ret == 0) {
+            ret = 1
+        }
+
+        out << body() << ret
+    }
+
+    def rateFormatStr = { attrs, body ->
+        def rate = attrs.rate
+
+        out << body() << (rate as String) + "%"
+    }
+
     def gToSRater = { attrs, body ->
         def activeNum = attrs.num ?: 0
         def godNum = attrs.godItemNum ?: 0

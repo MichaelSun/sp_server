@@ -92,13 +92,18 @@
                 <td>
                     ${fieldValue(bean: dailyChannelActiveInstance, field: "num")}
                 </td>
-                <td><sp:rater num="${dailyChannelActiveInstance.num}"
-                              rate="${dailyChannelActiveInstance.rate}"></sp:rater></td>
+                %{--<td><sp:rater num="${dailyChannelActiveInstance.num}"--}%
+                %{--rate="${dailyChannelActiveInstance.rate}"></sp:rater>--}%
+                %{--</td>--}%
                 <td>
-                    ${fieldValue(bean: dailyChannelActiveInstance, field: "rate")}
+                    <sp:roundRater rateNum="${dailyChannelActiveInstance.rateNumber}"></sp:roundRater>
+                </td>
+                <td>
+                    %{--${fieldValue(bean: dailyChannelActiveInstance, field: "rate")}--}%
+                    <sp:rateFormatStr rate="${dailyChannelActiveInstance.rate}"></sp:rateFormatStr>
                 </td>
                 %{--<td>--}%
-                    %{--${fieldValue(bean: dailyChannelActiveInstance, field: "godItemNum")}--}%
+                %{--${fieldValue(bean: dailyChannelActiveInstance, field: "godItemNum")}--}%
                 %{--</td>--}%
                 <td>
                     <sp:gToSRater num="${dailyChannelActiveInstance.num}"

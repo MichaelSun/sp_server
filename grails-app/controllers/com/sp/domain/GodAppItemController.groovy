@@ -4,6 +4,8 @@ import com.sp.domain.stat.DailyChannelActive;
 
 import grails.converters.JSON
 
+import java.text.SimpleDateFormat
+
 class GodAppItemController {
 
     //warn:
@@ -71,7 +73,6 @@ class GodAppItemController {
         }
 
         return 1
-
     }
 
     def activate(String serialNumber) {
@@ -118,7 +119,8 @@ class GodAppItemController {
         if (effectNum == 0) {//说明还没有初始化当天的第一条记录，那么应该插入一条新纪录,此处代码每天只会出现一次
             //def insertHql="insert into DailyChannelActive a (day,num,channelCode,rate)  values(curdate(),1,?,?)"
             log.info("DailyChannelActive effect num==0,init params:code:${code} rate:${rate}")
-            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 0, channelCode: code, rate: rate, godItemNum: 1])
+            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 0, channelCode: code, rate: rate
+                                            , godItemNum: 1, rateNumber: 0])
             if (!dca.save(flush: true)) {
                 //todo 精确的duplicate exception
                 //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
@@ -138,26 +140,53 @@ class GodAppItemController {
         def code = godAppItemInstance.channelCode;
         //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
         int rate = getRateByChannelCode(code);
-        def hql = "update DailyChannelActive  set num=num+1 where channelCode=? and day= curdate()";
-        int effectNum = DailyChannelActive.executeUpdate(hql, [code])
-        if (effectNum == 0) {//说明还没有初始化当天的第一条记录，那么应该插入一条新纪录,此处代码每天只会出现一次
-            //def insertHql="insert into DailyChannelActive a (day,num,channelCode,rate)  values(curdate(),1,?,?)"
-            log.info("DailyChannelActive effect num==0,init params:code:${code} rate:${rate}")
 
-            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 1, channelCode: code, rate: rate, godItemNum: 1])
-            if (!dca.save(flush: true)) {
-                //todo 精确的duplicate exception
-                //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
-                log.warn("init first DailyChannelActive row failed for params:code:${code} rate:${rate},will try update++")
-                effectNum = DailyChannelActive.executeUpdate(hql, [rate, code])
-                //如果还是0，则打印出警告信息
-                if (effectNum == 0) {
-                    log.warn("DailyChannelActive update logic or env error for params:code:${code} rate:${rate}")
-                } else {
-                    log.info("DailyChannelActive update++ succucess for params:code:${code} rate:${rate}")
-                }
-            }
+//        String DEBUG_DATE_FORMAT = "yyyy-MM-dd";
+//        SimpleDateFormat dateFormat = new SimpleDateFormat(DEBUG_DATE_FORMAT);
+//        day = dateFormat.format(System.currentTimeMillis());
+        DailyChannelActive channelActive = DailyChannelActive.findByChannelCodeAndDay(code, new Date())
+        if (channelActive) {
+            channelActive.num += 1
+            channelActive.rate = rate
+            double r = rate / 100
+            channelActive.rateNumber += r
+        } else {
+            channelActive = new DailyChannelActive()
+            channelActive.rate = rate
+            channelActive.num = 1;
+            double r = rate / 100
+            channelActive.rateNumber = r
+            channelActive.godItemNum = 1
+            channelActive.channelCode = code
+            channelActive.day = new Date()
         }
+
+        if (!channelActive.save(flush : true)) {
+            log.warn("save DailyChannelActive row failed for params:code:${code} rate:${rate}")
+        }
+
+
+
+//        def hql = "update DailyChannelActive  set num=num+1 where channelCode=? and day= curdate()";
+//        int effectNum = DailyChannelActive.executeUpdate(hql, [code])
+//        if (effectNum == 0) {//说明还没有初始化当天的第一条记录，那么应该插入一条新纪录,此处代码每天只会出现一次
+//            //def insertHql="insert into DailyChannelActive a (day,num,channelCode,rate)  values(curdate(),1,?,?)"
+//            log.info("DailyChannelActive effect num==0,init params:code:${code} rate:${rate}")
+//
+//            DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 1, channelCode: code, rate: rate, godItemNum: 1])
+//            if (!dca.save(flush: true)) {
+//                //todo 精确的duplicate exception
+//                //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
+//                log.warn("init first DailyChannelActive row failed for params:code:${code} rate:${rate},will try update++")
+//                effectNum = DailyChannelActive.executeUpdate(hql, [rate, code])
+//                //如果还是0，则打印出警告信息
+//                if (effectNum == 0) {
+//                    log.warn("DailyChannelActive update logic or env error for params:code:${code} rate:${rate}")
+//                } else {
+//                    log.info("DailyChannelActive update++ succucess for params:code:${code} rate:${rate}")
+//                }
+//            }
+//        }
     }
 
     private getActiveDelayByChannelCode(channelCode) {
