@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c705a2ff-0928-4913-98ec-eb30ebb3ff21" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy" afterPath="$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/statDailyChannelActive/codeList.gsp" afterPath="$PROJECT_DIR$/grails-app/views/statDailyChannelActive/codeList.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp" afterPath="$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sp.iws" />
@@ -74,10 +72,29 @@
       <file leaf-file-name="GodAppItemController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="65" selection-start="5618" selection-end="5618" vertical-scroll-proportion="-12.478261" vertical-offset="1985" max-vertical-offset="5024">
+            <state line="153" column="0" selection-start="6000" selection-end="6000" vertical-scroll-proportion="16.73913" vertical-offset="2833" max-vertical-offset="5040">
               <folding>
-                <marker date="1391428155000" expanded="true" signature="6557:7898" placeholder="..." />
+                <element signature="e#22#66#0" expanded="true" />
+                <marker date="1391759112000" expanded="true" signature="6631:7972" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubAppItemController.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="154" column="133" selection-start="5603" selection-end="5615" vertical-scroll-proportion="0.689847" vertical-offset="1888" max-vertical-offset="2960">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="0" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="1408" max-vertical-offset="1760">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,19 +102,8 @@
       <file leaf-file-name="list.gsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="20" selection-start="3880" selection-end="4114" vertical-scroll-proportion="-6.7291665" vertical-offset="1245" max-vertical-offset="2032">
+            <state line="98" column="20" selection-start="3880" selection-end="4114" vertical-scroll-proportion="0.0" vertical-offset="1568" max-vertical-offset="2032">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminChannelController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminChannelController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="-15.26087" vertical-offset="929" max-vertical-offset="1760">
-              <folding>
-                <element signature="e#22#84#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -105,7 +111,7 @@
       <file leaf-file-name="SpDomainController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="6" selection-start="60" selection-end="60" vertical-scroll-proportion="-2.7826087" vertical-offset="0" max-vertical-offset="496">
+            <state line="4" column="6" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="496">
               <folding />
             </state>
           </provider>
@@ -114,17 +120,30 @@
       <file leaf-file-name="ImsiToPhoneUpdateController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ImsiToPhoneUpdateController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="12" selection-start="786" selection-end="975" vertical-scroll-proportion="-17.52174" vertical-offset="109" max-vertical-offset="1104">
+            <state line="35" column="12" selection-start="786" selection-end="975" vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="1152">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="codeList.gsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="codeList.gsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/statDailyChannelActive/codeList.gsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="92" column="0" selection-start="2762" selection-end="2762" vertical-scroll-proportion="0.845666" vertical-offset="1072" max-vertical-offset="1968">
-              <folding />
+            <state line="92" column="0" selection-start="2762" selection-end="2762" vertical-scroll-proportion="0.0" vertical-offset="1472" max-vertical-offset="1968">
+              <folding>
+                <marker date="1391427385000" expanded="true" signature="164:259" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="467:501" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="875:975" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="1000:1090" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="1188:1738" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="1306:1471" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="1856:1958" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="2014:2125" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="2173:2275" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="2380:3265" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="3039:3207" placeholder="..." />
+                <marker date="1391427385000" expanded="true" signature="3407:3472" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,7 +151,7 @@
       <file leaf-file-name="SpTagLib.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="60" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.0" vertical-offset="661" max-vertical-offset="2112">
+            <state line="67" column="0" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.0" vertical-offset="1072" max-vertical-offset="2112">
               <folding />
             </state>
           </provider>
@@ -141,10 +160,8 @@
       <file leaf-file-name="Math.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/mybackup/software/android-sdk-mac_x86/sources/android-17/java/lang/Math.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="668" column="23" selection-start="23387" selection-end="23387" vertical-scroll-proportion="0.0" vertical-offset="10197" max-vertical-offset="20624">
-              <folding>
-                <element signature="e#0#45515#0" expanded="false" />
-              </folding>
+            <state line="668" column="23" selection-start="23387" selection-end="23387" vertical-scroll-proportion="0.0" vertical-offset="10688" max-vertical-offset="20864">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -152,21 +169,9 @@
       <file leaf-file-name="StatDailyChannelActiveController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/stat/StatDailyChannelActiveController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="83" selection-start="1151" selection-end="1161" vertical-scroll-proportion="-13.173913" vertical-offset="225" max-vertical-offset="944">
+            <state line="33" column="83" selection-start="1151" selection-end="1161" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="944">
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DailyChannelActive.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/domain/com/sp/domain/stat/DailyChannelActive.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="29" selection-start="451" selection-end="451" vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="544">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-            <state />
           </provider>
         </entry>
       </file>
@@ -198,7 +203,6 @@
         <option value="$PROJECT_DIR$/grails-app/domain/com/sp/domain/SubAppItem.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminGodAppItemController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminDailyCanalActiveController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/adminSubAppFile/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSubAppFileController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/adminCanal/list.gsp" />
@@ -214,8 +218,9 @@
         <option value="$PROJECT_DIR$/grails-app/domain/com/sp/domain/stat/DailyChannelActive.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/statDailyChannelActive/codeList.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy" />
       </list>
     </option>
   </component>
@@ -668,10 +673,6 @@
               <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -717,6 +718,12 @@
     <property name="SearchEverywhereHistory" value="" />
   </component>
   <component name="RunManager" selected="Grails.Grails:sp">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -725,12 +732,6 @@
       <setting name="passParentEnv" value="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -761,23 +762,17 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
       <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -808,17 +803,23 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
       <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -921,22 +922,23 @@
       <workItem from="1391320664761" duration="178000" />
       <workItem from="1391322280243" duration="2416000" />
       <workItem from="1391388789678" duration="5975000" />
-      <workItem from="1391415479873" duration="6397000" />
+      <workItem from="1391415479873" duration="10095000" />
+      <workItem from="1391759079972" duration="2163000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65977000" />
+    <option name="totallyTimeSpent" value="71838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="22" width="1393" height="878" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -945,15 +947,14 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24536695" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29885057" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29885057" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41507024" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4687101" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987398" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32950193" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908162" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -962,11 +963,12 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41507024" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
   </component>
@@ -1052,9 +1054,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminPhoneAreaMap/areaCanalMap.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="15" selection-start="730" selection-end="730" vertical-scroll-proportion="-7.0" vertical-offset="16" max-vertical-offset="1024">
-          <folding />
-        </state>
+        <state line="22" column="15" selection-start="730" selection-end="730" vertical-scroll-proportion="-7.0" vertical-offset="16" max-vertical-offset="1024" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSubAppFileController.groovy">
@@ -1071,9 +1071,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="0" selection-start="2781" selection-end="2781" vertical-scroll-proportion="0.0" vertical-offset="826" max-vertical-offset="1840">
-          <folding />
-        </state>
+        <state line="76" column="0" selection-start="2781" selection-end="2781" vertical-scroll-proportion="0.0" vertical-offset="826" max-vertical-offset="1840" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ToolsController.groovy">
@@ -1105,18 +1103,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="9" selection-start="1277" selection-end="1277" vertical-scroll-proportion="-11.96" vertical-offset="1029" max-vertical-offset="1760">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/index_bak.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="24.52" vertical-offset="613" max-vertical-offset="2048">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="24.52" vertical-offset="613" max-vertical-offset="2048" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/app.gsp">
@@ -1126,16 +1115,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/admin.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1296" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="24" selection-start="3504" selection-end="3504" vertical-scroll-proportion="-5.04" vertical-offset="2082" max-vertical-offset="3088">
-          <folding />
-        </state>
+        <state line="138" column="24" selection-start="3504" selection-end="3504" vertical-scroll-proportion="-5.04" vertical-offset="2082" max-vertical-offset="3088" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/ApplicationResources.groovy">
@@ -1200,18 +1185,9 @@
         <state line="28" column="33" selection-start="796" selection-end="796" vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="1200" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="11" selection-start="539" selection-end="539" vertical-scroll-proportion="-9.043478" vertical-offset="0" max-vertical-offset="2912">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminDailyCanalActive/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1616">
-          <folding />
-        </state>
+        <state line="74" column="0" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1616" />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/mybackup/software/springsource/grails-2.2.4/src/grails-datastore-gorm-1.1.8.RELEASE-sources.jar!/org/grails/datastore/gorm/GormInstanceApi.groovy">
@@ -1240,9 +1216,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminChannel/edit.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="35" selection-start="1437" selection-end="1437" vertical-scroll-proportion="-9.666667" vertical-offset="0" max-vertical-offset="784">
-          <folding />
-        </state>
+        <state line="29" column="35" selection-start="1437" selection-end="1437" vertical-scroll-proportion="-9.666667" vertical-offset="0" max-vertical-offset="784" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/com/sp/domain/Channel.groovy">
@@ -1281,16 +1255,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminChannelController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="-15.26087" vertical-offset="929" max-vertical-offset="1760">
-          <folding>
-            <element signature="e#22#84#0" expanded="true" />
-          </folding>
+        <state line="80" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0" vertical-offset="1280" max-vertical-offset="1760">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/stat/StatDailyChannelActiveController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="83" selection-start="1151" selection-end="1161" vertical-scroll-proportion="-13.173913" vertical-offset="225" max-vertical-offset="944">
+        <state line="33" column="83" selection-start="1151" selection-end="1161" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="944">
           <folding />
         </state>
       </provider>
@@ -1298,52 +1270,78 @@
     <entry file="file://$USER_HOME$/mybackup/software/android-sdk-mac_x86/sources/android-17/java/lang/Math.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="668" column="23" selection-start="23387" selection-end="23387" vertical-scroll-proportion="0.0" vertical-offset="10197" max-vertical-offset="20624">
-          <folding>
-            <element signature="e#0#45515#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SpDomainController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="60" selection-end="60" vertical-scroll-proportion="-2.7826087" vertical-offset="0" max-vertical-offset="496">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="60" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.0" vertical-offset="661" max-vertical-offset="2112">
+        <state line="4" column="6" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="496">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/ImsiToPhoneUpdateController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="12" selection-start="786" selection-end="975" vertical-scroll-proportion="-17.52174" vertical-offset="109" max-vertical-offset="1104">
+        <state line="35" column="12" selection-start="786" selection-end="975" vertical-scroll-proportion="0.0" vertical-offset="560" max-vertical-offset="1152">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="65" selection-start="5618" selection-end="5618" vertical-scroll-proportion="-12.478261" vertical-offset="1985" max-vertical-offset="5024">
-          <folding>
-            <marker date="1391428155000" expanded="true" signature="6557:7898" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="20" selection-start="3880" selection-end="4114" vertical-scroll-proportion="-6.7291665" vertical-offset="1245" max-vertical-offset="2032">
+        <state line="98" column="20" selection-start="3880" selection-end="4114" vertical-scroll-proportion="0.0" vertical-offset="1568" max-vertical-offset="2032">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/statDailyChannelActive/codeList.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="92" column="0" selection-start="2762" selection-end="2762" vertical-scroll-proportion="0.845666" vertical-offset="1072" max-vertical-offset="1968">
+        <state line="92" column="0" selection-start="2762" selection-end="2762" vertical-scroll-proportion="0.0" vertical-offset="1472" max-vertical-offset="1968">
+          <folding>
+            <marker date="1391427385000" expanded="true" signature="164:259" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="467:501" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="875:975" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="1000:1090" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="1188:1738" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="1306:1471" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="1856:1958" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="2014:2125" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="2173:2275" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="2380:3265" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="3039:3207" placeholder="..." />
+            <marker date="1391427385000" expanded="true" signature="3407:3472" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/taglib/com/sp/tags/SpTagLib.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="0" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.0" vertical-offset="661" max-vertical-offset="2112">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/index.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="0" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="1408" max-vertical-offset="1760">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="153" column="0" selection-start="6000" selection-end="6000" vertical-scroll-proportion="16.73913" vertical-offset="2833" max-vertical-offset="5040">
+          <folding>
+            <element signature="e#22#66#0" expanded="true" />
+            <marker date="1391759112000" expanded="true" signature="6631:7972" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="133" selection-start="5603" selection-end="5615" vertical-scroll-proportion="0.689847" vertical-offset="1888" max-vertical-offset="2960">
           <folding />
         </state>
       </provider>

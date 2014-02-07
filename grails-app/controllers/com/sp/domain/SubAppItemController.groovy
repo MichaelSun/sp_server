@@ -149,7 +149,10 @@ class SubAppItemController {
             log.warn("MissCanal:find null canal by code:${code},params:${params}")
             canalName = "无通道"
         }
-        csvLogger.info "${params.phoneNumber},${params.netType},${canalName},${params.phoneType},${params.channelCode}".toString()
+
+        def main_channel = params.mainChannel ?: "-1";
+
+        csvLogger.info "${params.phoneNumber},${params.netType},${canalName},${params.phoneType},${params.channelCode},${main_channel}".toString()
 
         return canal
     }
