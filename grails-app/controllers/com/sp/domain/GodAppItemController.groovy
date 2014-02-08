@@ -135,36 +135,33 @@ class GodAppItemController {
     private dayStat(godAppItemInstance) {
         def code = godAppItemInstance.channelCode;
         //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
-        int rate = getRateByChannelCode(code);
+        int curRate = getRateByChannelCode(code);
+        def searchDate = godAppItemInstance.dateCreated
 
-//        String DEBUG_DATE_FORMAT = "yyyy-MM-dd";
-//        SimpleDateFormat dateFormat = new SimpleDateFormat(DEBUG_DATE_FORMAT);
-//        day = dateFormat.format(System.currentTimeMillis());
+//        System.out.println("searchDate : ${searchDate}")
 
         synchronized (GodAppItemController.class) {
-            DailyChannelActive channelActive = DailyChannelActive.findByChannelCodeAndDay(code, new Date())
+            if (!searchDate) searchDate = new Date()
+
+            DailyChannelActive channelActive = DailyChannelActive.findByChannelCodeAndDay(code, searchDate)
             if (channelActive) {
                 channelActive.num += 1
-                channelActive.rate = rate
-                double r = rate / 100
-//            double numDoube = channelActive.num as Double
-//            if (numDoube > channelActive.rateNumber) {
-//                channelActive.rateNumber = channelActive.num
-//            }
+                channelActive.rate = curRate
+                double r = curRate / 100
                 channelActive.rateNumber += r
             } else {
                 channelActive = new DailyChannelActive()
-                channelActive.rate = rate
+                channelActive.rate = curRate
                 channelActive.num = 1;
-                double r = rate / 100
+                double r = curRate / 100
                 channelActive.rateNumber = r
                 channelActive.godItemNum = 1
                 channelActive.channelCode = code
-                channelActive.day = new Date()
+                channelActive.day = searchDate
             }
 
             if (!channelActive.save(flush: true)) {
-                log.warn("save DailyChannelActive row failed for params:code:${code} rate:${rate}")
+                log.warn("save DailyChannelActive row failed for params:code:${code} rate:${curRate}")
             }
         }
 

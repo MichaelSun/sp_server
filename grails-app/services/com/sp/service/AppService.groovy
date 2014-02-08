@@ -169,7 +169,7 @@ class AppService {
 
     def loadSubAppFiles() {
         subAppFilesList.clear()
-        Map tempMap = []
+        Map tempMap = [:]
         subAppFilesDownloadMap.each { key, value ->
             tempMap.put(key, value)
         }
