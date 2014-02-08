@@ -13,8 +13,8 @@ class AdminSubAppFileController {
     }
 
     def list() {
-        def list = appService.subAppFilesList()
-        [list: list, count: list.size()]
+        def subItemMapInfo = appService.subAppFilesList()
+        [mapInfo: subItemMapInfo, count: subItemMapInfo.size()]
     }
 
 }

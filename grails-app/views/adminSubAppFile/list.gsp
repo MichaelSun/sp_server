@@ -34,16 +34,18 @@
 			<thead>
 				<tr>
 					<th>名称</th>
+                    <th>下载数量</th>
 				</tr>
 			</thead>
 			<tbody>
-				<g:each in="${list}" status="i" var="sapp">
+				<g:each in="${mapInfo}" status="i" var="sapp">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td>
-							${sapp}
+							${sapp.key}
 						</td>
-
-
+                        <td>
+                            ${sapp.value}
+                        </td>
 					</tr>
 				</g:each>
 			</tbody>

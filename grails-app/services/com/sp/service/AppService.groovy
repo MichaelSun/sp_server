@@ -1,8 +1,5 @@
 package com.sp.service
-
 import com.sp.domain.Canal
-
-import java.text.SimpleDateFormat
 
 class AppService {
 
@@ -15,6 +12,8 @@ class AppService {
     Map imsiPnMapFileInfo = [:]
 
     LinkedList subAppFilesList = []//要求启动加载
+
+    Map subAppFilesDownloadMap = [:]
 
     private static final pnAreaFilePath = "/data/pn_area_file_path/"
 
@@ -170,14 +169,27 @@ class AppService {
 
     def loadSubAppFiles() {
         subAppFilesList.clear()
+        Map tempMap = []
+        subAppFilesDownloadMap.each { key, value ->
+            tempMap.put(key, value)
+        }
+        subAppFilesDownloadMap.clear();
 
         File path = new File(appFilePath)
         path.listFiles().each {
             if (it.isFile()) {
                 this.subAppFilesList.add(it.name)
+
+                if (tempMap.containsKey(it.name)) {
+                    //do nothing
+                    subAppFilesDownloadMap.put(it.name, tempMap.get(it.name))
+                } else {
+                    subAppFilesDownloadMap.put(it.name, 0)
+                }
             }
         }
         log.info("loadSubAppFiles:${subAppFilesList}")
+
         subAppFilesList
     }
 
@@ -192,11 +204,18 @@ class AppService {
         if (app) {
             subAppFilesList << app
         }
+
+        if (subAppFilesDownloadMap.containsKey(app)) {
+            int count = subAppFilesDownloadMap.get(app)
+            count++
+            subAppFilesDownloadMap.put(app, count)
+        }
+
         app
     }
 
     def subAppFilesList() {
-        this.subAppFilesList
+        this.subAppFilesDownloadMap
     }
 
     /**
