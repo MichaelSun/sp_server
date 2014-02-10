@@ -33,20 +33,71 @@ class AdminDailyChannelActiveController {
 //            def list = DailyChannelActive.findAllByDayBetween(params.sdate, enddate, [max: params.max, sort: "id", order: "asc"])
             def list = DailyChannelActive.findAllByDay(params.sdate, [max: params.max, sort: "id", order: "desc"])
 
-            [dailyChannelActiveInstanceList: list, code: code, datePicker: datePicker]
+            //count
+            int activeCount = 0
+            int registeCount = 0
+            int activeShowCount = 0
+            if (list) {
+                list.each {
+                    activeCount += it.num
+                }
+                list.each {
+                    registeCount += it.godItemNum
+                }
+                list.each {
+                    activeShowCount += it.rateNumber
+                }
+            }
+
+            [dailyChannelActiveInstanceList: list, code: code, datePicker: datePicker
+                    , activeCount: activeCount, registeCount: registeCount, activeShowCount: activeShowCount]
         } else if (codeStr.length() == 6) {
             def list = DailyChannelActive.findAllByChannelCodeAndDayBetween(code, params.sdate, enddate, [max: params.max, sort: "id", order: "desc"])
             //			int count=DailyChannelActive.countByChannelCode(code)
-            [dailyChannelActiveInstanceList: list, code: code, datePicker: datePicker]
+            //count
+            int activeCount = 0
+            int registeCount = 0
+            int activeShowCount = 0
+            if (list) {
+                list.each {
+                    activeCount += it.num
+                }
+                list.each {
+                    registeCount += it.godItemNum
+                }
+                list.each {
+                    activeShowCount += it.rateNumber
+                }
+            }
+
+            [dailyChannelActiveInstanceList: list, code: code, datePicker: datePicker
+                    , activeCount: activeCount, registeCount: registeCount, activeShowCount: activeShowCount]
         } else if (codeStr.length() == 3) {
             int minCode = code * 1000
             int maxCode = minCode + 999
 
             def list = DailyChannelActive.findAllByChannelCodeBetweenAndDayBetween(minCode, maxCode, params.sdate, enddate, [max: params.max, sort: "id", order: "desc"])
+            //count
+            int activeCount = 0
+            int registeCount = 0
+            int activeShowCount = 0
+            if (list) {
+                list.each {
+                    activeCount += it.num
+                }
+                list.each {
+                    registeCount += it.godItemNum
+                }
+                list.each {
+                    activeShowCount += it.rateNumber
+                }
+            }
             //			int count=DailyChannelActive.countByChannelCodeBetween(minCode,maxCode)
-            [dailyChannelActiveInstanceList: list, code: code, datePicker: datePicker]
+            [dailyChannelActiveInstanceList: list, code: code, datePicker: datePicker
+                    , activeCount: activeCount, registeCount: registeCount, activeShowCount: activeShowCount]
         } else {
-            [dailyChannelActiveInstanceList: [], code: code, datePicker: datePicker]
+            [dailyChannelActiveInstanceList: [], code: code, datePicker: datePicker
+                    , activeCount: 0, registeCount: 0, activeShowCount: 0]
         }
     }
 

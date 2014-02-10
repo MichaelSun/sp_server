@@ -43,6 +43,23 @@
 
         </ul>
     </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>今日激活总数量</th>
+            <th>今日注册总数量</th>
+            <th>扣量后总数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>${activeCount}</td>
+            <td>${registeCount}</td>
+            <td>${activeShowCount}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <div id="list-dailyChannelActive" class="content scaffold-list"
@@ -66,6 +83,7 @@
 
             <g:sortableColumn property="num"
                               title="${message(code: 'dailyChannelActive.num.label', default: '激活数量')}"/>
+            <th>注册数量</th>
             <th>扣量后数量</th>
             <g:sortableColumn property="rate"
                               title="${message(code: 'dailyChannelActive.rate.label', default: '扣量比例')}"/>
@@ -92,21 +110,17 @@
                 <td>
                     ${fieldValue(bean: dailyChannelActiveInstance, field: "num")}
                 </td>
-                %{--<td><sp:rater num="${dailyChannelActiveInstance.num}"--}%
-                %{--rate="${dailyChannelActiveInstance.rate}"></sp:rater>--}%
-                %{--</td>--}%
+                <td>
+                    ${fieldValue(bean: dailyChannelActiveInstance, field: "godItemNum")}
+                </td>
                 <td>
                     <sp:roundRater rateNum="${dailyChannelActiveInstance.rateNumber}"
                                    num="${dailyChannelActiveInstance.num}"
                                    rate="${dailyChannelActiveInstance.rate}"></sp:roundRater>
                 </td>
                 <td>
-                    %{--${fieldValue(bean: dailyChannelActiveInstance, field: "rate")}--}%
                     <sp:rateFormatStr rate="${dailyChannelActiveInstance.rate}"></sp:rateFormatStr>
                 </td>
-                %{--<td>--}%
-                %{--${fieldValue(bean: dailyChannelActiveInstance, field: "godItemNum")}--}%
-                %{--</td>--}%
                 <td>
                     <sp:gToSRater num="${dailyChannelActiveInstance.num}"
                                   godItemNum="${dailyChannelActiveInstance.godItemNum}"></sp:gToSRater>

@@ -5,61 +5,59 @@ import com.sp.domain.SubAppItem
 class AdminSubAppItemController {
 
 
-	static allowedMethods = [save: "POST",activate:"POST"]
+    static allowedMethods = [save: "POST", activate: "POST"]
 
-	def list(Integer max) {
-		//渠道号，版本号，网络类型，注册时间
-
-
-		if(!checkDate(params)){
-
-			return [subAppItemInstanceList: [],errorInfo :"请输入时间段,起始相同视为无效"]
-
-		}
-
-		def q=SubAppItem.where{};
+    def list(Integer max) {
+        //渠道号，版本号，网络类型，注册时间
 
 
-		if(params.csDate&&params.ceDate&&!params.csDate.equals(params.ceDate)){
-			q=q.where{
-				dateCreated>=params.csDate&&dateCreated<params.ceDate
-			}
-		}
-		if(params.vsDate&&params.veDate&&!params.vsDate.equals(params.veDate)){
-			q=q.where{
-				lastUpdated>=params.vsDate&&lastUpdated<params.veDate
-			}
-		}
+        if (!checkDate(params)) {
+            return [subAppItemInstanceList: [], errorInfo: "请输入时间段,起始相同视为无效"]
+        }
+
+        def q = SubAppItem.where {};
 
 
-		if(params.channelCode){
-			if(params.channelCode.length()==3){
-				def cd_min=(params.channelCode as Integer)*1000
-				def cd_max=cd_min+999
-				q=q.where{channelCode>=cd_min&&channelCode<=cd_max}
-			}else if(params.channelCode.length()==6){
-			q=q.where{channelCode==params.channelCode as Integer}
-			
-			}
+        if (params.csDate && params.ceDate && !params.csDate.equals(params.ceDate)) {
+            q = q.where {
+                dateCreated >= params.csDate && dateCreated < params.ceDate
+            }
+        }
+        if (params.vsDate && params.veDate && !params.vsDate.equals(params.veDate)) {
+            q = q.where {
+                lastUpdated >= params.vsDate && lastUpdated < params.veDate
+            }
+        }
 
-		}
-		if(params.appVersion){
-			q=q.where{appVersion==params.appVersion}
 
-		}
-		if(params.netType&&params.netType!='0'){
-			q=q.where{netType==params.netType}
+        if (params.channelCode) {
+            if (params.channelCode.length() == 3) {
+                def cd_min = (params.channelCode as Integer) * 1000
+                def cd_max = cd_min + 999
+                q = q.where { channelCode >= cd_min && channelCode <= cd_max }
+            } else if (params.channelCode.length() == 6) {
+                q = q.where { channelCode == params.channelCode as Integer }
 
-		}
+            }
+
+        }
+        if (params.appVersion) {
+            q = q.where { appVersion == params.appVersion }
+
+        }
+        if (params.netType && params.netType != '0') {
+            q = q.where { netType == params.netType }
+
+        }
 //		params.sort='id'
 //		params.order='desc'
-		params.max = Math.min(max ?: 10, 1000)
-		def result=q.list(params)
-		[subAppItemInstanceList: result]
+        params.max = Math.min(max ?: 10, 1000)
+        def result = q.list(params)
+        [subAppItemInstanceList: result]
 
 
-	}
-	
+    }
+
 //	private getMainCode(code){ 
 //		def mainCode=0
 //		if(code){
@@ -75,14 +73,14 @@ class AdminSubAppItemController {
 //		out<< body()<<mainCode
 //	}
 
-	private checkDate(params){
-		boolean flag=false;
-		if(params.csDate&&params.ceDate&&!params.csDate.equals(params.ceDate)){//create start date
-			flag=true
-		}else if(params.vsDate&&params.veDate&&!params.vsDate.equals(params.veDate)){//visit start date
-			flag=true
-		}
-		flag
+    private checkDate(params) {
+        boolean flag = false;
+        if (params.csDate && params.ceDate && !params.csDate.equals(params.ceDate)) {//create start date
+            flag = true
+        } else if (params.vsDate && params.veDate && !params.vsDate.equals(params.veDate)) {//visit start date
+            flag = true
+        }
+        flag
 
-	}
+    }
 }
