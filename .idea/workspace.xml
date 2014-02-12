@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c705a2ff-0928-4913-98ec-eb30ebb3ff21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sp.iws" />
@@ -68,11 +68,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="GodAppItemController.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="156" column="18" selection-start="6083" selection-end="6083" vertical-scroll-proportion="0.71910113" vertical-offset="2096" max-vertical-offset="4960">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="list.gsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="111" column="21" selection-start="4023" selection-end="4023" vertical-scroll-proportion="-5.2083335" vertical-offset="1526" max-vertical-offset="2256">
-              <folding />
+              <folding>
+                <marker date="1392021808000" expanded="true" signature="156:251" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="459:493" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="1031:1152" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="1865:1965" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="2076:2178" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="2230:2341" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="2397:2508" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="2556:2660" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="2761:2866" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="2998:4852" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="3415:3626" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="3697:3892" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="4262:4430" placeholder="..." />
+                <marker date="1392021808000" expanded="true" signature="4691:4794" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,7 +105,16 @@
         <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/create.gsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="14" column="12" selection-start="467" selection-end="467" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="864">
-              <folding />
+              <folding>
+                <marker date="1390174849000" expanded="true" signature="129:189" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="237:260" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="382:417" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="794:874" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="914:1212" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="992:1186" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="1237:1499" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="1377:1471" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,6 +123,15 @@
         <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/list.gsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="76" column="0" selection-start="2781" selection-end="2781" vertical-scroll-proportion="-1.4791666" vertical-offset="1145" max-vertical-offset="1840">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminChannelController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminChannelController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="80" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="-3.347826" vertical-offset="1171" max-vertical-offset="1728">
               <folding />
             </state>
           </provider>
@@ -104,6 +146,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="AdminToolsController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminToolsController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="5" selection-start="239" selection-end="239" vertical-scroll-proportion="-8.347826" vertical-offset="0" max-vertical-offset="432">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="_province_city_tpl.gsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/_province_city_tpl.gsp">
           <provider selected="true" editor-type-id="text-editor">
@@ -113,10 +164,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminCanalController.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AdminCanalController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="21" selection-start="3564" selection-end="3564" vertical-scroll-proportion="0.5978062" vertical-offset="2217" max-vertical-offset="10768">
+            <state line="155" column="21" selection-start="3431" selection-end="3431" vertical-scroll-proportion="-10.043478" vertical-offset="2217" max-vertical-offset="10768">
               <folding />
             </state>
           </provider>
@@ -126,37 +177,42 @@
         <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/_form.gsp">
           <provider selected="true" editor-type-id="text-editor">
             <state line="26" column="28" selection-start="816" selection-end="816" vertical-scroll-proportion="-5.3333335" vertical-offset="160" max-vertical-offset="3936">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminDailyChannelActiveController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminDailyChannelActiveController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="13" selection-start="3566" selection-end="3566" vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="1760">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DailyChannelActive.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/domain/com/sp/domain/stat/DailyChannelActive.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="544">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminSubAppFileController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSubAppFileController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="45" selection-start="165" selection-end="180" vertical-scroll-proportion="0.0" vertical-offset="144" max-vertical-offset="416">
-              <folding />
+              <folding>
+                <marker date="1390174849000" expanded="true" signature="177:196" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="234:381" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="533:554" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="796:814" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="859:1067" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="1418:1437" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="1684:1698" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="1945:1967" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="2208:2225" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="2465:2487" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="2565:2626" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="2798:2820" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="2900:2963" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="3137:3156" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="3236:3299" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="3463:3482" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="3559:3619" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="3828:3846" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="3882:3957" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="4998:5018" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5058:5123" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5298:5319" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5360:5426" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5589:5612" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5650:5713" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5879:5903" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="5942:6006" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="6185:6203" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="6456:6478" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="6738:6761" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="6803:6858" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="7037:7060" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="7102:7157" placeholder="..." />
+                <marker date="1390174849000" expanded="true" signature="7321:7340" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -203,11 +259,11 @@
         <option value="$PROJECT_DIR$/grails-app/views/adminSubAppFile/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminDailyCanalActiveController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSubAppItemController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminDailyChannelActiveController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
       </list>
     </option>
   </component>
@@ -964,12 +1020,12 @@
       <workItem from="1391849904402" duration="5077000" />
       <workItem from="1391992189905" duration="89000" />
       <workItem from="1392019461161" duration="1397000" />
-      <workItem from="1392084713522" duration="3947000" />
+      <workItem from="1392084713522" duration="6837000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84807000" />
+    <option name="totallyTimeSpent" value="87697000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1127,13 +1183,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminChannelController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0" vertical-offset="1280" max-vertical-offset="1760">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/stat/StatDailyChannelActiveController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="83" selection-start="1151" selection-end="1161" vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="944">
@@ -1266,13 +1315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="24" selection-start="4924" selection-end="4924" vertical-scroll-proportion="0.0" vertical-offset="2032" max-vertical-offset="4992">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminDailyCanalActiveController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="37" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="752">
@@ -1290,13 +1332,6 @@
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSdkCanalController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="35" selection-start="438" selection-end="438" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="3056">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminToolsController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="399" selection-end="403" vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="432">
           <folding />
         </state>
       </provider>
@@ -1335,14 +1370,64 @@
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminDailyChannelActive/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="111" column="21" selection-start="4023" selection-end="4023" vertical-scroll-proportion="-5.2083335" vertical-offset="1526" max-vertical-offset="2256">
-          <folding />
+          <folding>
+            <marker date="1392021808000" expanded="true" signature="156:251" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="459:493" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="1031:1152" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="1865:1965" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="2076:2178" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="2230:2341" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="2397:2508" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="2556:2660" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="2761:2866" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="2998:4852" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="3415:3626" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="3697:3892" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="4262:4430" placeholder="..." />
+            <marker date="1392021808000" expanded="true" signature="4691:4794" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/_form.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="28" selection-start="816" selection-end="816" vertical-scroll-proportion="-5.3333335" vertical-offset="160" max-vertical-offset="3936">
-          <folding />
+          <folding>
+            <marker date="1390174849000" expanded="true" signature="177:196" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="234:381" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="533:554" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="796:814" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="859:1067" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="1418:1437" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="1684:1698" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="1945:1967" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="2208:2225" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="2465:2487" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="2565:2626" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="2798:2820" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="2900:2963" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="3137:3156" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="3236:3299" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="3463:3482" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="3559:3619" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="3828:3846" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="3882:3957" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="4998:5018" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5058:5123" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5298:5319" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5360:5426" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5589:5612" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5650:5713" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5879:5903" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="5942:6006" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="6185:6203" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="6456:6478" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="6738:6761" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="6803:6858" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="7037:7060" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="7102:7157" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="7321:7340" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1356,7 +1441,16 @@
     <entry file="file://$PROJECT_DIR$/grails-app/views/adminCanal/create.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="12" selection-start="467" selection-end="467" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="864">
-          <folding />
+          <folding>
+            <marker date="1390174849000" expanded="true" signature="129:189" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="237:260" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="382:417" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="794:874" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="914:1212" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="992:1186" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="1237:1499" placeholder="..." />
+            <marker date="1390174849000" expanded="true" signature="1377:1471" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1374,9 +1468,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminToolsController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="5" selection-start="239" selection-end="239" vertical-scroll-proportion="-8.347826" vertical-offset="0" max-vertical-offset="432">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminChannelController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="-3.347826" vertical-offset="1171" max-vertical-offset="1728">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminCanalController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="21" selection-start="3564" selection-end="3564" vertical-scroll-proportion="0.5978062" vertical-offset="2217" max-vertical-offset="10768">
+        <state line="155" column="21" selection-start="3431" selection-end="3431" vertical-scroll-proportion="-10.043478" vertical-offset="2217" max-vertical-offset="10768">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="18" selection-start="6083" selection-end="6083" vertical-scroll-proportion="0.71910113" vertical-offset="2096" max-vertical-offset="4960">
           <folding />
         </state>
       </provider>

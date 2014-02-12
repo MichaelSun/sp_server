@@ -136,12 +136,11 @@ class GodAppItemController {
         def code = godAppItemInstance.channelCode;
         //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
         int curRate = getRateByChannelCode(code);
-        def searchDate = godAppItemInstance.dateCreated
-
-//        System.out.println("searchDate : ${searchDate}")
+//        def searchDate = godAppItemInstance.dateCreated
 
         synchronized (GodAppItemController.class) {
-            if (!searchDate) searchDate = new Date()
+//            if (!searchDate) searchDate = new Date()
+            def searchDate = new Date()
 
             DailyChannelActive channelActive = DailyChannelActive.findByChannelCodeAndDay(code, searchDate)
             if (channelActive) {
