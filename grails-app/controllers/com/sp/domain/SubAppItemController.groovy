@@ -64,9 +64,10 @@ class SubAppItemController {
             subAppItemInstance.canalInfo = result as JSON
             if (subAppItemInstance.save(flush: true)) {
                 //统计
-                if (needAddStat) {
+//                if (needAddStat) {
+                //只要是下发的通道，就记录，原来是新增的才统计，此处要修改了
                     dayStat(canal)
-                }
+//                }
                 render result as JSON
             } else {
                 render(subAppItemInstance.getErrors() as JSON)
