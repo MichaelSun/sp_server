@@ -77,15 +77,16 @@ class GodAppItemController {
             render([errors: ["object": 'godAppItem', message: 'find null by params:' + params]] as JSON)
             return
         }
+
         //如果同时满足-已经有了下载链接，有激活日期，有需下载应用名称，说明已经激活过
         //则不需要再次进入统计计数逻辑,否则应该统计
-        boolean needStat = false
+        boolean needStatusUpdate = false
         //		if(!(godAppItemInstance.downUrl&&godAppItemInstance.activeDate&&godAppItemInstance.subAppName)){
         //			needStat=true
         //		}
 
         if (!(godAppItemInstance.activeDate)) {
-            needStat = true
+            needStatusUpdate = true
         }
 
         godAppItemInstance.properties = params
@@ -95,8 +96,8 @@ class GodAppItemController {
         godAppItemInstance.activeDate = new Date();
 
         if (godAppItemInstance.save(flush: true)) {
-            if (needStat) {
-                dayStat(godAppItemInstance);
+            if (needStatusUpdate) {
+                dayStatusUpdate(godAppItemInstance, params);
             }
             render subApp as JSON
             return
@@ -116,7 +117,7 @@ class GodAppItemController {
             //def insertHql="insert into DailyChannelActive a (day,num,channelCode,rate)  values(curdate(),1,?,?)"
             log.info("DailyChannelActive effect num==0,init params:code:${code} rate:${rate}")
             DailyChannelActive dca = new DailyChannelActive([day: new Date(), num: 0, channelCode: code, rate: rate
-                    , godItemNum: 1, rateNumber: 0])
+                    , godItemNum: 1, rateNumber: 0, subActiveCount: 0, mainActiveCount: 0])
             if (!dca.save(flush: true)) {
                 //todo 精确的duplicate exception
                 //当duplicate异常的时候,说明已经在别的线程并发状态插入了一个初始记录，那么继续执行update操作。
@@ -132,7 +133,7 @@ class GodAppItemController {
         }
     }
 
-    private dayStat(godAppItemInstance) {
+    private dayStatusUpdate(godAppItemInstance, request) {
         def code = godAppItemInstance.channelCode;
         //如果已经有记录了，则应该执行num=num+1，如果没有则应该插入新纪录用本地sql的n=n+1的行锁来解决安全的串行++问题
         int curRate = getRateByChannelCode(code);
@@ -157,6 +158,18 @@ class GodAppItemController {
                 channelActive.godItemNum = 1
                 channelActive.channelCode = code
                 channelActive.day = searchDate
+                channelActive.mainActiveCount = 0
+                channelActive.subActiveCount = 0
+            }
+
+//            System.out.println("params : ${request}")
+
+            if (request.fromId == "100001") {
+                //如果fromId是100001的话，就是子程序发上来的激活
+                channelActive.subActiveCount += 1
+            } else {
+                //其他都是母程序发上来的激活
+                channelActive.mainActiveCount += 1
             }
 
             if (!channelActive.save(flush: true)) {

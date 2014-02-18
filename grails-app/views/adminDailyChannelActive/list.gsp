@@ -87,7 +87,9 @@
             <th>扣量后数量</th>
             <g:sortableColumn property="rate"
                               title="${message(code: 'dailyChannelActive.rate.label', default: '扣量比例')}"/>
-            <th>子程序激活率</th>
+            <th>激活率</th>
+            <th>子程序激活数</th>
+            <th>母程序激活数</th>
         </tr>
         </thead>
         <tbody>
@@ -124,6 +126,12 @@
                 <td>
                     <sp:gToSRater num="${dailyChannelActiveInstance.num}"
                                   godItemNum="${dailyChannelActiveInstance.godItemNum}"></sp:gToSRater>
+                </td>
+                <td>
+                    ${fieldValue(bean: dailyChannelActiveInstance, field: "subActiveCount")}
+                </td>
+                <td>
+                    ${fieldValue(bean: dailyChannelActiveInstance, field: "mainActiveCount")}
                 </td>
             </tr>
         </g:each>

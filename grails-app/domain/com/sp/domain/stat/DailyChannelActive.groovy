@@ -11,6 +11,10 @@ class DailyChannelActive {
 
     Double rateNumber; // num * rate，使用这种方式就可以是将转化率实时的计算进入
 
+    Integer subActiveCount
+
+    Integer mainActiveCount
+
     static constraints = {
 		day unique:['channelCode']
     }
