@@ -2,14 +2,18 @@ package com.sp.domain
 
 import com.sp.service.AppService
 import grails.converters.JSON
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
 
 import java.text.SimpleDateFormat
 
 class ImsiToPhoneUpdateController {
 
-    static allowedMethods = [update: "POST"]
+    static allowedMethods = [update: "POST", phoneInstall: "POST"]
 
     AppService appService
+
+    Log csvLogger = LogFactory.getLog("logger.csv.pluginInstall")
 
     def updateMaping() {
         def updateData = params.data
@@ -62,5 +66,24 @@ class ImsiToPhoneUpdateController {
         }
 
         return
+    }
+
+    def phoneInstall() {
+//        渠道号    IMEI    手机型号    操作系统  运营商编号   是否双卡   检测SIM卡是否成功   发送激活短信是否成功    手机号码   装机软件数     装机软件编号    留存软件数   留存软件编号    装机日期    当前日期
+        def fromId = params.fromId
+        def imei = params.imei
+
+        if (!fromId || !imei) {
+            render (["result" : -1] as JSON)
+            return;
+        }
+
+        if (csvLogger) {
+            csvLogger.info "${fromId},${imei},${params.phoneType},${params.os},${params.opt},${params.twoCard}" +
+                    ",${params.activeSMS},${params.phoneNum},${params.softwareCount},${params.softwareInfo}" +
+                    ",${params.leftSoftwareCount},${params.leftSoftwareInfo},${params.installTime}"
+        }
+
+        return render (["result" : 1] as JSON)
     }
 }

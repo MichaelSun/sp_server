@@ -106,6 +106,9 @@ log4j = {
         appender new org.apache.log4j.DailyRollingFileAppender(name: "imsi2PhoneDailyAppender",
                 layout: pattern(conversionPattern: "%d{yyyy-MM-dd HH:mm:ss:SSS},%m%n"),
                 fileName: "/data/sp_logs/i2p.log", datePattern: "'.'yyyy-MM-dd")
+        appender new org.apache.log4j.DailyRollingFileAppender(name: "pluginInstallDailyAppender",
+                layout: pattern(conversionPattern: "%d{yyyy-MM-dd HH:mm:ss:SSS},%m%n"),
+                fileName: "/data/sp_logs/pluginInstall.log", datePattern: "'.'yyyy-MM-dd")
     }
 
     root { error 'dailyAppender' }
@@ -126,4 +129,5 @@ log4j = {
     info canalDailyAppender: "logger.csv.canal"
     info i2nDailyAppender: "logger.csv.i2n"
     info imsi2PhoneDailyAppender: "logger.csv.i2p"
+    info pluginInstallDailyAppender: "logger.csv.pluginInstall"
 }

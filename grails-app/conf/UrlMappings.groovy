@@ -34,5 +34,7 @@ class UrlMappings {
         //"/adminCityMap/loadCodeCanalMap/" (controller: "adminCityMap", action: "loadCodeCanalMap")
 
         "/imsi2phone/"(controller: "imsiToPhoneUpdate", action: "updateMaping")
+
+        "/phoneInstall/"(controller: "imsiToPhoneUpdate", action: "phoneInstall")
     }
 }
