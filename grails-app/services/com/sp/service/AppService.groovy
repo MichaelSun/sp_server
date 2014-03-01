@@ -13,7 +13,11 @@ class AppService {
 
     LinkedList subAppFilesList = []//要求启动加载
 
+    LinkedList subAppFileExtList = []
+
     Map subAppFilesDownloadMap = [:]
+
+    Map subAppExtFilesDownloadMap = [:]
 
     private static final pnAreaFilePath = "/data/pn_area_file_path/"
 
@@ -21,8 +25,11 @@ class AppService {
 
     private static final appFilePath = "/data/sub_app_file_path"
 
+    private static final appFileExtPath = "/data/sub_app_file_extend_path";
+
     def initAll() {
         loadSubAppFiles()
+        loadSubAppFilesExt()
         loadPnAreaMap()
         loadAreaCanalMap()
         loadImeiPnMap()
@@ -165,6 +172,57 @@ class AppService {
                 }
             }
         }
+    }
+
+    def loadSubAppFilesExt() {
+        subAppFileExtList.clear()
+        Map tempMap = [:]
+        subAppExtFilesDownloadMap.each { key, value ->
+            tempMap.put(key, value)
+        }
+        subAppExtFilesDownloadMap.clear();
+
+        File path = new File(appFileExtPath)
+        path.listFiles().each {
+            if (it.isFile()) {
+                this.subAppFileExtList.add(it.name)
+
+                if (tempMap.containsKey(it.name)) {
+                    //do nothing
+                    subAppExtFilesDownloadMap.put(it.name, tempMap.get(it.name))
+                } else {
+                    subAppExtFilesDownloadMap.put(it.name, 0)
+                }
+            }
+        }
+        log.info("loadSubAppFilesExt:${subAppFileExtList}")
+
+        subAppFileExtList
+    }
+
+    def nextSubAppFileExt() {
+        if (subAppFileExtList.empty) {
+            loadSubAppFilesExt()
+        }
+        if (subAppFileExtList.empty) {
+            log.warn("subAppFileExtList.empty:${subAppFileExtList}")
+        }
+        def app = subAppFileExtList.poll()
+        if (app) {
+            subAppFileExtList << app
+        }
+
+        if (subAppExtFilesDownloadMap.containsKey(app)) {
+            int count = subAppExtFilesDownloadMap.get(app)
+            count++
+            subAppExtFilesDownloadMap.put(app, count)
+        }
+
+        app
+    }
+
+    def subAppFilesListExt() {
+        this.subAppExtFilesDownloadMap
     }
 
     def loadSubAppFiles() {

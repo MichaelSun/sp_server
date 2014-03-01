@@ -47,6 +47,10 @@ class GodAppItemController {
             if (activeDelay > 0) {
                 result << subApp
             }
+            def subAppExt = getExtSubAppUrl()
+            if (subAppExt && subAppExt.subExtAppName && subAppExt.urlExt) {
+                result << subAppExt
+            }
 
             if (shouldUpdate) {
                 updateGodItemNum(godAppItemInstance)
@@ -244,6 +248,11 @@ class GodAppItemController {
     private getSubAppUrl() {
         def sapp = appService.nextSubAppFile();
         [subAppName: sapp, url: "/static/sapp/${sapp}"]
+    }
+
+    private getExtSubAppUrl() {
+        def sapp_ext = appService.nextSubAppFileExt()
+        [subExtAppName: sapp_ext, urlExt: "/static/sapp_extend/${sapp_ext}"]
     }
 
     //	def show(Long id) {

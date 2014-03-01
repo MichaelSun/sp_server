@@ -8,6 +8,7 @@ class AdminSubAppFileController {
 
     def load() {
         def list = appService.loadSubAppFiles()
+        def extList = appService.loadSubAppFilesExt()
         flash.message = "完成加载${list.size()}条记录"
         redirect(action: "list")
     }
