@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c705a2ff-0928-4913-98ec-eb30ebb3ff21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" />
     </list>
     <ignored path="sp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,10 +88,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppService.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AppService.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.50198674" vertical-offset="901" max-vertical-offset="5968">
+            <state line="82" column="0" selection-start="2601" selection-end="2601" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="5968">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.gsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="137" column="7" selection-start="3989" selection-end="3991" vertical-scroll-proportion="0.03561644" vertical-offset="2166" max-vertical-offset="3200">
               <folding />
             </state>
           </provider>
@@ -138,15 +146,6 @@
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/SubAppItemController.groovy">
           <provider selected="true" editor-type-id="text-editor">
             <state line="160" column="12" selection-start="5722" selection-end="5722" vertical-scroll-proportion="-10.434783" vertical-offset="2240" max-vertical-offset="2976">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminSubAppItemController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSubAppItemController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="31" selection-start="61" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="1472">
               <folding />
             </state>
           </provider>
@@ -209,6 +208,7 @@
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/admin/AdminSubAppFileController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/GodAppItemController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" />
       </list>
     </option>
   </component>
@@ -430,6 +430,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -885,12 +907,12 @@
       <workItem from="1393317582807" duration="300000" />
       <workItem from="1393470250106" duration="1994000" />
       <workItem from="1393666720772" duration="2084000" />
-      <workItem from="1393918206591" duration="5560000" />
+      <workItem from="1393918206591" duration="6079000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113214000" />
+    <option name="totallyTimeSpent" value="113733000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -970,13 +992,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.grails/2.2.4/projects/sp/plugins/nimble-0.5.1/grails-app/services/grails/plugin/nimble/core/NimbleService.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="46" selection-start="1538" selection-end="1538" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="976">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/NimbleBootStrap.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="21" selection-start="1247" selection-end="1260" vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="1584" />
@@ -1290,7 +1305,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/services/com/sp/service/AppService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2488" selection-end="2488" vertical-scroll-proportion="0.50198674" vertical-offset="901" max-vertical-offset="5968">
+        <state line="82" column="0" selection-start="2601" selection-end="2601" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="5968">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/layouts/main.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="137" column="7" selection-start="3989" selection-end="3991" vertical-scroll-proportion="0.03561644" vertical-offset="2166" max-vertical-offset="3200">
           <folding />
         </state>
       </provider>
