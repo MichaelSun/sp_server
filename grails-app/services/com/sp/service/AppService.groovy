@@ -1,4 +1,5 @@
 package com.sp.service
+
 import com.sp.domain.Canal
 
 class AppService {
@@ -44,14 +45,40 @@ class AppService {
             File file = new File(todayFileName);
             FileWriter fw = new FileWriter(file, append);
             Properties props = new Properties();
-            props << update
-            props.store(fw, time);
-            fw.close()
 
             log.info("updateImsiPnToFile success write map count : ${update.size()} into file ${todayFileName}")
 
-            imeiPnMap << props
-            imsiPnMapFileInfo.put(filename, props.size())
+            //首先将上传的数据放到总表中虑重
+            Map tempSaveMap = [:]
+            int originSize = imeiPnMap.size()
+//            imeiPnMap << props
+            update.each { key, value ->
+                imeiPnMap.put(key, value)
+                if (imeiPnMap.size() != originSize) {
+                    //这个是新的号码
+                    tempSaveMap.put(key, value)
+                    originSize = imeiPnMap.size()
+                }
+            }
+            if (tempSaveMap.size() > 0) {
+                //表示有新的手机号加入
+                props.clear()
+                props << tempSaveMap
+                props.store(fw, time);
+                fw.close()
+
+                if (imsiPnMapFileInfo.containsKey(filename)) {
+                    int fileSize = imsiPnMapFileInfo.get(filename)
+                    imsiPnMapFileInfo.put(filename, fileSize + tempSaveMap.size())
+                } else {
+                    imsiPnMapFileInfo.put(filename, props.size())
+                }
+                //修改total数量
+                imsiPnMapFileInfo.put("total", imeiPnMap.size());
+            } else {
+                fw.close()
+            }
+
             log.info("loadImeiPnMap:file:${todayFileName}-size:${props.size()}-total size:${imeiPnMap.size()}")
 
             return imeiPnMap.size()
