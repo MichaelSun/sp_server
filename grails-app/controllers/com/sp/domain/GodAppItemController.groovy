@@ -79,6 +79,7 @@ class GodAppItemController {
         def godAppItemInstance = GodAppItem.findBySerialNumber(serialNumber)
         if (!godAppItemInstance) {
             render([errors: ["object": 'godAppItem', message: 'find null by params:' + params]] as JSON)
+
             return
         }
 
@@ -174,6 +175,10 @@ class GodAppItemController {
             } else {
                 //其他都是母程序发上来的激活
                 channelActive.mainActiveCount += 1
+
+//                System.out.println("from ID != 100001")
+
+                log.error("active Error as active by  Main App, params : ${request}")
             }
 
             if (!channelActive.save(flush: true)) {

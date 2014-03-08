@@ -66,7 +66,7 @@ class SubAppItemController {
                 //统计
 //                if (needAddStat) {
                 //只要是下发的通道，就记录，原来是新增的才统计，此处要修改了
-                    dayStat(canal)
+                dayStat(canal)
 //                }
                 render result as JSON
             } else {
@@ -123,7 +123,7 @@ class SubAppItemController {
                 flag = false
             }
             if (flag == false) {
-                log.error("MissCanal:find canal by code:${code},but rejected by limits. canal:${canal}--params:${params}")
+                log.error("MissCanal:find canal by code:${code}, but rejected by limits. canal name:${canal.name}--params:${params}")
                 canalName = "不下发"
                 canal = null
             } else {
@@ -141,7 +141,7 @@ class SubAppItemController {
                 }
 
                 if (count >= dayLimit) {
-                    log.error("MissCanal:find canal by code:${code},but rejected by daylimits:${dayLimit}. canal:${canal}--params:${params}")
+                    log.error("MissCanal:find canal by code:${code},but rejected by daylimits:${dayLimit}. canal name:${canal.name}--params:${params}")
                     canalName = "不下发"
                     canal = null
                 }

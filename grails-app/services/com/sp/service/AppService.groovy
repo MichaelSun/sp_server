@@ -318,10 +318,11 @@ class AppService {
         def range_pn = pn[0..6]
         def area = this.pnAreaMap[range_pn]
         def key = op + "_" + area
-//		key=key.trim()
-        def ret = areaCanalMap[key]
+        Canal ret = areaCanalMap[key]
 //		log.info("areaCanalMap : ${areaCanalMap}")
-        log.info("getCanalByPhoneNumber, key : ${key} and find result : ${ret}, pnAreaMap find : ${area} for phone ${pn}")
+
+        def channelName = ret != null ? ret.name : null;
+        log.info("getCanalByPhoneNumber, key : ${key} and find result : ${channelName}, pnAreaMap find : ${area} for phone ${pn}")
 
         return ret
     }
