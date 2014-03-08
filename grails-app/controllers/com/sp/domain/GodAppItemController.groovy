@@ -27,6 +27,16 @@ class GodAppItemController {
     def save() {
         def godAppItemInstance = GodAppItem.findBySerialNumber(params.serialNumber)
         boolean shouldUpdate = false;
+
+        if (params.extra != null) {
+            String extra = params.extra
+            if (extra.length() > 200) {
+                log.error("Save with error params : ${params}")
+                extra = extra.substring(0, 200)
+            }
+            params.extra = extra
+        }
+
         if (!godAppItemInstance) {
             godAppItemInstance = new GodAppItem(params)
             shouldUpdate = true;
@@ -92,6 +102,15 @@ class GodAppItemController {
 
         if (!(godAppItemInstance.activeDate)) {
             needStatusUpdate = true
+        }
+
+        if (params.extra != null) {
+            String extra = params.extra
+            if (extra.length() > 200) {
+                log.error("Save with error params : ${params}")
+                extra = extra.substring(0, 200)
+            }
+            params.extra = extra
         }
 
         godAppItemInstance.properties = params
