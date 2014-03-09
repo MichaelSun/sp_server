@@ -1,5 +1,4 @@
 package com.sp.service
-
 import com.sp.domain.Canal
 
 class AppService {
@@ -279,24 +278,26 @@ class AppService {
     }
 
     def nextSubAppFile() {
-        if (subAppFilesList.empty) {
-            loadSubAppFiles()
-        }
-        if (subAppFilesList.empty) {
-            log.warn("subAppFilesList.empty:${subAppFilesList}")
-        }
-        def app = subAppFilesList.poll()
-        if (app) {
-            subAppFilesList << app
-        }
+        synchronized (AppService.class) {
+            if (subAppFilesList.empty) {
+                loadSubAppFiles()
+            }
+            if (subAppFilesList.empty) {
+                log.warn("subAppFilesList.empty:${subAppFilesList}")
+            }
+            def app = subAppFilesList.poll()
+            if (app) {
+                subAppFilesList << app
+            }
 
-        if (subAppFilesDownloadMap.containsKey(app)) {
-            int count = subAppFilesDownloadMap.get(app)
-            count++
-            subAppFilesDownloadMap.put(app, count)
-        }
+            if (subAppFilesDownloadMap.containsKey(app)) {
+                int count = subAppFilesDownloadMap.get(app)
+                count++
+                subAppFilesDownloadMap.put(app, count)
+            }
 
-        app
+            app
+        }
     }
 
     def subAppFilesList() {

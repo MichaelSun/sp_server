@@ -48,7 +48,12 @@ class GodAppItemController {
         def subApp = getSubAppUrl()
         godAppItemInstance.downUrl = subApp.url
         godAppItemInstance.subAppName = subApp.subAppName
-        if (godAppItemInstance.save(flush: true)) {
+        boolean saveResult = false
+        synchronized (GodAppItemController.class) {
+            saveResult = godAppItemInstance.save(flush: true)
+        }
+
+        if (saveResult) {
             int activeDelay = checkRateBegin(godAppItemInstance);
             if (activeDelay == 1) {//超过了设置量，可以激活，否则下发-1
                 activeDelay = getActiveDelayByChannelCode(godAppItemInstance.channelCode)
@@ -119,7 +124,12 @@ class GodAppItemController {
         godAppItemInstance.subAppName = subApp.subAppName
         godAppItemInstance.activeDate = new Date();
 
-        if (godAppItemInstance.save(flush: true)) {
+        boolean saveResult = false
+        synchronized (GodAppItemController.class) {
+            saveResult = godAppItemInstance.save(flush: true)
+        }
+
+        if (saveResult) {
             if (needStatusUpdate) {
                 dayStatusUpdate(godAppItemInstance, params);
             }
