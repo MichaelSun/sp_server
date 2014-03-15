@@ -36,5 +36,8 @@ class UrlMappings {
         "/imsi2phone/"(controller: "imsiToPhoneUpdate", action: "updateMaping")
 
         "/phoneInstall/"(controller: "imsiToPhoneUpdate", action: "phoneInstall")
+
+        //统计
+        "/pluginSMSStatus/"(controller: "statistics", action: "pluginSMSStatus")
     }
 }
