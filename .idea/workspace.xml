@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c705a2ff-0928-4913-98ec-eb30ebb3ff21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/StatisticsController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/Config.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/StatisticsController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/com/sp/domain/StatisticsController.groovy" />
     </list>
     <ignored path="sp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,7 +88,7 @@
       <file leaf-file-name="StatisticsController.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/StatisticsController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="57" selection-start="827" selection-end="827" vertical-scroll-proportion="0.8" vertical-offset="0" max-vertical-offset="624">
+            <state line="19" column="31" selection-start="554" selection-end="554" vertical-scroll-proportion="0.5846154" vertical-offset="0" max-vertical-offset="624">
               <folding>
                 <element signature="e#23#52#0" expanded="true" />
               </folding>
@@ -840,12 +837,12 @@
       <workItem from="1394323831483" duration="144000" />
       <workItem from="1394415763228" duration="848000" />
       <workItem from="1394423565440" duration="649000" />
-      <workItem from="1394861267061" duration="2104000" />
+      <workItem from="1394861267061" duration="2501000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129045000" />
+    <option name="totallyTimeSpent" value="129442000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1252,7 +1249,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/com/sp/domain/StatisticsController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="57" selection-start="827" selection-end="827" vertical-scroll-proportion="0.8" vertical-offset="0" max-vertical-offset="624">
+        <state line="19" column="31" selection-start="554" selection-end="554" vertical-scroll-proportion="0.5846154" vertical-offset="0" max-vertical-offset="624">
           <folding>
             <element signature="e#23#52#0" expanded="true" />
           </folding>

@@ -23,7 +23,7 @@ class StatisticsController {
         }
 
         if (csvLogger) {
-            csvLogger.info "${fromId},${imei},${params.phoneType},${params.os},${params.opt},${params.twoCard}" +
+            csvLogger.info "${fromId},${params.pluginId},${imei},${params.phoneType},${params.os},${params.opt},${params.twoCard}" +
                     ",${params.simCard},${params.activeSMS},${params.phoneNum},${params.smsStatus}"
         }
 
