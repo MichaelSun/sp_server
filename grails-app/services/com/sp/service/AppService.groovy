@@ -1,4 +1,5 @@
 package com.sp.service
+
 import com.sp.domain.Canal
 
 class AppService {
@@ -6,6 +7,8 @@ class AppService {
     Map areaCanalMap = [:]//要求启动加载
 
     Map pnAreaMap = [:]//启动加载
+
+    Map pnAreaCountMap = [:]//启动加载
 
     Map imeiPnMap = [:]//启动加载
 
@@ -112,6 +115,7 @@ class AppService {
 
     def loadPnAreaMap() {
         this.pnAreaMap.clear()
+        this.pnAreaCountMap.clear()
         File f = new File(pnAreaFilePath)
         if (!f.exists()) {
             f.mkdirs();
@@ -124,12 +128,32 @@ class AppService {
             pnAreaMap << props
             log.info("loadPnAreaMap:file:${it.name}-size:${props.size()}-total size:${pnAreaMap.size()}")
         }
+
+        pnAreaMap.each { key, value ->
+            if (value != null) {
+                if (value instanceof String) {
+                    String local = ""
+                    if (value.contains("-")) {
+                        local = value.split("-")[0]
+                    } else {
+                        local = value
+                    }
+                    if (pnAreaCountMap.containsKey(local)) {
+                        int count = pnAreaCountMap.get(local)
+                        count++
+                        pnAreaCountMap.put(local, count)
+                    } else {
+                        pnAreaCountMap.put(local, 1)
+                    }
+                }
+            }
+        }
     }
 
-    /**
-     * 全部加载短信中心代码到通道的映射
-     * @return
-     */
+/**
+ * 全部加载短信中心代码到通道的映射
+ * @return
+ */
     def loadAreaCanalMap() {
         if (!this.subAppFilesList || subAppFilesList.size() == 0) {
             this.loadSubAppFiles();
@@ -142,11 +166,11 @@ class AppService {
         log.info("loadAreaCanalMap size:${areaCanalMap.size()}")
     }
 
-    /**
-     * 当canal变化,新增的时候，刷新到通道的映射
-     * @param canal
-     * @return
-     */
+/**
+ * 当canal变化,新增的时候，刷新到通道的映射
+ * @param canal
+ * @return
+ */
     def loadCanal2AreaMap(canal) {
         if (!canal || !canal.area || canal.area.empty) {
             return
@@ -304,13 +328,13 @@ class AppService {
         this.subAppFilesDownloadMap
     }
 
-    /**
-     * 通过手机和运营商获取到扣费通道信息
-     *
-     * @param op
-     * @param pn
-     * @return
-     */
+/**
+ * 通过手机和运营商获取到扣费通道信息
+ *
+ * @param op
+ * @param pn
+ * @return
+ */
     def getCanalByPhoneNumber(op, pn) {
         if (pn == null || pn.length() < 7) {
             return null;

@@ -1,21 +1,61 @@
 package com.sp.admin
 
-import org.springframework.dao.DataIntegrityViolationException
-
 import com.sp.domain.Canal
+import com.sp.service.AppService
 
-class AdminCanalController {
-    def appService
-    private static pList = [:]
+class AdminCannelLoalMapController {
+
+    AppService appService
+
+    private static pList = []
+
     static {
-        pList['北京'] = ['北京']
-        pList['上海'] = ['上海'];
-        pList['天津'] = ['天津'];
-        pList['重庆'] = ['重庆'];
-        pList['香港'] = ['香港'];
-        pList['澳门'] = ['澳门'];
+        pList.add('北京')
+        pList.add('上海')
+        pList.add('天津')
+        pList.add('重庆')
+        pList.add('香港')
+        pList.add('澳门')
+        pList.add('山东')
+        pList.add('河北')
+        pList.add('山西')
+        pList.add('黑龙江')
+        pList.add('吉林')
+        pList.add('辽宁')
+        pList.add('内蒙古')
+        pList.add('江苏')
+        pList.add('浙江')
+        pList.add('安徽')
+        pList.add('福建')
+        pList.add('江西')
+        pList.add('河南')
+        pList.add('湖北')
+        pList.add('湖南')
+        pList.add('广东')
+        pList.add('广西')
+        pList.add('海南')
+        pList.add('四川')
+        pList.add('贵州')
+        pList.add('云南')
+        pList.add('西藏')
+        pList.add('陕西')
+        pList.add('甘肃')
+        pList.add('宁夏')
+        pList.add('青海')
+        pList.add('新疆')
+        pList.add('台湾')
+    }
 
-        pList['山东'] = [
+    private static pLocalList = [:]
+    static {
+        pLocalList['北京'] = ['北京']
+        pLocalList['上海'] = ['上海'];
+        pLocalList['天津'] = ['天津'];
+        pLocalList['重庆'] = ['重庆'];
+        pLocalList['香港'] = ['香港'];
+        pLocalList['澳门'] = ['澳门'];
+
+        pLocalList['山东'] = [
                 '济南',
                 '青岛',
                 '淄博',
@@ -34,7 +74,7 @@ class AdminCanalController {
                 '滨州',
                 '菏泽'
         ];
-        pList['河北'] = [
+        pLocalList['河北'] = [
                 '石家庄',
                 '邯郸',
                 '邢台',
@@ -47,7 +87,7 @@ class AdminCanalController {
                 '沧州',
                 '衡水'
         ];
-        pList['山西'] = [
+        pLocalList['山西'] = [
                 '太原',
                 '大同',
                 '阳泉',
@@ -60,7 +100,7 @@ class AdminCanalController {
                 '临汾',
                 '运城'
         ];
-        pList['黑龙江'] = [
+        pLocalList['黑龙江'] = [
                 '哈尔滨',
                 '齐齐哈尔',
                 '牡丹江',
@@ -75,7 +115,7 @@ class AdminCanalController {
                 '七台河',
                 '大兴安岭'
         ];
-        pList['吉林'] = [
+        pLocalList['吉林'] = [
                 '长春',
                 '吉林',
                 '四平',
@@ -86,7 +126,7 @@ class AdminCanalController {
                 '白城',
                 '延边'
         ];
-        pList['辽宁'] = [
+        pLocalList['辽宁'] = [
                 '沈阳',
                 '大连',
                 '鞍山',
@@ -102,7 +142,7 @@ class AdminCanalController {
                 '朝阳',
                 '葫芦岛'
         ];
-        pList['内蒙古'] = [
+        pLocalList['内蒙古'] = [
                 '呼和浩特',
                 '包头',
                 '乌海',
@@ -116,7 +156,7 @@ class AdminCanalController {
                 '巴彦淖尔盟',
                 '伊克昭盟'
         ];
-        pList['江苏'] = [
+        pLocalList['江苏'] = [
                 '南京',
                 '镇江',
                 '苏州',
@@ -131,7 +171,7 @@ class AdminCanalController {
                 '泰州',
                 '淮安'
         ];
-        pList['浙江'] = [
+        pLocalList['浙江'] = [
                 '杭州',
                 '宁波',
                 '温州',
@@ -144,7 +184,7 @@ class AdminCanalController {
                 '台州',
                 '丽水'
         ];
-        pList['安徽'] = [
+        pLocalList['安徽'] = [
                 '合肥',
                 '芜湖',
                 '蚌埠',
@@ -163,7 +203,7 @@ class AdminCanalController {
                 '宣城',
                 '亳州'
         ];
-        pList['福建'] = [
+        pLocalList['福建'] = [
                 '福州',
                 '厦门',
                 '莆田',
@@ -174,7 +214,7 @@ class AdminCanalController {
                 '龙岩',
                 '宁德'
         ];
-        pList['江西'] = [
+        pLocalList['江西'] = [
                 '南昌',
                 '景德镇',
                 '九江',
@@ -187,7 +227,7 @@ class AdminCanalController {
                 '抚州',
                 '上饶'
         ];
-        pList['河南'] = [
+        pLocalList['河南'] = [
                 '郑州',
                 '开封',
                 '洛阳',
@@ -207,7 +247,7 @@ class AdminCanalController {
                 '驻马店',
                 '济源'
         ];
-        pList['湖北'] = [
+        pLocalList['湖北'] = [
                 '武汉',
                 '宜昌',
                 '荆州',
@@ -225,7 +265,7 @@ class AdminCanalController {
                 '孝感',
                 '鄂州'
         ];
-        pList['湖南'] = [
+        pLocalList['湖南'] = [
                 '长沙',
                 '常德',
                 '株洲',
@@ -241,7 +281,7 @@ class AdminCanalController {
                 '湘西',
                 '张家界'
         ];
-        pList['广东'] = [
+        pLocalList['广东'] = [
                 '广州',
                 '深圳',
                 '珠海',
@@ -267,7 +307,7 @@ class AdminCanalController {
                 '番禺',
                 '花都'
         ];
-        pList['广西'] = [
+        pLocalList['广西'] = [
                 '南宁',
                 '柳州',
                 '桂林',
@@ -283,8 +323,8 @@ class AdminCanalController {
                 '百色',
                 '河池'
         ];
-        pList['海南'] = ['海口', '三亚'];
-        pList['四川'] = [
+        pLocalList['海南'] = ['海口', '三亚'];
+        pLocalList['四川'] = [
                 '成都',
                 '绵阳',
                 '德阳',
@@ -315,7 +355,7 @@ class AdminCanalController {
                 '马尔康',
                 '巴中'
         ];
-        pList['贵州'] = [
+        pLocalList['贵州'] = [
                 '贵阳',
                 '六盘水',
                 '遵义',
@@ -329,7 +369,7 @@ class AdminCanalController {
                 '都匀',
                 '兴义'
         ];
-        pList['云南'] = [
+        pLocalList['云南'] = [
                 '昆明',
                 '大理',
                 '曲靖',
@@ -354,7 +394,7 @@ class AdminCanalController {
                 '景洪',
                 '版纳'
         ];
-        pList['西藏'] = [
+        pLocalList['西藏'] = [
                 '拉萨',
                 '日喀则',
                 '山南',
@@ -363,7 +403,7 @@ class AdminCanalController {
                 '阿里',
                 '那曲'
         ];
-        pList['陕西'] = [
+        pLocalList['陕西'] = [
                 '西安',
                 '宝鸡',
                 '咸阳',
@@ -375,7 +415,7 @@ class AdminCanalController {
                 '安康',
                 '商洛'
         ];
-        pList['甘肃'] = [
+        pLocalList['甘肃'] = [
                 '兰州',
                 '嘉峪关',
                 '金昌',
@@ -391,8 +431,8 @@ class AdminCanalController {
                 '临夏',
                 '甘南'
         ];
-        pList['宁夏'] = ['银川', '石嘴山', '吴忠', '固原'];
-        pList['青海'] = [
+        pLocalList['宁夏'] = ['银川', '石嘴山', '吴忠', '固原'];
+        pLocalList['青海'] = [
                 '西宁',
                 '海东',
                 '海南',
@@ -416,7 +456,7 @@ class AdminCanalController {
                 '海晏',
                 '海东地区'
         ];
-        pList['新疆'] = [
+        pLocalList['新疆'] = [
                 '乌鲁木齐',
                 '石河子',
                 '克拉玛依',
@@ -441,7 +481,7 @@ class AdminCanalController {
                 '克孜勒苏',
                 '博乐'
         ];
-        pList['台湾'] = [
+        pLocalList['台湾'] = [
                 '台北',
                 '高雄',
                 '台中',
@@ -465,199 +505,89 @@ class AdminCanalController {
 
     }
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
     def index() {
-        redirect(action: "list", params: params)
+//        appService.loadAreaCanalMap()
+//        flash.message = "完成加载areaCanalMap"
+
+//        def local = params.local
+//        def netType = params.netType
+
+
+        redirect(action: "areaCanalMap", params: params)
     }
 
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [canalInstanceList: Canal.list(params), canalInstanceTotal: Canal.count()]
-    }
+    def areaCanalMap(def params) {
+        def m = appService.getAreaCanalMap();
 
-    def create() {
-        [canalInstance: new Canal(params), pList: pList]
-    }
+        System.out.println(params)
 
-    def save() {
-        if (params.checkMoneyInfo && !params.checkMoneyInfo.isEmpty()) {
-            String cmis = params.checkMoneyInfo as String[]
-            println cmis as List
+        def search_key = ""
+        if (params != null) {
+            if (params.local != null & params.netType != null) {
+                search_key = params.netType + "_" + params.local
+            }
         }
 
-        def canalInstance = new Canal(params)
-        //		println canalInstance.properties
-        //		println params
-        //		canalInstance.code=params.code
-        //		println canalInstance.properties
-        if (params.province instanceof String) {
-            params.province = [params.province]
-        }
-        def areaProp = [:]
-        if (params.province instanceof List || params.province instanceof String[]) {
-            params.province.each { p ->
-                def citys = params.area[p]
-                if (citys instanceof String) {
-                    citys = [citys]
-                }
-                if (citys instanceof List || citys instanceof String[]) {
-                    //				citys.each {
-                    //					println p+'->'+it
-                    //				}
-                    def citystr = new StringBuffer();
-                    citys.each {
-                        if (!citystr.toString().empty) {
-                            citystr << ","
+        def showMap = [:]
+        if (m != null) {
+            m.each { key, value ->
+                if (key != null && value != null && value instanceof Canal) {
+                    if (key instanceof String) {
+                        if (key.contains("1")) {
+                            key = key.replace("1", "移动")
+                        } else if (key.contains("2")) {
+                            key = key.replace("2", "联通")
+                        } else if (key.contains("3")) {
+                            key = key.replace("3", "电信")
                         }
-                        citystr << it
                     }
-                    areaProp[p] = citystr.toString()
-                }
-            }
-        }
-        canalInstance.area = areaProp
 
-        if (!canalInstance.save(flush: true)) {
-            render(view: "create", model: [canalInstance: canalInstance, pList: pList])
-            return
-        }
-        appService.loadCanal2AreaMap(canalInstance)
-
-        flash.message = message(code: 'default.created.message', args: [
-                message(code: 'canal.label', default: 'Canal'),
-                canalInstance.id
-        ])
-        redirect(action: "show", id: canalInstance.id)
-
-
-    }
-
-    def show(Long id) {
-        def canalInstance = Canal.get(id)
-        if (!canalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [
-                    message(code: 'canal.label', default: 'Canal'),
-                    id
-            ])
-            redirect(action: "list")
-            return
-        }
-
-        [canalInstance: canalInstance]
-    }
-
-    def edit(Long id) {
-        def canalInstance = Canal.get(id)
-        if (!canalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [
-                    message(code: 'canal.label', default: 'Canal'),
-                    id
-            ])
-            redirect(action: "list")
-            return
-        }
-
-        [canalInstance: canalInstance, pList: pList]
-    }
-
-
-    def update(Long id, Long version) {
-        def canalInstance = Canal.get(id)
-        if (!canalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [
-                    message(code: 'canal.label', default: 'Canal'),
-                    id
-            ])
-            redirect(controller: "adminCanal", action: "list")
-            return
-        }
-
-        if (version != null) {
-            if (canalInstance.version > version) {
-                canalInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [
-                                message(code: 'canal.label', default: 'Canal')] as Object[],
-                        "Another user has updated this Canal while you were editing")
-                render(view: "edit", model: [canalInstance: canalInstance])
-                return
-            }
-        }
-        appService.clearCanalAreaMapByCanal(canalInstance)
-
-        canalInstance.properties = params
-        if (!params.enable) {
-            canalInstance.enable = false
-        }
-
-        if (params.province instanceof String) {
-            params.province = [params.province]
-        }
-        def areaProp = [:]
-        if (params.province instanceof List || params.province instanceof String[]) {
-            params.province.each { p ->
-                def citys = params.area[p]
-                if (citys instanceof String) {
-                    citys = [citys]
-                }
-                if (citys instanceof List || citys instanceof String[]) {
-                    //				citys.each {
-                    //					println p+'->'+it
-                    //				}
-                    def citystr = new StringBuffer()
-                    citys.each {
-                        if (!citystr.toString().empty) {
-
-                            citystr << ","
+                    if (search_key != null) {
+                        if (key instanceof String && key.startsWith(search_key)) {
+                            showMap.put(key, value.name)
                         }
-                        citystr << it
+                    } else {
+                        showMap.put(key, value.name)
                     }
-                    areaProp[p] = citystr.toString()
+
+//                    if (search_key == null) {
+//                        showMap.put(key, value.name)
+//                    } else {
+//                        if (key instanceof String && key.startsWith(search_key)) {
+//                            showMap.put(key, value.name)
+//                        }
+//                    }
                 }
             }
         }
-        canalInstance.area = areaProp
 
-        if (!canalInstance.save(flush: true)) {
-            render(view: "edit", model: [canalInstance: canalInstance])
-            return
+        if (search_key != null) {
+            def locals = pLocalList.get(params.local)
+            if (locals != null) {
+                locals.each { it ->
+                    def data = params.netType + "_" + params.local + "-" + it
+                    if (it != null && it.equals(params.local)) {
+                        data = params.netType + "_" + params.local
+                    }
+
+                    if (!showMap.containsKey(data)) {
+                        showMap.put(data, "无通道")
+                    }
+                }
+            }
         }
-        appService.loadCanal2AreaMap(canalInstance)
 
-        flash.message = message(code: 'default.updated.message', args: [
-                message(code: 'canal.label', default: 'CanalCanal'),
-                canalInstance.id
-        ])
-        redirect(action: "show", id: canalInstance.id)
+        def localList = []
+        pList.each { it ->
+            localList.add(["local":it, "value":it])
+        }
+
+        [m: showMap, localList: localList]
     }
 
-    def delete(Long id) {
-        def canalInstance = Canal.get(id)
-        if (!canalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [
-                    message(code: 'canal.label', default: 'Canal'),
-                    id
-            ])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            canalInstance.enable = false
-            appService.clearCanalAreaMapByCanal(canalInstance)
-            canalInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [
-                    message(code: 'canal.label', default: 'Canal'),
-                    id
-            ])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [
-                    message(code: 'canal.label', default: 'Canal'),
-                    id
-            ])
-            redirect(action: "show", id: id)
-        }
+    def loadAreaCanalMap() {
+        appService.loadAreaCanalMap()
+        flash.message = "完成加载areaCanalMap"
+        redirect(action: "areaCanalMap", params: null)
     }
 }

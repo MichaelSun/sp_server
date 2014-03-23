@@ -167,7 +167,7 @@
         <li><g:link controller="adminTools" action="i2n">
             IMSI-手机号映射数据
         </g:link></li>
-        <li><g:link controller="adminPhoneAreaMap" action="areaCanalMap">
+        <li><g:link controller="adminCannelLoalMap" action="index">
             通道映射图
         </g:link></li>
         <li><g:link
