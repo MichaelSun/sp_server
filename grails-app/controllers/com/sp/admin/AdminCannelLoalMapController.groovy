@@ -517,9 +517,9 @@ class AdminCannelLoalMapController {
     }
 
     def areaCanalMap(def params) {
-        def m = appService.getAreaCanalMap();
+        def mData = appService.getAreaCanalMap();
 
-        System.out.println(params)
+//        System.out.println(params)
 
         def search_key = ""
         if (params != null) {
@@ -529,8 +529,8 @@ class AdminCannelLoalMapController {
         }
 
         def showMap = [:]
-        if (m != null) {
-            m.each { key, value ->
+        if (mData != null) {
+            mData.each { key, value ->
                 if (key != null && value != null && value instanceof Canal) {
                     if (key instanceof String) {
                         if (key.contains("1")) {

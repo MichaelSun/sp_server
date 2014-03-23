@@ -38,7 +38,7 @@
                 <g:select optionKey="netType" optionValue="operatorValue"
                           from="${[[netType:'移动',operatorValue:'移动'],[netType:'联通',operatorValue:'联通'],[netType:'电信',operatorValue:'电信']]}"
                           name="netType" value="${params.netType}"></g:select>
-                <label for="local"> local </label>
+                <label for="local"> 省 </label>
                 <g:select optionKey="local" optionValue="value"
                           from="${localList}"
                           name="local" value="${params.local}"></g:select>
